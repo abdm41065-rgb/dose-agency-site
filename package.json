@@ -1,0 +1,5 @@
+{
+  "name": "dose-agency-site",
+  "private": true,
+  "scripts": { "build": "echo static-site-ready" }
+}
