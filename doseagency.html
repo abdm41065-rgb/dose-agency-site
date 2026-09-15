@@ -773,6 +773,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .mark .f2{fill:var(--b4)}
 .mark .f3{fill:var(--b3)}
 </style>
+<script>
+  (() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    addEventListener('pageshow', () => {
+      if (!location.hash) window.scrollTo(0, 0);
+    }, { once: true });
+  })();
+</script>
 </head>
 <body>
 <div class="trust-strip" role="note"><b>استشارة أولى مجانية</b><span>نحوّل حضورك الطبي إلى علامة يثق بها الناس.</span><a href="#contact">ابدأ محادثة قصيرة ←</a></div>
