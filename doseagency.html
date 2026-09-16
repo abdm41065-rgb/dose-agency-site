@@ -307,6 +307,13 @@ a{color:inherit;text-decoration:none}
 .bridge-plate:nth-child(2){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-02.jpg')!important}
 .bridge-plate:nth-child(3){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-03.jpg')!important}
 .bridge-plate:nth-child(4){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-04.jpg')!important}
+/* Home identity showcase: image posts only, arranged like a clean 2x2 gallery. */
+.bridge-inner{display:block!important}
+.bridge-copy{display:none!important}
+.bridge-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+.bridge-plate{aspect-ratio:1/1!important;background-size:cover!important;background-position:center!important}
+.bridge-plate .mark{display:none!important}
+@media(max-width:640px){.bridge-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
 .bridge-plate .mark{display:none}
 .post-body h3{font-family:var(--en);font-size:19px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
 .post-body p{font-size:13px;color:var(--ink-dim);margin-top:6px}
