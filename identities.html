@@ -817,6 +817,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .sh-top{min-height:clamp(230px,32vw,360px);aspect-ratio:16/7;padding:0;background-image:var(--identity-bg);background-position:center;background-size:cover}
 .sh-top::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,9,.04),rgba(4,10,9,.18));pointer-events:none}
 .sh-top>.sh-board,.sh-top>.sh-title{display:none}
+.sh-top{min-height:clamp(270px,44vw,430px);aspect-ratio:16/9;background-size:cover;background-position:center;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 18px 40px -28px #000}
+@media(max-width:700px){.sh-top{min-height:260px;aspect-ratio:4/3;background-position:center}}
 #sheetBody .app{position:relative;overflow:hidden;background-image:linear-gradient(rgba(4,10,9,.08),rgba(4,10,9,.18)),var(--identity-bg)!important;background-size:cover;background-position:center}
 #sheetBody .app .mark,#sheetBody .app>i,#sheetBody .app>b,#sheetBody .app>span{opacity:0!important}
 @keyframes sheetIn{from{opacity:0;transform:translateY(26px) scale(.98)}}
