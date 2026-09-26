@@ -790,7 +790,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   background:radial-gradient(120% 100% at 30% 10%,var(--b2),var(--b1) 72%)}
 .plate-sw{display:flex;height:9px}
 .plate-sw i{flex:1}
-.plate-meta{display:none}
+.plate-meta{display:flex;flex-direction:column;gap:3px;padding:17px 19px 19px}
 .plate-meta b{font-size:17px;font-weight:800;line-height:1.4}
 .plate-en{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-dim)}
 .plate-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;
@@ -2011,6 +2011,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
   const plates = [...grid.querySelectorAll('.plate')];
 
+  const instagramSearch = {
+    noor: 'صيدلية النور',
+    shifa: 'مركز الشفاء التخصصي',
+    pharmaline: 'فارما لاين',
+    rafidain: 'عيادات الرافدين',
+    medico: 'Medico IQ',
+    dawa: 'صيدليات الدواء',
+    ammar: 'د. عمار كردي',
+    zainab: 'د. زينب شاكر محمود',
+    eman: 'د. إيمان معروف محمد',
+    mustafa: 'د. مصطفى ماجد عبدالله'
+  };
+  plates.forEach(plate => {
+    const q = instagramSearch[plate.dataset.open];
+    if (q) {
+      plate.dataset.instagram = 'https://www.instagram.com/explore/search/keyword/?q=' + encodeURIComponent(q);
+      plate.setAttribute('aria-label', 'فتح صفحة ' + q + ' على إنستغرام');
+    }
+  });
+
   /* every colour chip is an intentional entry point to its identity */
   plates.forEach(plate => {
     const name = plate.querySelector('.plate-meta b')?.textContent.trim() || 'هذه الهوية';
@@ -2066,6 +2086,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   grid.addEventListener('click', e => {
     const plate = e.target.closest('.plate');
     if (!plate) return;
+    if (plate.dataset.instagram) {
+      window.location.href = plate.dataset.instagram;
+      return;
+    }
     opener = plate;
     history.replaceState(null, '', '#identity-' + plate.dataset.open);
     open(plate.dataset.open);
