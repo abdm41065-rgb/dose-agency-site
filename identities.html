@@ -2017,10 +2017,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     mustafa: 'د. مصطفى ماجد عبدالله'
   };
   plates.forEach(plate => {
-    const q = instagramSearch[plate.dataset.open];
-    if (q) {
-      plate.dataset.instagram = 'https://www.instagram.com/explore/search/keyword/?q=' + encodeURIComponent(q);
-      plate.setAttribute('aria-label', 'فتح صفحة ' + q + ' على إنستغرام');
+    const account = instagramAccounts[plate.dataset.open];
+    if (account) {
+      plate.dataset.instagram = 'https://www.instagram.com/' + account;
+      plate.setAttribute('aria-label', 'فتح حساب ' + account + ' على إنستغرام');
     }
   });
 
