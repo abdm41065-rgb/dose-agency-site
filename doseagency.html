@@ -1007,6 +1007,42 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   </div>
 </section>
 
+
+<!-- ============ VIDEO PRO LIBRARY ============ -->
+<section class="video-library" id="videoPro">
+  <div class="video-library-head">
+    <span class="kicker">الإنتاج المرئي</span>
+    <h2>شاهد فرق <span class="grad">Pro</span>.</h2>
+    <p>اختر نوع الإنتاج لتظهر قائمة الفيديوهات والأمثلة الخاصة به.</p>
+  </div>
+  <div class="video-suites">
+    <article class="video-suite reveal" data-video-suite>
+      <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProList">
+        <span class="video-suite-poster"><img src="images/work-03.jpg" alt="أمثلة Video Pro"></span>
+        <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro</strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها.</span></span>
+        <span class="video-suite-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="video-suite-list" id="videoProList"><div class="video-suite-list-inner">
+        <a class="video-item" href="https://www.instagram.com/alhal.alajmal.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-03.jpg" alt=""></span><span><b>شرح منتج طبي</b><small>فكرة · تصوير · مونتاج للسوشيال</small></span><span class="video-item-arrow">↗</span></a>
+        <a class="video-item" href="https://www.instagram.com/azj.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-02.jpg" alt=""></span><span><b>فيديو منتج وعرضه</b><small>إبراز المزايا بطريقة واضحة</small></span><span class="video-item-arrow">↗</span></a>
+        <a class="video-item" href="https://www.instagram.com/alfurqan.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-09.jpg" alt=""></span><span><b>محتوى قصير للمنتجات</b><small>نسخة جاهزة للإعلانات والريلز</small></span><span class="video-item-arrow">↗</span></a>
+      </div></div>
+    </article>
+    <article class="video-suite reveal" data-video-suite data-delay="100">
+      <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProMaxList">
+        <span class="video-suite-poster"><img src="images/work-01.jpg" alt="أمثلة Video Pro Max"></span>
+        <span><span class="video-suite-kicker en">02 / VIDEO PRO MAX</span><strong class="video-suite-title en">Video Pro Max</strong><span class="video-suite-copy">إنتاج مرئي متكامل للعيادات والصيدليات والحملات الطبية.</span></span>
+        <span class="video-suite-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="video-suite-list" id="videoProMaxList"><div class="video-suite-list-inner">
+        <a class="video-item" href="https://www.instagram.com/dr.sara.aljumaili" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-01.jpg" alt=""></span><span><b>قصة طبية متكاملة</b><small>تصوير ميداني · إخراج · صوت</small></span><span class="video-item-arrow">↗</span></a>
+        <a class="video-item" href="https://www.instagram.com/ph.ruaaisam" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-08.jpg" alt=""></span><span><b>حملة مرئية كاملة</b><small>فكرة بصرية وحزمة فيديوهات</small></span><span class="video-item-arrow">↗</span></a>
+        <a class="video-item" href="https://www.instagram.com/ph.dralghufran" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-10.jpg" alt=""></span><span><b>إنتاج احترافي للعلامة</b><small>محتوى منتجات وإعلانات متسلسل</small></span><span class="video-item-arrow">↗</span></a>
+      </div></div>
+    </article>
+  </div>
+</section>
+
 <!-- ============ WORK — PINNED HORIZONTAL RAIL ============ -->
 <section class="work" id="work">
   <div class="work-track" id="workTrack">
@@ -1839,6 +1875,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     };
     addEventListener('scroll', move, {passive:true}); move();
   })();
+</script>
+
+<script>
+(() => {
+  document.querySelectorAll('[data-video-suite]').forEach(suite => {
+    const button = suite.querySelector('.video-suite-toggle');
+    const list = suite.querySelector('.video-suite-list');
+    button.addEventListener('click', () => {
+      const open = !suite.classList.contains('open');
+      suite.classList.toggle('open', open);
+      button.setAttribute('aria-expanded', String(open));
+      if (open) setTimeout(() => suite.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+    });
+  });
+})();
 </script>
 </body>
 </html>
