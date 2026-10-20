@@ -829,6 +829,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .sheet-close:hover{background:var(--sky-3);color:#030908;border-color:var(--sky-3)}
 .palette-launch{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:14px;padding:14px 16px;border:1px solid rgba(126,240,224,.32);border-radius:14px;background:rgba(20,184,166,.08);color:var(--ink);cursor:pointer;font:700 14px var(--ar);transition:.25s var(--ease)}
 .palette-launch:hover{border-color:var(--sky-3);background:rgba(20,184,166,.16);transform:translateY(-2px)}
+.palette-mini{position:absolute;inset-inline-start:14px;top:14px;z-index:4;padding:8px 11px;border:1px solid rgba(126,240,224,.55);border-radius:999px;background:rgba(3,16,15,.72);color:var(--ink);font:700 11px var(--ar);cursor:pointer;backdrop-filter:blur(8px);transition:.25s}.palette-mini:hover{background:var(--sky-3);color:#030908;border-color:var(--sky-3)}
 .palette-launch small{display:block;color:var(--ink-soft);font-size:11px;font-weight:400;margin-top:3px}
 .palette-launch b{color:var(--sky-2);font-size:20px}
 .palette-overlay{position:fixed;inset:0;z-index:9400;display:grid;place-items:center;padding:20px;background:rgba(3,8,7,.82);backdrop-filter:blur(14px);animation:paletteFade .25s ease}
@@ -2032,6 +2033,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       plate.dataset.instagram = 'https://www.instagram.com/' + account;
       plate.setAttribute('aria-label', 'فتح حساب ' + account + ' على إنستغرام');
     }
+    const paletteMini = document.createElement('span');
+    paletteMini.className = 'palette-mini';
+    paletteMini.textContent = 'ألوان الهوية';
+    paletteMini.setAttribute('role', 'button');
+    paletteMini.setAttribute('tabindex', '0');
+    paletteMini.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); openPlatePalette(plate); });
+    paletteMini.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); openPlatePalette(plate); } });
+    plate.appendChild(paletteMini);
   });
 
   /* every colour chip is an intentional entry point to its identity */
@@ -2100,6 +2109,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     const closePalette = () => overlay.remove();
     overlay.querySelector('.palette-dialog-close').addEventListener('click', closePalette);
     overlay.addEventListener('click', e => { if (e.target === overlay) closePalette(); });
+  };
+
+  const openPlatePalette = plate => {
+    const fake = document.createElement('div');
+    fake.innerHTML = `<ul class="sh-pal">${[...plate.querySelectorAll('.plate-sw i')].map((chip, index) => `<li><span class="chipcol" style="background:${chip.style.backgroundColor}"></span><b>${chip.dataset.color || chip.style.backgroundColor}</b><em>${['الأساسي','الرئيسي','المساعد','الورقي'][index]}</em></li>`).join('')}</ul>`;
+    openPalette(fake);
   };
 
   const close = () => {
