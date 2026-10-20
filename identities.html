@@ -827,6 +827,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   border:1px solid var(--line);background:var(--glass);color:var(--ink);font-size:20px;line-height:1;
   transition:.35s var(--ease)}
 .sheet-close:hover{background:var(--sky-3);color:#030908;border-color:var(--sky-3)}
+.palette-launch{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:14px;padding:14px 16px;border:1px solid rgba(126,240,224,.32);border-radius:14px;background:rgba(20,184,166,.08);color:var(--ink);cursor:pointer;font:700 14px var(--ar);transition:.25s var(--ease)}
+.palette-launch:hover{border-color:var(--sky-3);background:rgba(20,184,166,.16);transform:translateY(-2px)}
+.palette-launch small{display:block;color:var(--ink-soft);font-size:11px;font-weight:400;margin-top:3px}
+.palette-launch b{color:var(--sky-2);font-size:20px}
+.palette-overlay{position:fixed;inset:0;z-index:9400;display:grid;place-items:center;padding:20px;background:rgba(3,8,7,.82);backdrop-filter:blur(14px);animation:paletteFade .25s ease}
+.palette-dialog{width:min(700px,100%);max-height:90vh;overflow:auto;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#0d2521,#061210);padding:clamp(24px,5vw,48px);box-shadow:0 40px 100px #000;position:relative;animation:paletteRise .35s var(--ease)}
+.palette-dialog-close{position:absolute;inset-inline-end:18px;top:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:22px;cursor:pointer}
+.palette-dialog h3{font-size:clamp(32px,6vw,58px);line-height:.95;margin:0 0 14px;letter-spacing:-.06em}.palette-dialog h3 em{color:var(--sky-3);font-style:normal}.palette-dialog>p{color:var(--ink-soft);margin:0 0 26px;line-height:1.7}
+.palette-dialog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.palette-card{display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:15px;background:rgba(4,10,9,.45)}.palette-swatch{height:86px;border-radius:9px;display:flex;align-items:end;padding:8px;box-shadow:inset 0 0 0 1px #fff2}.palette-swatch span{font:10px var(--mono);color:#fff;text-shadow:0 1px 4px #000}.palette-card h4{margin:0 0 5px;font-size:16px}.palette-card p{margin:0;color:var(--ink-soft);font-size:12px;line-height:1.5}@keyframes paletteFade{from{opacity:0}to{opacity:1}}@keyframes paletteRise{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:700px){.palette-dialog-grid{grid-template-columns:1fr}.palette-card{grid-template-columns:74px 1fr}.palette-swatch{height:74px}}
 
 .sh-top{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:clamp(18px,3vw,34px);align-items:center}
 .sh-board{display:grid;place-items:center;gap:14px;aspect-ratio:4/3;border-radius:18px;
@@ -2061,11 +2071,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     const h3 = clone.querySelector('h3');
     if (h3) h3.id = 'sheetLabel';
     body.replaceChildren(clone);
+    const colorBlock = clone.querySelector('.sh-pal')?.closest('.sh-block');
+    if (colorBlock) {
+      const launch = document.createElement('button');
+      launch.type = 'button';
+      launch.className = 'palette-launch';
+      launch.innerHTML = '<span><strong>استكشاف لوحة الألوان</strong><small>شرح مبسّط لوظيفة كل لون</small></span><b>↗</b>';
+      launch.addEventListener('click', () => openPalette(clone));
+      colorBlock.appendChild(launch);
+    }
     wrap.removeAttribute('hidden');
     wrap.classList.add('open');
     document.body.classList.add('locked');
     sheet.scrollTop = 0;
     closeBtn.focus();
+  };
+
+  const openPalette = clone => {
+    const colors = [...clone.querySelectorAll('.sh-pal li')].map((li, index) => ({
+      color: li.querySelector('.chipcol')?.style.backgroundColor || '#18332f',
+      hex: li.querySelector('b')?.textContent.trim() || '',
+      label: li.querySelector('em')?.textContent.trim() || ['الأساسي','الرئيسي','المساعد','الورقي'][index],
+    }));
+    const overlay = document.createElement('div');
+    overlay.className = 'palette-overlay';
+    overlay.innerHTML = `<div class="palette-dialog" role="dialog" aria-modal="true" aria-label="لوحة الألوان"><button class="palette-dialog-close" type="button" aria-label="إغلاق">✕</button><div class="label">نظام بصري / لوحة الألوان</div><h3>ألوان تصنع<br><em>الانطباع.</em></h3><p>كل لون له وظيفة؛ معاً يصنعون هوية واضحة ومتوازنة وسهلة التذكّر.</p><div class="palette-dialog-grid">${colors.map(({color,hex,label}, index) => `<article class="palette-card"><div class="palette-swatch" style="background:${color}"><span>${hex}</span></div><div><h4>${label}</h4><p>${['لون يثبت الهوية ويمنحها حضوراً واضحاً.','اللون الذي يلفت الانتباه ويقود العين.','لون مساعد يوازن التصميم ويضيف عمقاً.','لون نظيف يحافظ على الوضوح وسهولة القراءة.'][index] || 'لون يكمل النظام البصري.'}</p></div></article>`).join('')}</div></div>`;
+    document.body.appendChild(overlay);
+    const closePalette = () => overlay.remove();
+    overlay.querySelector('.palette-dialog-close').addEventListener('click', closePalette);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closePalette(); });
   };
 
   const close = () => {
