@@ -2113,7 +2113,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
   const openPlatePalette = plate => {
     const fake = document.createElement('div');
-    fake.innerHTML = `<ul class="sh-pal">${[...plate.querySelectorAll('.plate-sw i')].map((chip, index) => `<li><span class="chipcol" style="background:${chip.style.backgroundColor}"></span><b>${chip.dataset.color || chip.style.backgroundColor}</b><em>${['الأساسي','الرئيسي','المساعد','الورقي'][index]}</em></li>`).join('')}</ul>`;
+    const items = [...plate.querySelectorAll('.plate-sw i')].map((chip, index) => '<li><span class="chipcol" style="background:' + chip.style.backgroundColor + '"></span><b>' + (chip.dataset.color || chip.style.backgroundColor) + '</b><em>' + ['الأساسي','الرئيسي','المساعد','الورقي'][index] + '</em></li>').join('');
+    fake.innerHTML = '<ul class="sh-pal">' + items + '</ul>';
     openPalette(fake);
   };
 
