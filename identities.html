@@ -2057,7 +2057,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   });
 
   /* ---------- filter ---------- */
-  filters.addEventListener('click', e => {
+  filters?.addEventListener('click', e => {
     const chip = e.target.closest('.chip');
     if (!chip) return;
     filters.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === chip));
