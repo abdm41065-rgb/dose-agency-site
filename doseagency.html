@@ -231,12 +231,12 @@ a{color:inherit;text-decoration:none}
 .sec-head.center{text-align:center}
 .kicker{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--sky-3);
   border:1px solid var(--line-2);background:var(--bg-tint);border-radius:100px;padding:7px 16px;margin-bottom:22px}
-.sec-head h2{font-family:var(--en);font-size:clamp(30px,5.2vw,70px);font-weight:800;line-height:1.06;letter-spacing:-.025em}
+.sec-head h2{font-family:var(--en);font-size:clamp(38px,6.8vw,92px);font-weight:800;line-height:1.06;letter-spacing:-.025em}
 
 /* ================= ABOUT ================= */
 .about-body{padding:44px var(--pad) clamp(60px,10vh,120px);max-width:1500px;margin:0 auto}
 .big-read{font-size:clamp(19px,2.7vw,38px);font-weight:400;line-height:1.5;max-width:1150px;letter-spacing:-.01em}
-.about-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:clamp(46px,7vh,84px)}
+.about-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(46px,7vh,84px)}
 .ac{position:relative;padding:34px 30px 30px;border:1px solid var(--line);border-radius:24px;background:var(--surface);
   overflow:hidden;transition:.5s var(--ease);box-shadow:var(--shadow);will-change:transform}
 .ac::before{content:'';position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(45,212,191,.18),transparent 62%);opacity:0;transition:opacity .4s}
@@ -245,6 +245,9 @@ a{color:inherit;text-decoration:none}
 .ac-num{font-family:var(--mono);font-size:11px;color:var(--sky-3);letter-spacing:.2em}
 .ac h3{font-family:var(--en);font-size:23px;font-weight:700;margin:12px 0 10px;letter-spacing:-.01em}
 .ac p{color:var(--ink-soft);font-size:15px}
+.ac{background:linear-gradient(145deg,rgba(45,212,191,.13),rgba(4,10,9,.82));border-color:rgba(45,212,191,.28)}
+@media(max-width:900px){.about-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.about-cards{grid-template-columns:1fr}}
 
 /* ================= SERVICES ================= */
 .srv-list{max-width:1500px;margin:44px auto 0;padding:0 var(--pad) clamp(60px,10vh,120px)}
@@ -926,17 +929,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <article class="ac reveal" data-cursor="tilt">
         <span class="ac-num en">01</span>
         <h3>تخصّص طبي بحت</h3>
-        <p>نحن مجموعة من كوادر الأطباء والصيادلة المتخصصين في إدارة السوشيال ميديا والتسويق الطبي، ونخدم الصيدليات والعيادات والأطباء والمنتجات الطبية في العراق.</p>
+        <p>نحن مجموعة من كوادر الأطباء والصيادلة المتخصصين في إدارة السوشيال ميديا والتسويق الطبي، ونخدم الصيدليات والعيادات والأطباء والمنتجات الطبية في العراق</p>
       </article>
       <article class="ac reveal" data-delay="90" data-cursor="tilt">
         <span class="ac-num en">02</span>
         <h3>محتوى مبني على العلم</h3>
-        <p>كل معلومة تمرّ على مراجعة صيدلانية قبل النشر. مصداقيتك أثمن من أي وصول سريع.</p>
+        <p>كل معلومة تمرّ على مراجعة صيدلانية قبل النشر. مصداقيتك أثمن من أي وصول سريع</p>
       </article>
       <article class="ac reveal" data-delay="180" data-cursor="tilt">
         <span class="ac-num en">03</span>
         <h3>إنتاج بمستوى عالمي</h3>
-        <p>تصوير ودرون وموشن جرافيك و<span class="en">Video Pro Max</span> — بجودة تُنافس أكبر الوكالات الإقليمية.</p>
+        <p>تصوير ودرون وموشن جرافيك و<span class="en">Video Pro Max</span> — بجودة تُنافس أكبر الوكالات الإقليمية</p>
+      </article>
+      <article class="ac reveal" data-delay="270" data-cursor="tilt">
+        <span class="ac-num en">04</span>
+        <h3>قطاعات طبية متخصصة</h3>
+        <p>تقسيمات واضحة للصيدليات، العيادات والمراكز، الأطباء، والمنتجات الطبية مع أسلوب يناسب جمهور كل قطاع</p>
       </article>
     </div>
   </div>
@@ -958,14 +966,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">02</span>
-      <h3>إدارة المنصّات الرقمية</h3>
-      <p>خطة شهرية، وتقويم نشر، وردود على العملاء، وتقارير أداء بالأرقام لا بالكلام.</p>
+      <h3>التسويق بالمحتوى العلمي الطبي</h3>
+      <p>محتوى طبي واضح ومبسّط، يُراجع من مختصين قبل النشر ويحوّل المعلومة إلى ثقة وتفاعل</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">03</span>
-      <h3>المحتوى العلمي الطبي</h3>
-      <p>كتابة وتبسيط المعلومة الدوائية بلغة المريض، مع مراجعة صيدلانية دقيقة قبل كل نشر.</p>
+      <h3>الحملات الإعلانية المموّلة</h3>
+      <p>حملات يديرها محترفون، ولكل عميل مسؤول مختص يتابع الاستهداف والميزانية والتحسينات خطوة بخطوة</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
@@ -982,8 +990,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">06</span>
-      <h3>الحملات الإعلانية المموّلة</h3>
-      <p>حملاتنا تُدار من أشخاص محترفين ومتخصصين، ولكل عميل مسؤول مختص يتابع الاستهداف والميزانية والتحسينات خطوة بخطوة.</p>
+      <h3>إدارة المنصّات الرقمية</h3>
+      <p>خطة شهرية، وتقويم نشر، وردود على العملاء، وتقارير أداء بالأرقام لا بالكلام</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
