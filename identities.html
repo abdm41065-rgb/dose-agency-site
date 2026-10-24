@@ -90,6 +90,7 @@ a{color:inherit;text-decoration:none}
 .plate-board>img.identity-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78;mix-blend-mode:screen;filter:saturate(.88) contrast(1.08);transition:transform .8s var(--ease),opacity .5s}
 .plate-board::after{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(0,0,0,.08),rgba(0,0,0,.55));z-index:1;pointer-events:none}
 .plate-board>.mark{position:relative;z-index:2;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+.plate-board>.mark{display:none}
 .plate:hover .plate-board>img.identity-photo{transform:scale(1.08);opacity:.95}
 .sh-grid,.sh-block,.apps{display:none!important}
 .plate-sw{position:relative;z-index:4}
@@ -799,6 +800,23 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .plate-row .en{font-variant-numeric:tabular-nums}
 .plate[hidden]{display:none}
 .id-grid + .bridge{display:none!important}
+.logo-archive + .bridge{display:none!important}
+
+/* A dedicated logo archive: marks live here, never over the work imagery. */
+.logo-archive{max-width:1500px;margin:0 auto;padding:clamp(34px,6vh,72px) var(--pad) clamp(70px,11vh,130px)}
+.logo-archive-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px;padding-top:28px;border-top:1px solid var(--line)}
+.logo-archive-head h2{font-size:clamp(30px,5vw,64px);line-height:1.08;margin-top:9px;text-wrap:balance}
+.logo-archive-head p{max-width:50ch;color:var(--ink-soft);font-size:14px}
+.logo-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.logo-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.035);box-shadow:var(--shadow);transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
+.logo-card:hover{transform:translateY(-6px);border-color:rgba(45,212,191,.46);box-shadow:0 26px 60px -34px rgba(45,212,191,.5)}
+.logo-card-media{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;background:#fff}
+.logo-card-media img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .55s var(--ease)}
+.logo-card:hover img{transform:scale(1.045)}
+.logo-card-copy{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:14px 16px}
+.logo-card-copy b{font-size:14px;line-height:1.45}
+.logo-card-copy small{font:10px var(--mono);letter-spacing:.12em;color:var(--sky-3);white-space:nowrap}
+@media(max-width:700px){.logo-archive-head{display:block}.logo-archive-head p{margin-top:12px}.logo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.logo-card{border-radius:17px}.logo-card-copy{padding:12px;min-height:60px}.logo-card-copy small{display:none}}
 
 /* the mark itself lives in the shared stylesheet — both pages use it. */
 
@@ -1048,6 +1066,28 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </span>
       </button>
 </div>
+
+<section class="logo-archive" aria-labelledby="logoArchiveTitle">
+  <div class="logo-archive-head reveal">
+    <div><span class="kicker">أعمال الشعارات</span><h2 id="logoArchiveTitle">شعارات صُمّمت <span class="grad">لتُتذكّر</span></h2></div>
+    <p>مجموعة مستقلة من الشعارات الطبية والصيدلانية التي نفذها فريق دوز، مع إبقاء صور المشاريع نظيفة وواضحة.</p>
+  </div>
+  <div class="logo-gallery">
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-508.jpg" alt="شعار مختبر طبي" loading="lazy"></span><span class="logo-card-copy"><b>هوية مختبرية</b><small>LOGO 01</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-509.jpg" alt="شعار مختبر الإيمان للتحليلات المرضية" loading="lazy"></span><span class="logo-card-copy"><b>مختبر الإيمان</b><small>LOGO 02</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-510.jpg" alt="شعار صيدلية الرند" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية الرند</b><small>LOGO 03</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-511.jpg" alt="شعار صيدلية نور خضر" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية نور خضر</b><small>LOGO 04</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-512.jpg" alt="شعار فيتا الطبي" loading="lazy"></span><span class="logo-card-copy"><b>Vita</b><small>LOGO 05</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-513.jpg" alt="شعار روح الغفران للتحليلات المرضية" loading="lazy"></span><span class="logo-card-copy"><b>روح الغفران</b><small>LOGO 06</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-514.jpg" alt="شعار مجمع سما الوهج الطبي" loading="lazy"></span><span class="logo-card-copy"><b>مجمع سما الوهج</b><small>LOGO 07</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-515.jpg" alt="شعار صيدلية حكيم" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية حكيم</b><small>LOGO 08</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-516.jpg" alt="شعار صيدلية أحمد زامل الأعرجي" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية أحمد زامل الأعرجي</b><small>LOGO 09</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-517.jpg" alt="شعار صيدلية در الغفران" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية در الغفران</b><small>LOGO 10</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-518.jpg" alt="شعار صيدلية رينا" loading="lazy"></span><span class="logo-card-copy"><b>Renna Pharmacy</b><small>LOGO 11</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-519.jpg" alt="شعار مجمع الملكي الطبي" loading="lazy"></span><span class="logo-card-copy"><b>مجمع الملكي الطبي</b><small>LOGO 12</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-520.jpg" alt="شعار الدكتورة سارة حسين" loading="lazy"></span><span class="logo-card-copy"><b>د. سارة حسين</b><small>LOGO 13</small></span></article>
+  </div>
+</section>
 
 <!-- ============ BRIDGE → HOME ============ -->
 <section class="bridge">
