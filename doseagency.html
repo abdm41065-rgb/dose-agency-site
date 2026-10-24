@@ -297,6 +297,11 @@ a{color:inherit;text-decoration:none}
 .video-item-thumb{display:block;overflow:hidden;width:74px;aspect-ratio:1;border-radius:12px}
 .video-item-thumb img{width:100%;height:100%;object-fit:cover}
 .video-item b,.video-item small{display:block}.video-item b{font-size:14px}.video-item small{margin-top:3px;color:var(--ink-dim);font-size:11px}.video-item-arrow{color:var(--sky-3);font-size:18px}
+.video-suite-list-inner.video-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.video-card{display:block;overflow:hidden;padding:0;background:#020706}
+.video-card video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#020706}
+.video-card-copy{display:block;padding:13px 14px 15px}
+.video-card-copy b{font-size:13px}.video-card-copy small{margin-top:4px;color:var(--ink-dim);font-size:11px}
 @media(max-width:760px){
   .video-library{padding-inline:16px}
   .video-library-head{margin-bottom:26px}
@@ -306,12 +311,14 @@ a{color:inherit;text-decoration:none}
   .video-suite-copy{font-size:12.5px;line-height:1.55}
   .video-suite-plus{width:38px;height:38px;font-size:24px}
   .video-suite-list-inner{grid-template-columns:1fr;padding-inline:12px}
+  .video-suite-list-inner.video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .video-suite.open .video-suite-list-inner{padding:0 12px 12px}
 }
 @media(max-width:480px){
   .video-suite-toggle{grid-template-columns:92px 1fr;gap:12px}
   .video-suite-title{font-size:24px}
   .video-suite-plus{grid-column:1/-1;width:100%;height:34px;border-radius:999px;font-size:22px}
+  .video-suite-list-inner.video-grid{grid-template-columns:1fr}
 }
 
 /* ================= WORK RAIL ================= */
@@ -1074,10 +1081,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro</strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها.</span></span>
         <span class="video-suite-plus" aria-hidden="true">+</span>
       </button>
-      <div class="video-suite-list" id="videoProList"><div class="video-suite-list-inner">
-        <a class="video-item" href="https://www.instagram.com/alhal.alajmal.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-03.jpg" alt=""></span><span><b>شرح منتج طبي</b><small>فكرة · تصوير · مونتاج للسوشيال</small></span><span class="video-item-arrow">↗</span></a>
-        <a class="video-item" href="https://www.instagram.com/azj.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-02.jpg" alt=""></span><span><b>فيديو منتج وعرضه</b><small>إبراز المزايا بطريقة واضحة</small></span><span class="video-item-arrow">↗</span></a>
-        <a class="video-item" href="https://www.instagram.com/alfurqan.pharmacy" target="_blank" rel="noopener"><span class="video-item-thumb"><img src="images/work-09.jpg" alt=""></span><span><b>محتوى قصير للمنتجات</b><small>نسخة جاهزة للإعلانات والريلز</small></span><span class="video-item-arrow">↗</span></a>
+      <div class="video-suite-list" id="videoProList"><div class="video-suite-list-inner video-grid">
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-01.m4v" type="video/mp4"></video><span class="video-card-copy"><b>إعلان عناية متكامل</b><small>فكرة · تصوير · مونتاج</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-02.m4v" type="video/mp4"></video><span class="video-card-copy"><b>قصة منتج إبداعية</b><small>إنتاج مخصص للسوشيال</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-03.m4v" type="video/mp4"></video><span class="video-card-copy"><b>حملة منتج عائلية</b><small>رسالة واضحة وإخراج مؤثر</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-04.m4v" type="video/mp4"></video><span class="video-card-copy"><b>فيديو منتج طبي</b><small>عرض احترافي للمزايا</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-05.m4v" type="video/mp4"></video><span class="video-card-copy"><b>محتوى صيدلاني قصير</b><small>جاهز للإعلانات والريلز</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-06.m4v" type="video/mp4"></video><span class="video-card-copy"><b>إنتاج مرئي متكامل</b><small>تصوير ومونتاج للسوشيال</small></span></article>
+        <article class="video-item video-card"><video controls playsinline preload="metadata"><source src="videos/video-pro-07.m4v" type="video/mp4"></video><span class="video-card-copy"><b>حملة عناية حديثة</b><small>هوية بصرية وحركة جذابة</small></span></article>
       </div></div>
     </article>
     <article class="video-suite reveal" data-video-suite data-delay="100">
