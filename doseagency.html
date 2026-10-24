@@ -849,8 +849,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <script>
   (() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    /* The cinematic hero is the intentional front door. Strip stale/shared
+       section hashes on the first document load so every visit starts here. */
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     addEventListener('pageshow', () => {
-      if (!location.hash) window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => window.scrollTo(0, 0));
     }, { once: true });
   })();
 </script>
