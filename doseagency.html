@@ -270,6 +270,50 @@ a{color:inherit;text-decoration:none}
 .srv-arrow{font-size:22px;color:var(--ink-dim);transition:.45s var(--ease)}
 .srv:hover .srv-arrow{color:var(--sky-3);transform:rotate(45deg) scale(1.2)}
 
+/* ================= VIDEO PRO LIBRARY ================= */
+.video-library{padding:clamp(72px,10vw,140px) var(--pad);background:linear-gradient(180deg,#040a09,#071310 48%,#040a09)}
+.video-library-head{max-width:1500px;margin:0 auto 42px}
+.video-library-head .kicker{display:block;margin-bottom:12px;color:var(--sky-3);font-size:12px;font-weight:800;letter-spacing:.18em}
+.video-library-head h2{font-family:var(--en);font-size:clamp(38px,6vw,82px);line-height:1;font-weight:800;letter-spacing:-.04em}
+.video-library-head p{margin-top:16px;color:var(--ink-soft);font-size:15px}
+.video-suites{display:grid;gap:18px;max-width:1500px;margin:0 auto}
+.video-suite{overflow:hidden;border:1px solid var(--line);border-radius:28px;background:var(--surface);box-shadow:var(--shadow);transition:border-color .35s ease,box-shadow .35s ease}
+.video-suite:hover,.video-suite.open{border-color:var(--line-2);box-shadow:var(--shadow-lg)}
+.video-suite-toggle{display:grid;width:100%;grid-template-columns:clamp(180px,25vw,350px) 1fr auto;align-items:center;gap:clamp(20px,4vw,54px);border:0;background:transparent;padding:18px;color:var(--ink);text-align:right;font:inherit}
+.video-suite-poster{display:block;overflow:hidden;aspect-ratio:16/9;border-radius:18px;background:#0b1917}
+.video-suite-poster img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s var(--ease)}
+.video-suite:hover .video-suite-poster img{transform:scale(1.045)}
+.video-suite-kicker{display:block;color:var(--sky-3);font-size:11px;font-weight:700;letter-spacing:.16em}
+.video-suite-title{display:block;margin:7px 0 9px;font-family:var(--en);font-size:clamp(26px,4vw,54px);line-height:1;font-weight:800;letter-spacing:-.035em}
+.video-suite-copy{display:block;max-width:620px;color:var(--ink-soft);font-size:15px}
+.video-suite-plus{display:grid;width:50px;height:50px;place-items:center;border:1px solid var(--line-2);border-radius:50%;color:var(--sky-2);font-family:var(--en);font-size:30px;font-weight:300;transition:transform .4s var(--ease),background .3s ease,color .3s ease}
+.video-suite.open .video-suite-plus{transform:rotate(45deg);background:var(--sky-3);color:#03100e}
+.video-suite-list{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.video-suite.open .video-suite-list{grid-template-rows:1fr}
+.video-suite-list-inner{display:grid;min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;overflow:hidden;padding:0 18px;transition:padding .55s var(--ease)}
+.video-suite.open .video-suite-list-inner{padding:0 18px 18px}
+.video-item{display:grid;grid-template-columns:74px 1fr auto;align-items:center;gap:14px;min-width:0;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035);padding:10px;transition:background .3s,border-color .3s,transform .3s}
+.video-item:hover{transform:translateY(-3px);border-color:var(--line-2);background:rgba(45,212,191,.08)}
+.video-item-thumb{display:block;overflow:hidden;width:74px;aspect-ratio:1;border-radius:12px}
+.video-item-thumb img{width:100%;height:100%;object-fit:cover}
+.video-item b,.video-item small{display:block}.video-item b{font-size:14px}.video-item small{margin-top:3px;color:var(--ink-dim);font-size:11px}.video-item-arrow{color:var(--sky-3);font-size:18px}
+@media(max-width:760px){
+  .video-library{padding-inline:16px}
+  .video-library-head{margin-bottom:26px}
+  .video-suite{border-radius:22px}
+  .video-suite-toggle{grid-template-columns:112px 1fr auto;gap:14px;padding:12px}
+  .video-suite-poster{border-radius:14px}
+  .video-suite-copy{font-size:12.5px;line-height:1.55}
+  .video-suite-plus{width:38px;height:38px;font-size:24px}
+  .video-suite-list-inner{grid-template-columns:1fr;padding-inline:12px}
+  .video-suite.open .video-suite-list-inner{padding:0 12px 12px}
+}
+@media(max-width:480px){
+  .video-suite-toggle{grid-template-columns:92px 1fr;gap:12px}
+  .video-suite-title{font-size:24px}
+  .video-suite-plus{grid-column:1/-1;width:100%;height:34px;border-radius:999px;font-size:22px}
+}
+
 /* ================= WORK RAIL ================= */
 .work{position:relative;background:linear-gradient(180deg,#040a09,#071310 40%,#040a09)}
 .work-track{height:520vh;position:relative}
