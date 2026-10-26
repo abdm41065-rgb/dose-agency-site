@@ -36,16 +36,17 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{direction:rtl;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:radial-gradient(ellipse at 8% 16%,rgba(20,184,166,.12),transparent 32%),
-    radial-gradient(ellipse at 88% 42%,rgba(20,184,166,.10),transparent 34%),
-    radial-gradient(ellipse at 28% 82%,rgba(13,148,136,.09),transparent 38%),#020605;
+  background:radial-gradient(ellipse at 8% 16%,rgba(20,184,166,.19),transparent 35%),
+    radial-gradient(ellipse at 88% 42%,rgba(20,184,166,.16),transparent 37%),
+    radial-gradient(ellipse at 28% 82%,rgba(13,148,136,.14),transparent 40%),#020605;
   background-attachment:fixed;color:var(--ink);font-family:var(--ui);
   font-size:16px;line-height:1.72;overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-body::before{content:"";position:fixed;inset:-35%;z-index:0;pointer-events:none;opacity:.42;
-  background:radial-gradient(ellipse at 24% 38%,rgba(20,184,166,.17),transparent 34%),
-    radial-gradient(ellipse at 73% 62%,rgba(45,212,191,.12),transparent 37%);
-  filter:blur(34px);animation:turquoiseDrift 26s ease-in-out infinite alternate}
+body::before{content:"";position:fixed;inset:-35%;z-index:0;pointer-events:none;opacity:.68;
+  background:radial-gradient(ellipse at 24% 38%,rgba(20,184,166,.24),transparent 34%),
+    radial-gradient(ellipse at 73% 62%,rgba(45,212,191,.19),transparent 37%),
+    linear-gradient(122deg,transparent 28%,rgba(20,184,166,.08) 47%,transparent 64%);
+  filter:blur(28px);animation:turquoiseDrift 26s ease-in-out infinite alternate}
 main,.footer{position:relative;z-index:1}
 @keyframes turquoiseDrift{from{transform:translate3d(-2%,1%,0) scale(.98)}to{transform:translate3d(2%,-1%,0) scale(1.04)}}
 body.locked{overflow:hidden}
