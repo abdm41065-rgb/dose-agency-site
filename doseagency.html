@@ -865,10 +865,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .menu-inner{padding:92px 20px 104px;gap:4px}
   .menu-inner a{font-size:clamp(28px,10vw,44px);padding:10px 0}
 
-  /* taller mobile hero: extend downward while keeping the campaign centred */
-  .dose-cinema{margin-top:68px;width:100%;height:auto;min-height:0;aspect-ratio:4/3;background:#073a38}
+  /* mobile hero uses the centre of the portrait artwork, trimming its empty colour bands */
+  .dose-cinema{margin-top:68px;width:100%;height:auto;min-height:0;aspect-ratio:16/10;background:#073a38}
   .dose-cinema__scene,.dose-cinema__scene img{position:absolute;inset:0;width:100%;height:100%}
-  .dose-cinema__scene img{object-fit:cover;object-position:center 52%;transform:none}
+  .dose-cinema__scene img{object-fit:cover;object-position:center 50%;transform:none}
   .dose-cinema__copy,.dose-cinema__hint,.dose-cinema__bridge{display:none!important}
 
   /* shared section rhythm and readable display type */
@@ -954,8 +954,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 @media (max-width:430px){
   .nav-logo{max-width:132px}
-  .dose-cinema{height:auto;min-height:0;aspect-ratio:4/3}
-  .dose-cinema__scene img{object-fit:cover;object-position:center 52%;transform:none}
+  .dose-cinema{height:auto;min-height:0;aspect-ratio:16/10}
+  .dose-cinema__scene img{object-fit:cover;object-position:center 50%;transform:none}
   .video-suite-list-inner.video-grid{grid-template-columns:1fr}
   .video-card{max-width:340px;margin-inline:auto}
   .dock-btn b{font-size:11.5px;white-space:nowrap}
