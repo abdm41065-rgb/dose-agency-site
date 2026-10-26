@@ -86,20 +86,20 @@ a{color:inherit;text-decoration:none}
 .cta-form input:invalid:not(:placeholder-shown),.cta-form textarea:invalid:not(:placeholder-shown){border-color:#f87171!important}
 .form-note[role=status]{min-height:24px}
 @media(max-width:700px){.trust-strip{font-size:12px;padding:9px 14px}.section-note{font-size:14px}.nav{gap:12px}.nav-links{display:none}.burger{display:flex;margin-inline-start:auto}}
-.dose-cinema{position:relative;height:clamp(720px,100svh,980px);overflow:hidden;background:#071b1a;isolation:isolate}
+.dose-cinema{position:relative;width:100%;height:auto;aspect-ratio:16/9;overflow:hidden;background:#071b1a;isolation:isolate}
 .dose-cinema__scene,.dose-cinema__scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.dose-cinema__scene{z-index:-3;transform:scale(1.08);transition:transform .2s linear}
-.dose-cinema__scene img{object-position:center;opacity:.94}
-.dose-cinema__scene::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,9,.14),rgba(4,10,9,.58) 72%,#040a09 100%),linear-gradient(90deg,rgba(4,10,9,.58),transparent 60%)}
+.dose-cinema__scene{z-index:-3;transform:none;transition:none}
+.dose-cinema__scene img{object-position:center;opacity:1}
+.dose-cinema__scene::after{display:none}
 .dose-cinema__bridge{position:absolute;z-index:-1;left:50%;bottom:-5%;width:min(105vw,1500px);transform:translateX(-50%);opacity:.82;filter:saturate(.8) contrast(1.06);transition:transform .2s linear}
-.dose-cinema__copy{position:absolute;z-index:2;inset-inline-start:var(--pad);top:27%;max-width:760px}
+.dose-cinema__copy{display:none}
 .dose-cinema__eyebrow{display:inline-flex;padding:8px 16px;border:1px solid rgba(126,240,224,.45);border-radius:999px;color:var(--sky-2);background:rgba(4,10,9,.3);backdrop-filter:blur(12px);font-size:13px}
 .dose-cinema__title{margin:26px 0 18px;font-family:var(--en);font-size:clamp(64px,12vw,180px);line-height:.78;letter-spacing:-.06em;color:#f4fffc;text-shadow:0 12px 40px rgba(0,0,0,.35)}
 .dose-cinema__title span{display:block;background:linear-gradient(100deg,var(--sky),var(--sky-4));-webkit-background-clip:text;background-clip:text;color:transparent}
 .dose-cinema__lead{max-width:480px;color:#d0e5e0;font-size:clamp(16px,1.8vw,21px);line-height:1.45}
 .dose-cinema__tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.dose-cinema__tags span{padding:9px 16px;border-radius:999px;background:#f4fffc;color:#06302a;font-size:13px;font-weight:700}
-.dose-cinema__hint{position:absolute;z-index:2;bottom:28px;inset-inline-start:var(--pad);display:flex;gap:10px;align-items:center;color:var(--ink-soft);font:11px var(--mono);letter-spacing:.18em}.dose-cinema__hint i{width:1px;height:42px;background:linear-gradient(var(--sky),transparent)}
-@media(max-width:700px){.dose-cinema{height:760px}.dose-cinema__copy{top:23%;inset-inline:20px;max-width:none;width:calc(100% - 40px)}.dose-cinema__title{font-size:clamp(44px,15.5vw,94px);direction:ltr;text-align:left;white-space:nowrap;letter-spacing:-.065em;max-width:100%}.dose-cinema__title span{width:100%}.dose-cinema__bridge{width:180vw;bottom:3%}.dose-cinema__lead{font-size:16px}.dose-cinema__hint{inset-inline-start:20px}}
+.dose-cinema__hint{display:none}
+@media(max-width:700px){.dose-cinema{height:auto;aspect-ratio:16/9}.dose-cinema__scene img{object-fit:contain}.dose-cinema__bridge{width:180vw;bottom:3%}}
 
 /* ================= SCROLL PROGRESS ================= */
 .scroll-progress{position:fixed;top:0;inset-inline:0;height:2px;z-index:9000;background:rgba(255,255,255,.08)}
@@ -909,7 +909,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <!-- ============ CINEMATIC HERO ============ -->
 <section class="dose-cinema" id="cinemaHero" aria-label="دوز إيجنسي — افتتاحية سينمائية">
-  <div class="dose-cinema__scene"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2000&q=85" alt="مستشفى حديث"></div>
+  <div class="dose-cinema__scene"><img src="images/dose-hero-medical.jpg" alt="دوز إيجنسي للتسويق الطبي"></div>
   <div class="dose-cinema__copy">
     <span class="dose-cinema__eyebrow">التسويق الطبي لكل العراق — بغداد</span>
     <h1 class="dose-cinema__title">DOSE<span>AGENCY</span></h1>
