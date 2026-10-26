@@ -865,8 +865,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .menu-inner{padding:92px 20px 104px;gap:4px}
   .menu-inner a{font-size:clamp(28px,10vw,44px);padding:10px 0}
 
-  /* dedicated 9:16 artwork on phones: full image, no crop */
-  .dose-cinema{margin-top:68px;width:100%;height:auto;min-height:0;aspect-ratio:9/16;background:#073a38}
+  /* compact campaign banner on phones: only the central artwork, no extensions */
+  .dose-cinema{margin-top:68px;width:100%;height:auto;min-height:0;aspect-ratio:2/1;background:#073a38}
   .dose-cinema__scene,.dose-cinema__scene img{position:absolute;inset:0;width:100%;height:100%}
   .dose-cinema__scene img{object-fit:contain;object-position:center;transform:none}
   .dose-cinema__copy,.dose-cinema__hint,.dose-cinema__bridge{display:none!important}
@@ -951,7 +951,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 @media (max-width:430px){
   .nav-logo{max-width:132px}
-  .dose-cinema{height:auto;min-height:0;aspect-ratio:9/16}
+  .dose-cinema{height:auto;min-height:0;aspect-ratio:2/1}
   .dose-cinema__scene img{object-fit:contain;object-position:center;transform:none}
   .video-suite-list-inner.video-grid{grid-template-columns:1fr}
   .video-card{max-width:340px;margin-inline:auto}
@@ -1028,7 +1028,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="dose-cinema" id="cinemaHero" aria-label="دوز إيجنسي — افتتاحية سينمائية">
   <div class="dose-cinema__scene">
     <picture>
-      <source media="(max-width: 700px)" srcset="images/dose-hero-doctor-mobile.png">
+      <source media="(max-width: 700px)" srcset="images/dose-hero-doctor-mobile-banner.png">
       <img src="images/dose-hero-doctor.png" alt="دوز إيجنسي — شريكك في التسويق الطبي">
     </picture>
   </div>
