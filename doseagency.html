@@ -864,10 +864,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .menu-inner{padding:92px 20px 104px;gap:4px}
   .menu-inner a{font-size:clamp(28px,10vw,44px);padding:10px 0}
 
-  /* the supplied campaign artwork is the hero: show the whole frame */
-  .dose-cinema{margin-top:68px;width:100%;height:auto;min-height:0;aspect-ratio:16/9;background:#073a38}
+  /* the supplied campaign artwork is the hero: fill the phone like the old hero */
+  .dose-cinema{margin-top:68px;width:100%;height:clamp(430px,72svh,680px);min-height:430px;aspect-ratio:auto;background:#073a38}
   .dose-cinema__scene,.dose-cinema__scene img{position:absolute;inset:0;width:100%;height:100%}
-  .dose-cinema__scene img{object-fit:contain;object-position:center}
+  .dose-cinema__scene img{object-fit:cover;object-position:center center;transform:scale(1.035)}
   .dose-cinema__copy,.dose-cinema__hint,.dose-cinema__bridge{display:none!important}
 
   /* shared section rhythm and readable display type */
@@ -950,6 +950,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 @media (max-width:430px){
   .nav-logo{max-width:132px}
+  .dose-cinema{height:clamp(440px,70svh,610px)}
+  .dose-cinema__scene img{object-position:46% center;transform:scale(1.06)}
   .video-suite-list-inner.video-grid{grid-template-columns:1fr}
   .video-card{max-width:340px;margin-inline:auto}
   .dock-btn b{font-size:11.5px;white-space:nowrap}
