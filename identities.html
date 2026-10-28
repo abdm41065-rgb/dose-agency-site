@@ -52,9 +52,9 @@ a{color:inherit;text-decoration:none}
 
 /* ================= BRAND LOGO =================
    Real logo files: images/logo-clean.png (full lockup) and images/logo-mark-clean.png
-   (symbol only) — background keyed out to transparency. Each stays hidden until the browser
+   (symbol only) — background keyed out to transparency Each stays hidden until the browser
    confirms it actually loaded (app.js), so a missing file leaves the drawn mark
-   in place instead of a broken image. */
+   in place instead of a broken image */
 .logo-img{display:none;width:100%;height:100%;object-fit:contain}
 .has-logo .logo-img{display:block}
 .has-logo>svg{display:none}
@@ -156,7 +156,7 @@ a{color:inherit;text-decoration:none}
 
 /* ================= REVEAL PRIMITIVES =================
    Everything that starts hidden is scoped to html.anim, which app.js adds on its
-   very first line. No JS (or a script error) => content is plainly visible. */
+   very first line No JS (or a script error) => content is plainly visible */
 .anim .reveal{opacity:0;transform:translateY(38px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .anim .reveal.in{opacity:1;transform:none}
 .anim .word{display:inline-block;opacity:.14;transform:translateY(.14em);transition:opacity .5s ease,transform .5s var(--ease)}
@@ -585,8 +585,8 @@ a{color:inherit;text-decoration:none}
 
 /* ================= ARABIC TYPOGRAPHY (RTL) =================
    Display faces switch to Tajawal: Syne carries no Arabic glyphs, so leaving it
-   on Arabic headings meant a silent fallback to whatever the OS chose. Arabic
-   also gets no letter-spacing — it loosens the joined script and reads broken. */
+   on Arabic headings meant a silent fallback to whatever the OS chose Arabic
+   also gets no letter-spacing — it loosens the joined script and reads broken */
 .hero-title,.cta-title,.sec-head h2,.work-head h2,
 .ac h3,.srv h3,.post-body h3,.cl-info h3,.testi-text,
 .menu-inner a,.ig-name,.big-read,.post-body.center h3{
@@ -602,14 +602,14 @@ a{color:inherit;text-decoration:none}
 .foot-tagline,.ig-bio,.cta-p,.hero-sub{letter-spacing:0}
 
 /* Latin fragments: keep the Latin face and isolate them so digits, handles and
-   product names never reorder inside the surrounding Arabic. Placed last so it
-   wins over the Arabic rules above on elements carrying both classes. */
+   product names never reorder inside the surrounding Arabic Placed last so it
+   wins over the Arabic rules above on elements carrying both classes */
 .en{font-family:var(--en);direction:ltr;unicode-bidi:isolate}
 .hs b,.wy b,.ac-num,.srv-i,.foot-ver,.post-meta span,.ig-stats b,.cl-info small{
   direction:ltr;unicode-bidi:isolate}
 /* direction:ltr keeps the digits and their suffix in order, but on a block box it
-   also drags `text-align:start` to the left. Pull the block ones back to the
-   page's own edge so a number never strands itself away from its label. */
+   also drags `text-align:start` to the left Pull the block ones back to the
+   page's own edge so a number never strands itself away from its label */
 .hs b,.srv-i,.post-meta span{text-align:right}
 
 /* direction-dependent details */
@@ -620,7 +620,7 @@ a{color:inherit;text-decoration:none}
 .hsx.c{inset-inline-end:3%}
 
 /* Form controls do not inherit font-family, so Arabic was landing in Arial and
-   monospace. These elements also carried Latin-only faces or letter-spacing. */
+   monospace These elements also carried Latin-only faces or letter-spacing */
 .cta-form input,.cta-form textarea{font-family:var(--ar);letter-spacing:0}
 .msg-preview{font-family:var(--ar);font-size:13px;line-height:1.9;letter-spacing:0}
 .rail-hint span{font-family:var(--ar);letter-spacing:0;font-size:11.5px}
@@ -632,10 +632,10 @@ a{color:inherit;text-decoration:none}
 
 /* =================================================================
    PREMIUM PASS — material discipline
-   The brand stays black-and-turquoise. What changes is the finish:
+   The brand stays black-and-turquoise What changes is the finish:
    depth comes from ground contrast and hairlines, not from glow;
    radii come from one scale, not eight ad-hoc values; and every
-   missing photo resolves into a designed plate instead of a void.
+   missing photo resolves into a designed plate instead of a void
    ================================================================= */
 :root{
   /* one radius scale, replacing 14/16/18/20/22/24/26/28px */
@@ -652,10 +652,10 @@ a{color:inherit;text-decoration:none}
   --setback:0 26px 64px -30px rgba(0,0,0,.85);
 }
 
-/* ---------- 1. the brand plate ----------
+/* ---------- 1 the brand plate ----------
    Every missing image resolves to the same object: a quiet turquoise board,
    the DOSE mark set into it as a watermark, and the label on a lacquer veil
-   along the bottom edge. Text never sits on the bare texture. */
+   along the bottom edge Text never sits on the bare texture */
 .post-media,.ig-media,.cl-photo,.hsx{
   background:linear-gradient(168deg,var(--plate-2),var(--plate-1) 58%,var(--plate-3))}
 
@@ -666,8 +666,8 @@ a{color:inherit;text-decoration:none}
   opacity:.17}
 
 /* A work card already carries its title underneath, so a caption on the plate
-   would only repeat it. The Instagram tile has no title of its own, so there
-   the caption is the only thing naming the post — it stays, on a veil. */
+   would only repeat it The Instagram tile has no title of its own, so there
+   the caption is the only thing naming the post — it stays, on a veil */
 .post-media.empty::after{content:none}
 .ig-media.empty::after{
   content:attr(data-label);position:absolute;inset:auto 0 0 0;display:block;
@@ -693,7 +693,7 @@ a{color:inherit;text-decoration:none}
   center/42% no-repeat;opacity:.2}
 .hsx img{position:relative;z-index:1}
 
-/* ---------- 2. one radius scale ---------- */
+/* ---------- 2 one radius scale ---------- */
 .post,.cl,.wy,.ac,.srv-card{border-radius:var(--r-3)}
 .post-media,.ig-media,.cl-photo{border-radius:0}
 .cta-form,.sheet{border-radius:var(--r-4)}
@@ -702,29 +702,29 @@ a{color:inherit;text-decoration:none}
 .plate{border-radius:var(--r-3)}
 .plate-board,.sh-board,.app{border-radius:var(--r-2)}
 
-/* ---------- 3. hairline before shadow ----------
-   Hover lifts the object and firms its edge; it does not switch on a light. */
+/* ---------- 3 hairline before shadow ----------
+   Hover lifts the object and firms its edge; it does not switch on a light */
 .post:hover,.cl:hover{box-shadow:var(--setback);border-color:var(--line-2)}
 .plate:hover,.plate:focus-visible{box-shadow:var(--setback);border-color:var(--b3)}
 
-/* ---------- 4. data reads as data ---------- */
+/* ---------- 4 data reads as data ---------- */
 .hs b,.wy b,.id-count b,.plate-row .en,.sh-pal b,.ig-stats b,.post-meta .en,.foot-ver{
   font-variant-numeric:tabular-nums}
 
-/* ---------- 5. headings hold their shape ---------- */
+/* ---------- 5 headings hold their shape ---------- */
 .hero-title,.sec-head h2,.work-head h2,.cta-title,.id-hero h1,.sh-title h3,.ac h3,.srv h3{
   text-wrap:balance}
 
-/* ---------- 6. every control shows focus ----------
-   One visible ring, on the brand colour, offset so it never crowds the edge. */
+/* ---------- 6 every control shows focus ----------
+   One visible ring, on the brand colour, offset so it never crowds the edge */
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .chip:focus-visible,.plate:focus-visible{
   outline:2px solid var(--sky-2);outline-offset:3px;border-radius:var(--r-1)}
 .btn:focus-visible,.btn-mini:focus-visible,.dock-btn:focus-visible{border-radius:var(--r-pill)}
 
-/* ---------- 7. the bridge ----------
-   The band that carries a reader from one page to the other. It shows the
-   destination rather than describing it: four live plates, then the door. */
+/* ---------- 7 the bridge ----------
+   The band that carries a reader from one page to the other It shows the
+   destination rather than describing it: four live plates, then the door */
 .bridge{max-width:1500px;margin:0 auto;padding:clamp(56px,9vh,104px) var(--pad)}
 .bridge-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
   gap:clamp(24px,4vw,60px);align-items:center;
@@ -751,10 +751,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .bridge-inner:hover .bridge-plate{transform:none}
 }
 
-/* ---------- 8. the drawn mark ----------
+/* ---------- 8 the drawn mark ----------
    Shared by the identities page and the bridge on the home page, so both
    pages speak the same shorthand for "a brand we built". Colours come from
-   whichever plate the mark is sitting in. */
+   whichever plate the mark is sitting in */
 .mark{width:38%;max-width:96px;aspect-ratio:1;overflow:visible}
 .mark.big{width:104px;max-width:none}
 .mark .s1,.mark .s2,.mark .s3{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
@@ -767,7 +767,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ================= IDENTITIES PAGE =================
    The site chrome stays black-and-turquoise; every plate carries the client's
    own palette in --b1..--b4, so the brand owns its board and the agency only
-   frames it. Marks are drawn, so a plate is complete before any photo exists. */
+   frames it Marks are drawn, so a plate is complete before any photo exists */
 .id-hero{padding:clamp(120px,17vh,190px) var(--pad) 0;max-width:1500px;margin:0 auto}
 .id-hero h1{font-family:var(--en);font-size:clamp(38px,7vw,96px);font-weight:800;line-height:1.02;
   letter-spacing:-.03em;margin:20px 0 22px;text-wrap:balance}
@@ -802,7 +802,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .id-grid + .bridge{display:none!important}
 .logo-archive + .bridge{display:none!important}
 
-/* A dedicated logo archive: marks live here, never over the work imagery. */
+/* A dedicated logo archive: marks live here, never over the work imagery */
 .logo-archive{max-width:1500px;margin:0 auto;padding:clamp(34px,6vh,72px) var(--pad) clamp(70px,11vh,130px)}
 .logo-archive-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px;padding-top:28px;border-top:1px solid var(--line)}
 .logo-archive-head h2{font-size:clamp(30px,5vw,64px);line-height:1.08;margin-top:9px;text-wrap:balance}
@@ -818,7 +818,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .logo-card-copy small{font:10px var(--mono);letter-spacing:.12em;color:var(--sky-3);white-space:nowrap}
 @media(max-width:700px){.logo-archive-head{display:block}.logo-archive-head p{margin-top:12px}.logo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.logo-card{border-radius:17px}.logo-card-copy{padding:12px;min-height:60px}.logo-card-copy small{display:none}}
 
-/* the mark itself lives in the shared stylesheet — both pages use it. */
+/* the mark itself lives in the shared stylesheet — both pages use it */
 
 /* ---------- detail sheet ---------- */
 .sheet-src{display:none}
@@ -905,8 +905,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 /* Arabic is cursive: the tracking that flatters a Latin eyebrow pulls Arabic
-   letterforms apart, so the Arabic labels drop it and take the Arabic face.
-   Latin fragments inside them keep their own face through .en. */
+   letterforms apart, so the Arabic labels drop it and take the Arabic face
+   Latin fragments inside them keep their own face through .en */
 .sh-block h4,.sh-cat,.appfig figcaption{font-family:var(--ar);letter-spacing:0;text-transform:none}
 </style>
 </head>
@@ -961,7 +961,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="id-hero" id="identities">
   <span class="kicker">الهويات البصرية</span>
   <h1>كل علامة هنا <span class="grad">بُنيت من الصفر</span></h1>
-  <p>عشر هويات بصرية كاملة لصيدليات وعيادات وأطباء ومنتجات طبية في العراق. كل واحدة تبدأ من الشعار وتنتهي عند دليل استخدام يستطيع أي مصمّم أن ينفّذ منه بلا اجتهاد. اضغط أي علامة لترى لوحتها كاملة</p>
+  <p>عشر هويات بصرية كاملة لصيدليات وعيادات وأطباء ومنتجات طبية في العراق كل واحدة تبدأ من الشعار وتنتهي عند دليل استخدام يستطيع أي مصمّم أن ينفّذ منه بلا اجتهاد اضغط أي علامة لترى لوحتها كاملة</p>
 </section>
 
 <div class="id-grid" id="idGrid">
@@ -1085,7 +1085,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-517.jpg" alt="شعار صيدلية در الغفران" loading="lazy"></span><span class="logo-card-copy"><b>صيدلية در الغفران</b><small>LOGO 10</small></span></article>
     <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-518.jpg" alt="شعار صيدلية رينا" loading="lazy"></span><span class="logo-card-copy"><b>Renna Pharmacy</b><small>LOGO 11</small></span></article>
     <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-519.jpg" alt="شعار مجمع الملكي الطبي" loading="lazy"></span><span class="logo-card-copy"><b>مجمع الملكي الطبي</b><small>LOGO 12</small></span></article>
-    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-520.jpg" alt="شعار الدكتورة سارة حسين" loading="lazy"></span><span class="logo-card-copy"><b>د. سارة حسين</b><small>LOGO 13</small></span></article>
+    <article class="logo-card reveal"><span class="logo-card-media"><img src="images/logos/logo-520.jpg" alt="شعار الدكتورة سارة حسين" loading="lazy"></span><span class="logo-card-copy"><b>د سارة حسين</b><small>LOGO 13</small></span></article>
   </div>
 </section>
 
@@ -1095,7 +1095,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <div class="bridge-copy">
       <span class="kicker">وبعد الهوية</span>
       <h2>الهوية بداية، <span class="grad">لا نهاية</span></h2>
-      <p>بعد تسليم اللوحة تبدأ الإدارة: تقويم نشر، ومحتوى علمي مُراجَع، وإنتاج مرئي، وحملات تُقاس بالأرقام. شاهد كيف تعيش هذه الهويات على المنصّات</p>
+      <p>بعد تسليم اللوحة تبدأ الإدارة: تقويم نشر، ومحتوى علمي مُراجَع، وإنتاج مرئي، وحملات تُقاس بالأرقام شاهد كيف تعيش هذه الهويات على المنصّات</p>
       <a href="doseagency.html#work" class="btn magnetic" data-cursor="btn"><span>ارجع إلى الأعمال</span><svg viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="bridge-strip" aria-hidden="true">
@@ -1124,7 +1124,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <p class="sh-line">صيدلية حي تحوّلت من لافتة مضيئة إلى علامة يتذكّرها الزبون قبل أن يصلها</p>
     </div>
   </header>
-  <p class="sh-brief">بنينا الهوية حول معنى الاسم نفسه: النور. الشعار شمس مبسّطة تعمل مضيئة على الواجهة ومطبوعة على الكيس بلون واحد، والذهبي يبقى للتفاصيل وحدها حتى لا يفقد قيمته</p>
+  <p class="sh-brief">بنينا الهوية حول معنى الاسم نفسه: النور الشعار شمس مبسّطة تعمل مضيئة على الواجهة ومطبوعة على الكيس بلون واحد، والذهبي يبقى للتفاصيل وحدها حتى لا يفقد قيمته</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1159,7 +1159,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <p class="sh-line">مركز متعدد التخصصات احتاج هوية تجمع ثمانية أقسام تحت سقف بصري واحد</p>
     </div>
   </header>
-  <p class="sh-brief">صليب طبي مبني من قوسين مفتوحين — يقرأ كرمز رعاية لا كرمز طوارئ. لكل قسم درجة خضراء خاصة به داخل العائلة نفسها، فتُميّز الأقسام بدون أن يتفكك المركز</p>
+  <p class="sh-brief">صليب طبي مبني من قوسين مفتوحين — يقرأ كرمز رعاية لا كرمز طوارئ لكل قسم درجة خضراء خاصة به داخل العائلة نفسها، فتُميّز الأقسام بدون أن يتفكك المركز</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1264,7 +1264,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <p class="sh-line">مورّد أجهزة طبية أراد أن يبدو تقنياً بلا برود</p>
     </div>
   </header>
-  <p class="sh-brief">سُداسي مغلق تخترقه نبضة — الشكل يقول «جهاز»، والنبضة تقول «إنسان». البنفسجي يفصله عن كل منافسيه في السوق العراقي، والنعناعي يحمل التنبيهات وحدها</p>
+  <p class="sh-brief">سُداسي مغلق تخترقه نبضة — الشكل يقول «جهاز»، والنبضة تقول «إنسان» البنفسجي يفصله عن كل منافسيه في السوق العراقي، والنعناعي يحمل التنبيهات وحدها</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1299,7 +1299,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <p class="sh-line">سلسلة من خمسة فروع تحتاج هوية تُنفّذ بنفس الدقة في كل فرع</p>
     </div>
   </header>
-  <p class="sh-brief">الهاون والمدقّة مختزلان إلى قوس وخط مائل. القرمزي يملأ الواجهة، والكريمي يملأ الداخل — قاعدة واحدة تجعل الفرع الجديد يفتح بهوية صحيحة بلا إشراف</p>
+  <p class="sh-brief">الهاون والمدقّة مختزلان إلى قوس وخط مائل القرمزي يملأ الواجهة، والكريمي يملأ الداخل — قاعدة واحدة تجعل الفرع الجديد يفتح بهوية صحيحة بلا إشراف</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1327,14 +1327,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </article>
 <article class="sheet-src" id="src-ammar" style="--b1:#0A1420;--b2:#1D4E6B;--b3:#35C6E8;--b4:#E4F2F7" hidden>
   <header class="sh-top">
-    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg><span class="sh-word en">DR. AMMAR KURDI</span></span>
+    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg><span class="sh-word en">DR AMMAR KURDI</span></span>
     <div class="sh-title">
       <span class="sh-cat">أطباء · <span class="en">2024</span></span>
-      <h3>د. عمار كردي</h3>
+      <h3>د عمار كردي</h3>
       <p class="sh-line">اختصاصي طب الدماغ والأعصاب والعضلات — علامة شخصية تسبق العيادة</p>
     </div>
   </header>
-  <p class="sh-brief">خلية عصبية مرسومة بأقل عدد ممكن من الخطوط. الأزرق الرصاصي يحمل الرصانة، والسماوي الكهربائي يظهر في مكان واحد فقط: نقطة الإشارة — تماماً كما تعمل النبضة العصبية</p>
+  <p class="sh-brief">خلية عصبية مرسومة بأقل عدد ممكن من الخطوط الأزرق الرصاصي يحمل الرصانة، والسماوي الكهربائي يظهر في مكان واحد فقط: نقطة الإشارة — تماماً كما تعمل النبضة العصبية</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1355,21 +1355,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <h4>التطبيقات</h4>
     <div class="apps">
       <figure class="appfig"><span class="app card"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg><i></i><i></i></span><figcaption>بطاقة عمل</figcaption></figure>
-      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg><span class="en">DR. AMMAR KURDI</span></span><figcaption>لافتة الواجهة</figcaption></figure>
-      <figure class="appfig"><span class="app post"><b>د. عمار كردي</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
+      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg><span class="en">DR AMMAR KURDI</span></span><figcaption>لافتة الواجهة</figcaption></figure>
+      <figure class="appfig"><span class="app post"><b>د عمار كردي</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
     </div>
   </section>
 </article>
 <article class="sheet-src" id="src-zainab" style="--b1:#240E24;--b2:#7A2B5E;--b3:#E39BB6;--b4:#FAEEF3" hidden>
   <header class="sh-top">
-    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg><span class="sh-word en">DR. ZAINAB SHAKIR</span></span>
+    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg><span class="sh-word en">DR ZAINAB SHAKIR</span></span>
     <div class="sh-title">
       <span class="sh-cat">أطباء · <span class="en">2024</span></span>
-      <h3>د. زينب شاكر محمود</h3>
+      <h3>د زينب شاكر محمود</h3>
       <p class="sh-line">محتوى تعريفي وإدارة منصّات لطبيبة تبني ثقة قبل أول موعد</p>
     </div>
   </header>
-  <p class="sh-brief">ثلاث دوائر متداخلة: الطبيبة، المريضة، والمعلومة. تقاطعها هو موضوع كل منشور. الخوخي يمنح الدفء الذي يفتقده التسويق الطبي، والبنفسجي العميق يمنعه من أن يصير طفولياً</p>
+  <p class="sh-brief">ثلاث دوائر متداخلة: الطبيبة، المريضة، والمعلومة تقاطعها هو موضوع كل منشور الخوخي يمنح الدفء الذي يفتقده التسويق الطبي، والبنفسجي العميق يمنعه من أن يصير طفولياً</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1390,21 +1390,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <h4>التطبيقات</h4>
     <div class="apps">
       <figure class="appfig"><span class="app card"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg><i></i><i></i></span><figcaption>بطاقة عمل</figcaption></figure>
-      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg><span class="en">DR. ZAINAB SHAKIR</span></span><figcaption>لافتة الواجهة</figcaption></figure>
-      <figure class="appfig"><span class="app post"><b>د. زينب شاكر محمود</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
+      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg><span class="en">DR ZAINAB SHAKIR</span></span><figcaption>لافتة الواجهة</figcaption></figure>
+      <figure class="appfig"><span class="app post"><b>د زينب شاكر محمود</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle class="s1" cx="38" cy="42" r="21"/><circle class="s1" cx="62" cy="42" r="21"/><circle class="s3" cx="50" cy="63" r="21"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
     </div>
   </section>
 </article>
 <article class="sheet-src" id="src-eman" style="--b1:#17200F;--b2:#4E6B27;--b3:#B9CC7A;--b4:#F1F3E4" hidden>
   <header class="sh-top">
-    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg><span class="sh-word en">DR. EMAN MAAROUF</span></span>
+    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg><span class="sh-word en">DR EMAN MAAROUF</span></span>
     <div class="sh-title">
       <span class="sh-cat">أطباء · <span class="en">2025</span></span>
-      <h3>د. إيمان معروف محمد</h3>
+      <h3>د إيمان معروف محمد</h3>
       <p class="sh-line">هوية بصرية وإنتاج مرئي لعيادة تقوم على التغذية والوقاية</p>
     </div>
   </header>
-  <p class="sh-brief">ورقة مرسومة بقوسين وعرق واحد. الزيتوني والرملي مأخوذان من مواد العيادة نفسها — الخشب والكتان — فصارت الصور تُلتقط داخل الهوية بدل أن تُصحّح لتناسبها</p>
+  <p class="sh-brief">ورقة مرسومة بقوسين وعرق واحد الزيتوني والرملي مأخوذان من مواد العيادة نفسها — الخشب والكتان — فصارت الصور تُلتقط داخل الهوية بدل أن تُصحّح لتناسبها</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1425,21 +1425,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <h4>التطبيقات</h4>
     <div class="apps">
       <figure class="appfig"><span class="app card"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg><i></i><i></i></span><figcaption>بطاقة عمل</figcaption></figure>
-      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg><span class="en">DR. EMAN MAAROUF</span></span><figcaption>لافتة الواجهة</figcaption></figure>
-      <figure class="appfig"><span class="app post"><b>د. إيمان معروف محمد</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
+      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg><span class="en">DR EMAN MAAROUF</span></span><figcaption>لافتة الواجهة</figcaption></figure>
+      <figure class="appfig"><span class="app post"><b>د إيمان معروف محمد</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 84C26 68 26 38 50 16c24 22 24 52 0 68z"/><line class="s3" x1="50" y1="80" x2="50" y2="24"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
     </div>
   </section>
 </article>
 <article class="sheet-src" id="src-mustafa" style="--b1:#16130E;--b2:#4A3A20;--b3:#D99A2B;--b4:#F5EDDF" hidden>
   <header class="sh-top">
-    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg><span class="sh-word en">DR. MUSTAFA MAJID</span></span>
+    <span class="sh-board"><svg class="mark big" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg><span class="sh-word en">DR MUSTAFA MAJID</span></span>
     <div class="sh-title">
       <span class="sh-cat">أطباء · <span class="en">2025</span></span>
-      <h3>د. مصطفى ماجد عبدالله</h3>
+      <h3>د مصطفى ماجد عبدالله</h3>
       <p class="sh-line">حملات وتوعية طبية تحتاج علامة تبدو موثوقة في منشور إعلاني</p>
     </div>
   </header>
-  <p class="sh-brief">درع بصليب محفور داخله — رمز حماية لا رمز مستشفى. الفحمي والعنبري يعطيان المنشور الإعلاني وزناً يميّزه عن ضجيج الإعلانات الصحية على الصفحة</p>
+  <p class="sh-brief">درع بصليب محفور داخله — رمز حماية لا رمز مستشفى الفحمي والعنبري يعطيان المنشور الإعلاني وزناً يميّزه عن ضجيج الإعلانات الصحية على الصفحة</p>
   <div class="sh-grid">
     <section class="sh-block">
       <h4>نظام الألوان</h4>
@@ -1460,8 +1460,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <h4>التطبيقات</h4>
     <div class="apps">
       <figure class="appfig"><span class="app card"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg><i></i><i></i></span><figcaption>بطاقة عمل</figcaption></figure>
-      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg><span class="en">DR. MUSTAFA MAJID</span></span><figcaption>لافتة الواجهة</figcaption></figure>
-      <figure class="appfig"><span class="app post"><b>د. مصطفى ماجد عبدالله</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
+      <figure class="appfig"><span class="app sign"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg><span class="en">DR MUSTAFA MAJID</span></span><figcaption>لافتة الواجهة</figcaption></figure>
+      <figure class="appfig"><span class="app post"><b>د مصطفى ماجد عبدالله</b><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path class="s1" d="M50 14 80 26v26c0 18-13 28-30 34-17-6-30-16-30-34V26z"/><path class="s3" d="M50 36v28M38 50h24"/></svg></span><figcaption>منشور إنستغرام</figcaption></figure>
     </div>
   </section>
 </article>
@@ -1471,7 +1471,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="cta-inner">
     <span class="kicker">خابِرنا</span>
     <h2 class="cta-title"><span class="line" data-split>جاهز تكسر</span><span class="line accent" data-split>النمط؟</span></h2>
-    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام. نردّ خلال ٢٤ ساعة</p>
+    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام نردّ خلال ٢٤ ساعة</p>
 
     <form class="cta-form reveal" data-delay="200" id="ctaForm" novalidate>
 
@@ -1499,7 +1499,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       </fieldset>
 
       <div class="f-row">
-        <label><span>الاسم</span><input type="text" id="fName" name="name" placeholder="د. / صيدلية …" autocomplete="name" required></label>
+        <label><span>الاسم</span><input type="text" id="fName" name="name" placeholder="د / صيدلية …" autocomplete="name" required></label>
         <label><span>رقم الهاتف (اختياري)</span><input type="tel" id="fPhone" name="phone" placeholder="0770 000 0000" autocomplete="tel"></label>
       </div>
       <label class="full"><span>تفاصيل إضافية</span><textarea id="fMsg" name="msg" rows="2" placeholder="المدينة، الميزانية، الموعد النهائي…"></textarea></label>
@@ -1562,7 +1562,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   'use strict';
 
   /* ============================================================
-     CONTACT SETTINGS — edit these two lines only.
+     CONTACT SETTINGS — edit these two lines only
      WHATSAPP: full international number, digits only (964 = Iraq).
      INSTAGRAM: the account handle, without the @.
      ============================================================ */
@@ -1570,8 +1570,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     whatsapp: '9647750506697',
     instagram: 'dose.agency_iq'
   };
-  /* Marks the document as animation-capable. Every "hidden until revealed" style is
-     scoped to .anim, so if this script never runs the content is simply visible. */
+  /* Marks the document as animation-capable Every "hidden until revealed" style is
+     scoped to .anim, so if this script never runs the content is simply visible */
   document.documentElement.classList.add('anim');
 
   const $  = (s, c = document) => c.querySelector(s);
@@ -1586,7 +1586,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
      Real logo files: images/logo-clean.png + images/logo-mark-clean.png (transparent).
      Each slot switches from the drawn mark
      to the file only once the browser reports it decoded, so a missing or broken
-     file can never leave a blank logo. */
+     file can never leave a blank logo */
   $$('img[data-logo]').forEach(img => {
     const slot = img.parentElement;
     const show = () => { if (img.naturalWidth > 0) slot.classList.add('has-logo'); };
@@ -1598,7 +1598,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   /* ---------- IMAGE FALLBACKS ----------
      Drop your Instagram exports into /images (work-01.jpg … work-14.jpg,
      doctor-01.jpg … doctor-04.jpg). Any missing file degrades to a sky-gradient
-     card carrying the post headline instead of a broken image.            */
+     card carrying the post headline instead of a broken image            */
   const fallback = img => {
     const holder = img.parentElement;
     holder.classList.add('empty');
@@ -1610,8 +1610,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     else img.addEventListener('error', () => fallback(img), { once: true });
   });
 
-  /* No preloader: the page is usable from the first frame. Scrolling is only ever
-     locked by the mobile menu, and even that is force-released on load below. */
+  /* No preloader: the page is usable from the first frame Scrolling is only ever
+     locked by the mobile menu, and even that is force-released on load below */
 
   /* ---------- SPLIT TEXT (word level — never breaks letter shaping) ---------- */
   $$('[data-split]').forEach(el => {
@@ -1840,9 +1840,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     [fName, fPhone, fMsg].forEach(el => el && el.addEventListener('input', syncMessage));
     form.addEventListener('submit', e => e.preventDefault());
 
-    /* WhatsApp: opens the chat with the message already typed.
+    /* WhatsApp: opens the chat with the message already typed
        In-app browsers (WhatsApp, Instagram, Facebook) often block target="_blank",
-       so navigate in place when the popup does not open. */
+       so navigate in place when the popup does not open */
     const openWhatsApp = e => {
       e.preventDefault();
       const url = waLink(buildMessage());
@@ -1887,7 +1887,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
      Bound on the whole document and re-checked at click time: the WhatsApp buttons
      start life as href="#" and are rewritten to a wa.me URL, so a listener bound to
      them at load would later try to use that URL as a CSS selector and throw,
-     killing the click. */
+     killing the click */
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]');
     if (!a) return;
@@ -1903,9 +1903,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------- BOOT ----------
-     Runs immediately. Each piece is isolated so that if one animation feature is
+     Runs immediately Each piece is isolated so that if one animation feature is
      unsupported on an old phone browser, the rest of the page still works and the
-     content is never left hidden. */
+     content is never left hidden */
   function kickoff() {
     document.body.classList.remove('locked');   // safety: scrolling always available
 

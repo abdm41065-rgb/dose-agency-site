@@ -62,9 +62,9 @@ a{color:inherit;text-decoration:none}
 
 /* ================= BRAND LOGO =================
    Real logo files: images/logo-clean.png (full lockup) and images/logo-mark-clean.png
-   (symbol only) — background keyed out to transparency. Each stays hidden until the browser
+   (symbol only) — background keyed out to transparency Each stays hidden until the browser
    confirms it actually loaded (app.js), so a missing file leaves the drawn mark
-   in place instead of a broken image. */
+   in place instead of a broken image */
 .logo-img{display:none;width:100%;height:100%;object-fit:contain}
 .has-logo .logo-img{display:block}
 .has-logo>svg{display:none}
@@ -158,7 +158,7 @@ a{color:inherit;text-decoration:none}
 
 /* ================= REVEAL PRIMITIVES =================
    Everything that starts hidden is scoped to html.anim, which app.js adds on its
-   very first line. No JS (or a script error) => content is plainly visible. */
+   very first line No JS (or a script error) => content is plainly visible */
 .anim .reveal{opacity:0;transform:translateY(38px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .anim .reveal.in{opacity:1;transform:none}
 .anim .word{display:inline-block;opacity:.14;transform:translateY(.14em);transition:opacity .5s ease,transform .5s var(--ease)}
@@ -379,7 +379,7 @@ a{color:inherit;text-decoration:none}
 .bridge-plate:nth-child(2){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-02.jpg')!important}
 .bridge-plate:nth-child(3){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-03.jpg')!important}
 .bridge-plate:nth-child(4){background-image:linear-gradient(rgba(4,10,9,.12),rgba(4,10,9,.28)),url('images/work-04.jpg')!important}
-/* Home identity showcase: image posts only, arranged like a clean 2x2 gallery. */
+/* Home identity showcase: image posts only, arranged like a clean 2x2 gallery */
 .bridge-inner{display:block!important}
 .bridge-copy{display:none!important}
 .bridge-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
@@ -676,8 +676,8 @@ a{color:inherit;text-decoration:none}
 
 /* ================= ARABIC TYPOGRAPHY (RTL) =================
    Display faces switch to Tajawal: Syne carries no Arabic glyphs, so leaving it
-   on Arabic headings meant a silent fallback to whatever the OS chose. Arabic
-   also gets no letter-spacing — it loosens the joined script and reads broken. */
+   on Arabic headings meant a silent fallback to whatever the OS chose Arabic
+   also gets no letter-spacing — it loosens the joined script and reads broken */
 .hero-title,.cta-title,.sec-head h2,.work-head h2,
 .ac h3,.srv h3,.post-body h3,.cl-info h3,.testi-text,
 .menu-inner a,.ig-name,.big-read,.post-body.center h3{
@@ -693,14 +693,14 @@ a{color:inherit;text-decoration:none}
 .foot-tagline,.ig-bio,.cta-p,.hero-sub{letter-spacing:0}
 
 /* Latin fragments: keep the Latin face and isolate them so digits, handles and
-   product names never reorder inside the surrounding Arabic. Placed last so it
-   wins over the Arabic rules above on elements carrying both classes. */
+   product names never reorder inside the surrounding Arabic Placed last so it
+   wins over the Arabic rules above on elements carrying both classes */
 .en{font-family:var(--en);direction:ltr;unicode-bidi:isolate}
 .hs b,.wy b,.ac-num,.srv-i,.foot-ver,.post-meta span,.ig-stats b,.cl-info small{
   direction:ltr;unicode-bidi:isolate}
 /* direction:ltr keeps the digits and their suffix in order, but on a block box it
-   also drags `text-align:start` to the left. Pull the block ones back to the
-   page's own edge so a number never strands itself away from its label. */
+   also drags `text-align:start` to the left Pull the block ones back to the
+   page's own edge so a number never strands itself away from its label */
 .hs b,.srv-i,.post-meta span{text-align:right}
 
 /* direction-dependent details */
@@ -711,7 +711,7 @@ a{color:inherit;text-decoration:none}
 .hsx.c{inset-inline-end:3%}
 
 /* Form controls do not inherit font-family, so Arabic was landing in Arial and
-   monospace. These elements also carried Latin-only faces or letter-spacing. */
+   monospace These elements also carried Latin-only faces or letter-spacing */
 .cta-form input,.cta-form textarea{font-family:var(--ar);letter-spacing:0}
 .msg-preview{font-family:var(--ar);font-size:13px;line-height:1.9;letter-spacing:0}
 .rail-hint span{font-family:var(--ar);letter-spacing:0;font-size:11.5px}
@@ -723,10 +723,10 @@ a{color:inherit;text-decoration:none}
 
 /* =================================================================
    PREMIUM PASS — material discipline
-   The brand stays black-and-turquoise. What changes is the finish:
+   The brand stays black-and-turquoise What changes is the finish:
    depth comes from ground contrast and hairlines, not from glow;
    radii come from one scale, not eight ad-hoc values; and every
-   missing photo resolves into a designed plate instead of a void.
+   missing photo resolves into a designed plate instead of a void
    ================================================================= */
 :root{
   /* one radius scale, replacing 14/16/18/20/22/24/26/28px */
@@ -743,10 +743,10 @@ a{color:inherit;text-decoration:none}
   --setback:0 26px 64px -30px rgba(0,0,0,.85);
 }
 
-/* ---------- 1. the brand plate ----------
+/* ---------- 1 the brand plate ----------
    Every missing image resolves to the same object: a quiet turquoise board,
    the DOSE mark set into it as a watermark, and the label on a lacquer veil
-   along the bottom edge. Text never sits on the bare texture. */
+   along the bottom edge Text never sits on the bare texture */
 .post-media,.ig-media,.cl-photo,.hsx{
   background:linear-gradient(168deg,var(--plate-2),var(--plate-1) 58%,var(--plate-3))}
 
@@ -757,8 +757,8 @@ a{color:inherit;text-decoration:none}
   opacity:.17}
 
 /* A work card already carries its title underneath, so a caption on the plate
-   would only repeat it. The Instagram tile has no title of its own, so there
-   the caption is the only thing naming the post — it stays, on a veil. */
+   would only repeat it The Instagram tile has no title of its own, so there
+   the caption is the only thing naming the post — it stays, on a veil */
 .post-media.empty::after{content:none}
 .ig-media.empty::after{
   content:attr(data-label);position:absolute;inset:auto 0 0 0;display:block;
@@ -784,7 +784,7 @@ a{color:inherit;text-decoration:none}
   center/42% no-repeat;opacity:.2}
 .hsx img{position:relative;z-index:1}
 
-/* ---------- 2. one radius scale ---------- */
+/* ---------- 2 one radius scale ---------- */
 .post,.cl,.wy,.ac,.srv-card{border-radius:var(--r-3)}
 .post-media,.ig-media,.cl-photo{border-radius:0}
 .cta-form,.sheet{border-radius:var(--r-4)}
@@ -793,29 +793,29 @@ a{color:inherit;text-decoration:none}
 .plate{border-radius:var(--r-3)}
 .plate-board,.sh-board,.app{border-radius:var(--r-2)}
 
-/* ---------- 3. hairline before shadow ----------
-   Hover lifts the object and firms its edge; it does not switch on a light. */
+/* ---------- 3 hairline before shadow ----------
+   Hover lifts the object and firms its edge; it does not switch on a light */
 .post:hover,.cl:hover{box-shadow:var(--setback);border-color:var(--line-2)}
 .plate:hover,.plate:focus-visible{box-shadow:var(--setback);border-color:var(--b3)}
 
-/* ---------- 4. data reads as data ---------- */
+/* ---------- 4 data reads as data ---------- */
 .hs b,.wy b,.id-count b,.plate-row .en,.sh-pal b,.ig-stats b,.post-meta .en,.foot-ver{
   font-variant-numeric:tabular-nums}
 
-/* ---------- 5. headings hold their shape ---------- */
+/* ---------- 5 headings hold their shape ---------- */
 .hero-title,.sec-head h2,.work-head h2,.cta-title,.id-hero h1,.sh-title h3,.ac h3,.srv h3{
   text-wrap:balance}
 
-/* ---------- 6. every control shows focus ----------
-   One visible ring, on the brand colour, offset so it never crowds the edge. */
+/* ---------- 6 every control shows focus ----------
+   One visible ring, on the brand colour, offset so it never crowds the edge */
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .chip:focus-visible,.plate:focus-visible{
   outline:2px solid var(--sky-2);outline-offset:3px;border-radius:var(--r-1)}
 .btn:focus-visible,.btn-mini:focus-visible,.dock-btn:focus-visible{border-radius:var(--r-pill)}
 
-/* ---------- 7. the bridge ----------
-   The band that carries a reader from one page to the other. It shows the
-   destination rather than describing it: four live plates, then the door. */
+/* ---------- 7 the bridge ----------
+   The band that carries a reader from one page to the other It shows the
+   destination rather than describing it: four live plates, then the door */
 .bridge{max-width:1500px;margin:0 auto;padding:clamp(56px,9vh,104px) var(--pad)}
 .bridge-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
   gap:clamp(24px,4vw,60px);align-items:center;
@@ -847,10 +847,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .bridge-inner:hover .bridge-plate{transform:none}
 }
 
-/* ---------- 8. the drawn mark ----------
+/* ---------- 8 the drawn mark ----------
    Shared by the identities page and the bridge on the home page, so both
    pages speak the same shorthand for "a brand we built". Colours come from
-   whichever plate the mark is sitting in. */
+   whichever plate the mark is sitting in */
 .mark{width:38%;max-width:96px;aspect-ratio:1;overflow:visible}
 .mark.big{width:104px;max-width:none}
 .mark .s1,.mark .s2,.mark .s3{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
@@ -863,7 +863,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* =================================================================
    MOBILE-FIRST FINISHING PASS
    Keep every section comfortable on a real phone, preserve safe-area
-   spacing, and make all primary actions reachable with one thumb.
+   spacing, and make all primary actions reachable with one thumb
    ================================================================= */
 @media (max-width:700px){
   :root{--pad:16px;--r-3:18px;--r-4:22px}
@@ -979,7 +979,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .post:hover,.cl:hover,.srv:hover,.btn:hover,.dock-btn:hover{transform:none}
 }
 
-/* Final requested polish: dark turquoise atmosphere, grouped client marks and a clearer mobile dock. */
+/* Final requested polish: dark turquoise atmosphere, grouped client marks and a clearer mobile dock */
 section.ig,section.bridge{display:none!important}
 .clients{display:block!important;padding-block:64px}
 .client-logo-note{max-width:720px;margin:18px auto 30px;padding-inline:var(--pad);color:var(--ink-soft);text-align:center}
@@ -1014,8 +1014,8 @@ section.ig,section.bridge{display:none!important}
 <script>
   (() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    /* The cinematic hero is the intentional front door. Strip stale/shared
-       section hashes on the first document load so every visit starts here. */
+    /* The cinematic hero is the intentional front door Strip stale/shared
+       section hashes on the first document load so every visit starts here */
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     addEventListener('pageshow', () => {
       window.scrollTo(0, 0);
@@ -1103,8 +1103,8 @@ section.ig,section.bridge{display:none!important}
       <span class="line accent" data-split>بالإبداع</span>
     </h1>
     <p class="hero-sub reveal" data-delay="120">
-      الإدارة الرقمية الأقوى لمنصّات السلك الطبي. نبني هويات بصرية فاخرة، ومحتوى علمياً موثوقاً،
-      وإنتاجاً مرئياً يجعل صيدليتك أو عيادتك تُذكر قبل أن تُبحث.
+      الإدارة الرقمية الأقوى لمنصّات السلك الطبي نبني هويات بصرية فاخرة، ومحتوى علمياً موثوقاً،
+      وإنتاجاً مرئياً يجعل صيدليتك أو عيادتك تُذكر قبل أن تُبحث
     </p>
     <div class="hero-cta reveal" data-delay="220">
       <a href="#work" class="btn magnetic" data-cursor="btn"><span>شاهد أعمالنا</span><svg viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -1149,9 +1149,9 @@ section.ig,section.bridge{display:none!important}
 
   <div class="about-body">
     <p class="big-read" data-words>
-      نصنع هويات بصرية ومحتوى احترافياً متخصصاً في بناء العلامات التجارية الطبية.
+      نصنع هويات بصرية ومحتوى احترافياً متخصصاً في بناء العلامات التجارية الطبية
       نُدير منصّاتك، ونصمّم رسائلك، ونحوّل المعلومة العلمية إلى مادة يفهمها الناس ويثقون بها —
-      بخبرة تتجاوز خمس سنوات في قلب السوق الطبي العراقي.
+      بخبرة تتجاوز خمس سنوات في قلب السوق الطبي العراقي
     </p>
 
     <div class="about-cards">
@@ -1163,7 +1163,7 @@ section.ig,section.bridge{display:none!important}
       <article class="ac reveal" data-delay="90" data-cursor="tilt">
         <span class="ac-num en">02</span>
         <h3>محتوى مبني على العلم</h3>
-        <p>كل معلومة تمرّ على مراجعة صيدلانية قبل النشر. مصداقيتك أثمن من أي وصول سريع</p>
+        <p>كل معلومة تمرّ على مراجعة صيدلانية قبل النشر مصداقيتك أثمن من أي وصول سريع</p>
       </article>
       <article class="ac reveal" data-delay="180" data-cursor="tilt">
         <span class="ac-num en">03</span>
@@ -1468,16 +1468,16 @@ section.ig,section.bridge{display:none!important}
             <div class="post-media"><img src="images/work-06.jpg" alt="هوية صيدليات الدواء" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدليات الدواء</h3><p>هوية موحّدة تنفّذ بنفس الدقة في كل فرع</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
           </article>
           <article class="post identity-post" data-cursor="view" data-identity="ammar">
-            <div class="post-media"><img src="images/work-07.jpg" alt="هوية د. عمار كردي" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د. عمار كردي</h3><p>علامة شخصية تسبق العيادة وتشرح التخصص</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
+            <div class="post-media"><img src="images/work-07.jpg" alt="هوية د عمار كردي" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د عمار كردي</h3><p>علامة شخصية تسبق العيادة وتشرح التخصص</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
           </article>
           <article class="post identity-post" data-cursor="view" data-identity="zainab">
-            <div class="post-media"><img src="images/work-08.jpg" alt="هوية د. زينب شاكر" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د. زينب شاكر محمود</h3><p>هوية دافئة تبني الثقة قبل أول موعد</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
+            <div class="post-media"><img src="images/work-08.jpg" alt="هوية د زينب شاكر" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د زينب شاكر محمود</h3><p>هوية دافئة تبني الثقة قبل أول موعد</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
           </article>
           <article class="post identity-post" data-cursor="view" data-identity="eman">
-            <div class="post-media"><img src="images/work-09.jpg" alt="هوية د. إيمان معروف" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د. إيمان معروف محمد</h3><p>هوية طبيعية لعيادة تقوم على الوقاية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
+            <div class="post-media"><img src="images/work-09.jpg" alt="هوية د إيمان معروف" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د إيمان معروف محمد</h3><p>هوية طبيعية لعيادة تقوم على الوقاية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
           </article>
           <article class="post identity-post" data-cursor="view" data-identity="mustafa">
-            <div class="post-media"><img src="images/work-10.jpg" alt="هوية د. مصطفى ماجد" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د. مصطفى ماجد عبدالله</h3><p>هوية موثوقة للحملات والتوعية الطبية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
+            <div class="post-media"><img src="images/work-10.jpg" alt="هوية د مصطفى ماجد" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د مصطفى ماجد عبدالله</h3><p>هوية موثوقة للحملات والتوعية الطبية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
           </article>
           <article class="post p-cta" data-cursor="btn">
             <div class="post-body center">
@@ -1499,7 +1499,7 @@ section.ig,section.bridge{display:none!important}
     <div class="bridge-copy">
       <span class="kicker">الهويات البصرية</span>
       <h2>وراء كل منشور <span class="grad">هوية كاملة</span></h2>
-      <p>ما تراه أعلاه هو الطبقة الظاهرة. تحتها شعار ونظام ألوان وخطوط ودليل استخدام. افتح لوحات العلامات التي بنيناها، بألوانها وتطبيقاتها كما سُلّمت</p>
+      <p>ما تراه أعلاه هو الطبقة الظاهرة تحتها شعار ونظام ألوان وخطوط ودليل استخدام افتح لوحات العلامات التي بنيناها، بألوانها وتطبيقاتها كما سُلّمت</p>
       <a href="identities.html" class="btn magnetic" data-cursor="btn"><span>الهويات</span><svg viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="bridge-strip" aria-hidden="true">
@@ -1593,8 +1593,8 @@ section.ig,section.bridge{display:none!important}
       </header>
 
       <p class="ig-bio">
-        الإدارة الرقمية الأقوى لمنصّات السلك الطبي. هويات فاخرة، ومحتوى علمي مُراجَع،
-        وإنتاج سينمائي للصيدليات والعيادات. خمس سنوات خبرة — العلم يلتقي بالإبداع.
+        الإدارة الرقمية الأقوى لمنصّات السلك الطبي هويات فاخرة، ومحتوى علمي مُراجَع،
+        وإنتاج سينمائي للصيدليات والعيادات خمس سنوات خبرة — العلم يلتقي بالإبداع
       </p>
 
       <div class="ig-highlights">
@@ -1625,10 +1625,10 @@ section.ig,section.bridge{display:none!important}
   <div class="testi-inner">
     <span class="quote-mark" aria-hidden="true">”</span>
     <p class="testi-text" data-words>
-      قبل دوز كنت أنشر عشوائياً. بعد ثلاثة أشهر فقط أصبحت المراجعات تصلني من الإنستغرام أكثر من الإحالات.
-      لم يبيعوني تصاميم — بنوا لي سمعة.
+      قبل دوز كنت أنشر عشوائياً. بعد ثلاثة أشهر فقط أصبحت المراجعات تصلني من الإنستغرام أكثر من الإحالات
+      لم يبيعوني تصاميم — بنوا لي سمعة
     </p>
-    <div class="testi-by reveal"><b>د. عمار كردي</b><small>اختصاصي طب الدماغ والأعصاب</small></div>
+    <div class="testi-by reveal"><b>د عمار كردي</b><small>اختصاصي طب الدماغ والأعصاب</small></div>
   </div>
 </section>
 
@@ -1638,7 +1638,7 @@ section.ig,section.bridge{display:none!important}
   <div class="cta-inner">
     <span class="kicker">خابِرنا</span>
     <h2 class="cta-title"><span class="line" data-split>جاهز تكسر</span><span class="line accent" data-split>النمط؟</span></h2>
-    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام. نردّ خلال ٢٤ ساعة</p>
+    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام نردّ خلال ٢٤ ساعة</p>
 
     <form class="cta-form reveal" data-delay="200" id="ctaForm" novalidate>
 
@@ -1668,7 +1668,7 @@ section.ig,section.bridge{display:none!important}
       </fieldset>
 
       <div class="f-row">
-        <label><span>الاسم</span><input type="text" id="fName" name="name" placeholder="د. / صيدلية …" autocomplete="name" required></label>
+        <label><span>الاسم</span><input type="text" id="fName" name="name" placeholder="د / صيدلية …" autocomplete="name" required></label>
         <label><span>رقم الهاتف (اختياري)</span><input type="tel" id="fPhone" name="phone" placeholder="0770 000 0000" autocomplete="tel"></label>
       </div>
       <label class="full"><span>تفاصيل إضافية</span><textarea id="fMsg" name="msg" rows="2" placeholder="المدينة، الميزانية، الموعد النهائي…"></textarea></label>
@@ -1732,7 +1732,7 @@ section.ig,section.bridge{display:none!important}
   'use strict';
 
   /* ============================================================
-     CONTACT SETTINGS — edit these two lines only.
+     CONTACT SETTINGS — edit these two lines only
      WHATSAPP: full international number, digits only (964 = Iraq).
      INSTAGRAM: the account handle, without the @.
      ============================================================ */
@@ -1740,8 +1740,8 @@ section.ig,section.bridge{display:none!important}
     whatsapp: '9647750506697',
     instagram: 'dose.agency_iq'
   };
-  /* Marks the document as animation-capable. Every "hidden until revealed" style is
-     scoped to .anim, so if this script never runs the content is simply visible. */
+  /* Marks the document as animation-capable Every "hidden until revealed" style is
+     scoped to .anim, so if this script never runs the content is simply visible */
   document.documentElement.classList.add('anim');
 
   const $  = (s, c = document) => c.querySelector(s);
@@ -1756,7 +1756,7 @@ section.ig,section.bridge{display:none!important}
      Real logo files: images/logo-clean.png + images/logo-mark-clean.png (transparent).
      Each slot switches from the drawn mark
      to the file only once the browser reports it decoded, so a missing or broken
-     file can never leave a blank logo. */
+     file can never leave a blank logo */
   $$('img[data-logo]').forEach(img => {
     const slot = img.parentElement;
     const show = () => { if (img.naturalWidth > 0) slot.classList.add('has-logo'); };
@@ -1768,7 +1768,7 @@ section.ig,section.bridge{display:none!important}
   /* ---------- IMAGE FALLBACKS ----------
      Drop your Instagram exports into /images (work-01.jpg … work-14.jpg,
      doctor-01.jpg … doctor-04.jpg). Any missing file degrades to a sky-gradient
-     card carrying the post headline instead of a broken image.            */
+     card carrying the post headline instead of a broken image            */
   const fallback = img => {
     const holder = img.parentElement;
     holder.classList.add('empty');
@@ -1780,8 +1780,8 @@ section.ig,section.bridge{display:none!important}
     else img.addEventListener('error', () => fallback(img), { once: true });
   });
 
-  /* No preloader: the page is usable from the first frame. Scrolling is only ever
-     locked by the mobile menu, and even that is force-released on load below. */
+  /* No preloader: the page is usable from the first frame Scrolling is only ever
+     locked by the mobile menu, and even that is force-released on load below */
 
   /* ---------- SPLIT TEXT (word level — never breaks letter shaping) ---------- */
   $$('[data-split]').forEach(el => {
@@ -2011,9 +2011,9 @@ section.ig,section.bridge{display:none!important}
     [fName, fPhone, fMsg].forEach(el => el && el.addEventListener('input', syncMessage));
     form.addEventListener('submit', e => e.preventDefault());
 
-    /* WhatsApp: opens the chat with the message already typed.
+    /* WhatsApp: opens the chat with the message already typed
        In-app browsers (WhatsApp, Instagram, Facebook) often block target="_blank",
-       so navigate in place when the popup does not open. */
+       so navigate in place when the popup does not open */
     const openWhatsApp = e => {
       e.preventDefault();
       const url = waLink(buildMessage());
@@ -2058,7 +2058,7 @@ section.ig,section.bridge{display:none!important}
      Bound on the whole document and re-checked at click time: the WhatsApp buttons
      start life as href="#" and are rewritten to a wa.me URL, so a listener bound to
      them at load would later try to use that URL as a CSS selector and throw,
-     killing the click. */
+     killing the click */
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]');
     if (!a) return;
@@ -2074,9 +2074,9 @@ section.ig,section.bridge{display:none!important}
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------- BOOT ----------
-     Runs immediately. Each piece is isolated so that if one animation feature is
+     Runs immediately Each piece is isolated so that if one animation feature is
      unsupported on an old phone browser, the rest of the page still works and the
-     content is never left hidden. */
+     content is never left hidden */
   function kickoff() {
     document.body.classList.remove('locked');   // safety: scrolling always available
 
