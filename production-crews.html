@@ -16,6 +16,15 @@
 @media(max-width:500px){main{padding-inline:16px}.topbar{padding-inline:16px}.back{font-size:13px}.brand{font-size:15px}h1{font-size:clamp(40px,12vw,58px)}.crew-grid{grid-template-columns:1fr}.crew-card{min-height:190px}.crew-card h3{margin-top:22px;font-size:23px}.crew-card p{font-size:14px}.card-foot{margin-top:16px}.section-head h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 </style>
+<style>
+.doctor-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.doctor-video-card{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018))}
+.doctor-video-card video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#020706}
+.doctor-video-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;color:var(--ink);font-size:16px;font-weight:800}
+.doctor-video-caption span{color:var(--teal);font:700 11px var(--en);letter-spacing:.12em;white-space:nowrap}
+@media(max-width:760px){.doctor-video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.doctor-video-card{border-radius:18px}.doctor-video-caption{padding:12px;font-size:14px}}
+@media(max-width:500px){.doctor-video-grid{grid-template-columns:1fr}.doctor-video-caption{font-size:16px}}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -34,10 +43,13 @@
       <h2 id="doctor-crews">كوادر تصوير <span class="grad">الأطباء</span></h2>
       <p>محتوى احترافي يقدّم خبرة الطبيب ويبسّط المعلومة للمرضى.</p>
     </div>
-    <div class="crew-grid">
-      <article class="crew-card"><div class="card-top"><span class="card-number">DOCTORS · 01</span><span class="card-icon" aria-hidden="true">✚</span></div><div><h3>مقابلات الطبيب</h3><p>إضاءة وصوت وتصوير متعدد الزوايا لمقابلات ومحتوى تعريفي داخل العيادة.</p></div><span class="card-foot">كادر تصوير ومونتاج <span aria-hidden="true">←</span></span></article>
-      <article class="crew-card"><div class="card-top"><span class="card-number">DOCTORS · 02</span><span class="card-icon" aria-hidden="true">◉</span></div><div><h3>ريلز توعوية</h3><p>تصوير عمودي سريع لمحاور طبية قصيرة، مع تجهيزها للنشر على المنصات.</p></div><span class="card-foot">تصوير محتوى قصير <span aria-hidden="true">←</span></span></article>
-      <article class="crew-card"><div class="card-top"><span class="card-number">DOCTORS · 03</span><span class="card-icon" aria-hidden="true">⌂</span></div><div><h3>العيادة والخدمات</h3><p>لقطات للمكان والأجهزة وتجربة المراجعين، لتقديم العيادة بصورة واضحة وراقية.</p></div><span class="card-foot">تصوير ميداني للعيادات <span aria-hidden="true">←</span></span></article>
+    <div class="doctor-video-grid" aria-label="مقاطع كوادر تصوير الأطباء">
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-01.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">د. مصطفى ماجد <span>DOCTOR · 01</span></div></article>
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-02.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">د. إيمان معروف <span>DOCTOR · 02</span></div></article>
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-03.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">د. زينب <span>DOCTOR · 03</span></div></article>
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-04.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">كادر تصوير طبي <span>DOCTOR · 04</span></div></article>
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-05.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">كادر تصوير طبي <span>DOCTOR · 05</span></div></article>
+      <article class="doctor-video-card"><video controls playsinline preload="metadata"><source src="videos/doctor-crew-06.mp4" type="video/mp4">المتصفح لا يدعم تشغيل الفيديو.</video><div class="doctor-video-caption">عمّار كردي <span>DOCTOR · 06</span></div></article>
     </div>
   </section>
 
