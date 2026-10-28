@@ -989,15 +989,21 @@ section.ig,section.bridge{display:none!important}
 .client-logo-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .client-logo-slot{min-height:92px;display:grid;place-items:center;border:1px dashed rgba(126,240,224,.35);border-radius:16px;background:rgba(12,67,61,.45);color:var(--ink-soft);font-weight:700;text-align:center;padding:12px}
 .kicker{font-size:15px}
+#services > .sec-head > .kicker{font-size:clamp(19px,2.2vw,23px);padding:10px 22px}
+.crew-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.crew-entry-card{min-height:220px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:20px;padding:clamp(22px,4vw,38px);border:1px solid rgba(45,212,191,.32);border-radius:24px;background:linear-gradient(135deg,rgba(12,67,61,.72),rgba(8,24,22,.88));box-shadow:var(--shadow);color:var(--ink);text-decoration:none;transition:transform .25s,border-color .25s,background .25s}
+.crew-entry-card:hover{transform:translateY(-5px);border-color:rgba(126,240,224,.72);background:linear-gradient(135deg,rgba(12,86,77,.82),rgba(8,24,22,.94))}
+.crew-entry-card h3{margin:0;color:var(--sky-2);font-size:clamp(22px,3vw,32px)}
+.crew-entry-card p{margin:0;color:var(--ink-soft);line-height:1.9}
+.crew-entry-cta{color:var(--sky-2);font-weight:800}
 .marquee-wrap{background:rgba(4,18,16,.72)}
 .marquee-wrap--reverse{border-top:0;background:rgba(5,28,25,.82)}
 .dock-btn.book::before{display:none}
 @media(max-width:700px){
   .kicker{font-size:16px;padding:8px 17px;margin-bottom:20px}
-  .client-logo-groups{gap:16px}
-  .client-logo-group{padding:18px 14px;border-radius:18px}
-  .client-logo-slots{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-  .client-logo-slot{min-height:76px;font-size:13px}
+  #services > .sec-head > .kicker{font-size:19px;padding:9px 20px}
+  .crew-entry-grid{grid-template-columns:1fr;gap:14px}
+  .crew-entry-card{min-height:185px;padding:24px;border-radius:20px}
   .dock{inset-inline:10px;bottom:calc(14px + env(safe-area-inset-bottom));gap:8px;padding:9px;border:1px solid rgba(45,212,191,.2);border-radius:24px}
   .dock-btn{height:58px;font-size:14px}
   body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
@@ -1019,7 +1025,7 @@ section.ig,section.bridge{display:none!important}
 </script>
 </head>
 <body>
-<div class="trust-strip" role="note"><b>استشارة أولى مجانية</b><span>نحوّل حضورك الطبي إلى علامة يثق بها الناس.</span><a href="#contact">ابدأ محادثة قصيرة ←</a></div>
+<div class="trust-strip" role="note"><b>استشارة أولى مجانية</b><span>نحوّل حضورك الطبي إلى علامة يثق بها الناس</span><a href="#contact">ابدأ محادثة قصيرة ←</a></div>
 <!-- ============ CURSOR ============ -->
 <div class="cursor" id="cursor"><span></span></div>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -1045,7 +1051,7 @@ section.ig,section.bridge{display:none!important}
     <a href="#work" data-cursor="link">أعمالنا</a>
     <a href="identities.html" data-cursor="link">الهويات البصرية</a>
     <a href="production-crews.html" data-cursor="link">كوادر التصوير</a>
-    <a href="#clients" data-cursor="link">عملاؤنا</a>
+    <a href="#clients" data-cursor="link">كوادر التصوير</a>
   </nav>
   <a href="#contact" class="btn-mini magnetic" data-cursor="btn"><span>ابدأ مشروعك</span></a>
   <button class="burger" id="burger" aria-label="القائمة"><i></i><i></i></button>
@@ -1059,7 +1065,7 @@ section.ig,section.bridge{display:none!important}
     <a href="#work"><span>٠٣</span> أعمالنا</a>
     <a href="identities.html"><span>٠٤</span> الهويات البصرية</a>
     <a href="production-crews.html"><span>٠٥</span> كوادر التصوير</a>
-    <a href="#clients"><span>٠٦</span> عملاؤنا</a>
+    <a href="#clients"><span>٠٦</span> كوادر التصوير</a>
     <a href="#contact"><span>٠٧</span> تواصل معنا</a>
   </div>
 </div>
@@ -1077,7 +1083,7 @@ section.ig,section.bridge{display:none!important}
   <div class="dose-cinema__copy">
     <span class="dose-cinema__eyebrow">التسويق الطبي لكل العراق — بغداد</span>
     <h1 class="dose-cinema__title">DOSE<span>AGENCY</span></h1>
-    <p class="dose-cinema__lead">نبني حضورًا طبيًا يُرى، يُفهم، ويُتذكّر — من الهوية الأولى إلى آخر منشور.</p>
+    <p class="dose-cinema__lead">نبني حضورًا طبيًا يُرى، يُفهم، ويُتذكّر — من الهوية الأولى إلى آخر منشور</p>
     <div class="dose-cinema__tags" aria-label="خدمات دوز"><span>هوية بصرية</span><span>محتوى طبي</span><span>نمو رقمي</span></div>
   </div>
   <div class="dose-cinema__hint"><i></i><span>SCROLL TO EXPLORE</span></div>
@@ -1138,7 +1144,7 @@ section.ig,section.bridge{display:none!important}
 <section class="about" id="about">
   <div class="sec-head">
     <span class="kicker">من نحن</span>
-    <h2 class="reveal" data-delay="80">لسنا مجرّد وكالة تصميم.<br><span class="grad">نحن قسم التسويق الخاص بك.</span></h2>
+    <h2 class="reveal" data-delay="80">لسنا مجرّد وكالة تصميم<br><span class="grad">نحن قسم التسويق الخاص بك</span></h2>
   </div>
 
   <div class="about-body">
@@ -1177,14 +1183,14 @@ section.ig,section.bridge{display:none!important}
 <section class="services" id="services">
   <div class="sec-head">
     <span class="kicker">خدماتنا</span>
-    <h2 class="reveal" data-delay="80">نزرعُ فِكرَك.<br><span class="grad">ونحصدُ نموّك.</span></h2>
+    <h2 class="reveal" data-delay="80">نزرعُ فِكرَك<br><span class="grad">ونحصدُ نموّك</span></h2>
   </div>
 
   <div class="srv-list">
     <div class="srv" data-cursor="link">
       <span class="srv-i en">01</span>
       <h3>الهوية البصرية الكاملة</h3>
-      <p>شعار، ونظام ألوان، وخطوط، ودليل استخدام يجعل علامتك تُعرف من نظرة واحدة.</p>
+      <p>شعار، ونظام ألوان، وخطوط، ودليل استخدام يجعل علامتك تُعرف من نظرة واحدة</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
@@ -1202,13 +1208,13 @@ section.ig,section.bridge{display:none!important}
     <div class="srv" data-cursor="link">
       <span class="srv-i en">04</span>
       <h3>الإنتاج المرئي — <span class="en">Video Pro</span> + <span class="en">Video Pro Max</span></h3>
-      <p>كوادر تصوير ميدانية، فيديو برو، فيديو برو ماكس، مونتاج وصوت احترافي.</p>
+      <p>كوادر تصوير ميدانية، فيديو برو، فيديو برو ماكس، مونتاج وصوت احترافي</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">05</span>
       <h3>تصوير الدرون وجولات المنشآت</h3>
-      <p>لقطات جوية للصيدليات والمستشفيات والمجمعات الطبية تمنح مشروعك حجمه الحقيقي.</p>
+      <p>لقطات جوية للصيدليات والمستشفيات والمجمعات الطبية تمنح مشروعك حجمه الحقيقي</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
@@ -1220,37 +1226,46 @@ section.ig,section.bridge{display:none!important}
     <div class="srv" data-cursor="link">
       <span class="srv-i en">07</span>
       <h3>الموشن جرافيك والرسوم ثلاثية الأبعاد</h3>
-      <p>موشن جرافيك ورسوم ثلاثية الأبعاد لشرح الخدمات والمنتجات والنتائج بطريقة واضحة وجذابة، مع أفكار بصرية وإخراج مناسب لمنصات التواصل.</p>
+      <p>موشن جرافيك ورسوم ثلاثية الأبعاد لشرح الخدمات والمنتجات والنتائج بطريقة واضحة وجذابة، مع أفكار بصرية وإخراج مناسب لمنصات التواصل</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">08</span>
       <h3>الاستشارات والتموضع التسويقي</h3>
-      <p>أين تقف علامتك اليوم؟ وأين يجب أن تقف؟ خارطة طريق واضحة قبل أول تصميم.</p>
+      <p>أين تقف علامتك اليوم؟ وأين يجب أن تقف؟ خارطة طريق واضحة قبل أول تصميم</p>
       <span class="srv-arrow">↖</span>
     </div>
     <div class="srv" data-cursor="link">
       <span class="srv-i en">09</span>
       <h3><span class="en">Video Pro</span></h3>
-      <p>فيديو برو مخصص لشرح المنتجات الطبية: فكرة واضحة، تصوير احترافي، إبراز المزايا وطريقة الاستخدام، ثم مونتاج مناسب للإعلانات والسوشيال ميديا.</p>
+      <p>فيديو برو مخصص لشرح المنتجات الطبية: فكرة واضحة، تصوير احترافي، إبراز المزايا وطريقة الاستخدام، ثم مونتاج مناسب للإعلانات والسوشيال ميديا</p>
       <span class="srv-arrow">↖</span>
     </div>
   </div>
 </section>
 
 
+<section class="marquee-wrap marquee-wrap--reverse" aria-label="شريط متحرك لخدمات التصوير">
+  <div class="marquee">
+    <div class="mq-track" aria-live="off">
+      <span>كوادر تصوير الأطباء</span><em>✚</em><span>كوادر تصوير الصيدليات</span><em>✚</em><span>إنتاج طبي احترافي</span><em>✚</em><span>Video Pro Max</span><em>✚</em>
+      <span>كوادر تصوير الأطباء</span><em>✚</em><span>كوادر تصوير الصيدليات</span><em>✚</em><span>إنتاج طبي احترافي</span><em>✚</em><span>Video Pro Max</span><em>✚</em>
+    </div>
+  </div>
+</section>
+
 <!-- ============ VIDEO PRO LIBRARY ============ -->
 <section class="video-library" id="videoPro">
   <div class="video-library-head">
     <span class="kicker">الإنتاج المرئي</span>
-    <h2>شاهد فرق <span class="grad">Pro</span>.</h2>
-    <p>اختر نوع الإنتاج لتظهر قائمة الفيديوهات والأمثلة الخاصة به.</p>
+    <h2>شاهد فرق <span class="grad">Pro</span></h2>
+    <p>اختر نوع الإنتاج لتظهر قائمة الفيديوهات والأمثلة الخاصة به</p>
   </div>
   <div class="video-suites">
     <article class="video-suite reveal" data-video-suite>
       <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProList">
         <span class="video-suite-poster"><img src="images/work-03.jpg" alt="أمثلة Video Pro"></span>
-        <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro</strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها.</span></span>
+        <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro</strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها</span></span>
         <span class="video-suite-plus" aria-hidden="true">+</span>
       </button>
       <div class="video-suite-list" id="videoProList"><div class="video-suite-list-inner video-grid">
@@ -1264,7 +1279,7 @@ section.ig,section.bridge{display:none!important}
     <article class="video-suite reveal" data-video-suite data-delay="100">
       <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProMaxList">
         <span class="video-suite-poster"><img src="images/work-01.jpg" alt="أمثلة Video Pro Max"></span>
-        <span><span class="video-suite-kicker en">02 / VIDEO PRO MAX</span><strong class="video-suite-title en">Video Pro Max</strong><span class="video-suite-copy">إنتاج مرئي متكامل للعيادات والصيدليات والحملات الطبية.</span></span>
+        <span><span class="video-suite-kicker en">02 / VIDEO PRO MAX</span><strong class="video-suite-title en">Video Pro Max</strong><span class="video-suite-copy">إنتاج مرئي متكامل للعيادات والصيدليات والحملات الطبية</span></span>
         <span class="video-suite-plus" aria-hidden="true">+</span>
       </button>
       <div class="video-suite-list" id="videoProMaxList"><div class="video-suite-list-inner video-grid">
@@ -1484,7 +1499,7 @@ section.ig,section.bridge{display:none!important}
     <div class="bridge-copy">
       <span class="kicker">الهويات البصرية</span>
       <h2>وراء كل منشور <span class="grad">هوية كاملة</span></h2>
-      <p>ما تراه أعلاه هو الطبقة الظاهرة. تحتها شعار ونظام ألوان وخطوط ودليل استخدام. افتح لوحات العلامات التي بنيناها، بألوانها وتطبيقاتها كما سُلّمت.</p>
+      <p>ما تراه أعلاه هو الطبقة الظاهرة. تحتها شعار ونظام ألوان وخطوط ودليل استخدام. افتح لوحات العلامات التي بنيناها، بألوانها وتطبيقاتها كما سُلّمت</p>
       <a href="identities.html" class="btn magnetic" data-cursor="btn"><span>الهويات</span><svg viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="bridge-strip" aria-hidden="true">
@@ -1501,7 +1516,7 @@ section.ig,section.bridge{display:none!important}
   <div class="why-bg" data-speed="0.12"></div>
   <div class="sec-head center">
     <span class="kicker">ليش تختارنا</span>
-    <h2 class="reveal" data-delay="80">الفرق بين وكالة <span class="grad">وأخرى</span><br>هو الفرق بين عيادة ممتلئة وأخرى فارغة.</h2>
+    <h2 class="reveal" data-delay="80">الفرق بين وكالة <span class="grad">وأخرى</span><br>هو الفرق بين عيادة ممتلئة وأخرى فارغة</h2>
   </div>
   <div class="why-grid">
     <div class="wy reveal"><b class="count en" data-to="99" data-suffix="%">0</b><span>نسبة رضا العملاء وتجديد العقود</span></div>
@@ -1525,23 +1540,21 @@ section.ig,section.bridge{display:none!important}
 <!-- ============ CLIENTS ============ -->
 <section class="clients" id="clients">
   <div class="sec-head">
-    <span class="kicker">عملاؤنا</span>
-    <h2 class="reveal" data-delay="80">أطباء وصيدليات <span class="grad">وثقوا بنا</span></h2>
+    <span class="kicker">كوادر التصوير</span>
+    <h2 class="reveal" data-delay="80">تصوير احترافي <span class="grad">للأطباء والصيدليات</span></h2>
   </div>
-  <p class="client-logo-note">مساحة مخصصة لعرض شعارات الجهات التي نتعاون معها</p>
-  <div class="client-logo-groups">
-    <section class="client-logo-group" aria-labelledby="pharmacy-logos">
-      <h3 id="pharmacy-logos">الصيدليات</h3>
-      <div class="client-logo-slots"><div class="client-logo-slot">شعار صيدلية</div><div class="client-logo-slot">شعار صيدلية</div><div class="client-logo-slot">شعار صيدلية</div></div>
-    </section>
-    <section class="client-logo-group" aria-labelledby="dental-logos">
-      <h3 id="dental-logos">عيادات الأسنان</h3>
-      <div class="client-logo-slots"><div class="client-logo-slot">شعار عيادة أسنان</div><div class="client-logo-slot">شعار عيادة أسنان</div><div class="client-logo-slot">شعار عيادة أسنان</div></div>
-    </section>
-    <section class="client-logo-group" aria-labelledby="doctor-logos">
-      <h3 id="doctor-logos">الأطباء</h3>
-      <div class="client-logo-slots"><div class="client-logo-slot">شعار طبيب</div><div class="client-logo-slot">شعار طبيب</div><div class="client-logo-slot">شعار طبيب</div></div>
-    </section>
+  <p class="client-logo-note">شاهد نماذج التصوير الميداني المخصصة للأطباء والصيدليات</p>
+  <div class="crew-entry-grid">
+    <a class="crew-entry-card" href="production-crews.html#doctor-crews">
+      <h3>كوادر تصوير الأطباء</h3>
+      <p>لقطات احترافية ومحتوى مرئي يبرز خبرة الطبيب ويقرّب رسالته من جمهوره</p>
+      <span class="crew-entry-cta">شاهد المقاطع <span aria-hidden="true">↖</span></span>
+    </a>
+    <a class="crew-entry-card" href="production-crews.html#pharmacy-crews">
+      <h3>كوادر تصوير الصيدليات</h3>
+      <p>تصوير داخل الصيدليات للمنتجات والخدمات بأسلوب واضح وجذاب</p>
+      <span class="crew-entry-cta">شاهد المقاطع <span aria-hidden="true">↖</span></span>
+    </a>
   </div>
 </section>
 
@@ -1625,7 +1638,7 @@ section.ig,section.bridge{display:none!important}
   <div class="cta-inner">
     <span class="kicker">خابِرنا</span>
     <h2 class="cta-title"><span class="line" data-split>جاهز تكسر</span><span class="line accent" data-split>النمط؟</span></h2>
-    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام. نردّ خلال ٢٤ ساعة.</p>
+    <p class="cta-p reveal" data-delay="120">اختر ما تحتاجه، اكتب سطراً واحداً، وأرسله مباشرة إلى واتسابنا أو رسائل إنستغرام. نردّ خلال ٢٤ ساعة</p>
 
     <form class="cta-form reveal" data-delay="200" id="ctaForm" novalidate>
 
@@ -1673,7 +1686,7 @@ section.ig,section.bridge{display:none!important}
         </a>
       </div>
       <p class="form-note" id="formNote" hidden></p>
-      <p class="send-hint">إنستغرام لا يسمح بتعبئة الرسالة مسبقاً، لذا ننسخها لك — الصقها في المحادثة فقط.</p>
+      <p class="send-hint">إنستغرام لا يسمح بتعبئة الرسالة مسبقاً، لذا ننسخها لك — الصقها في المحادثة فقط</p>
     </form>
 
     <div class="cta-links reveal" data-delay="280">
