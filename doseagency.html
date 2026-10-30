@@ -1015,6 +1015,22 @@ section.ig,section.bridge{display:none!important}
 .featured-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:18px var(--pad);background:#030908;border-bottom:1px solid var(--line)}
 .featured-strip figure{margin:0;overflow:hidden;border:1px solid rgba(126,240,224,.18);border-radius:16px;background:#071a18;aspect-ratio:16/9}
 .featured-strip img{width:100%;height:100%;display:block;object-fit:cover}
+.featured-strip{position:relative;display:block;margin-top:166px;padding:0;background:#030908;border:0;overflow:hidden}
+.featured-carousel__slides{position:relative;width:100%;aspect-ratio:16/9;background:#030908;overflow:hidden}
+.featured-carousel__slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transition:opacity .8s ease;display:grid;place-items:center}
+.featured-carousel__slide.is-active{opacity:1;visibility:visible}
+.featured-carousel__slide img{display:block;width:100%;height:100%;object-fit:contain}
+.featured-carousel__controls{position:absolute;inset-inline:0;bottom:16px;display:flex;justify-content:center;gap:10px;z-index:2}
+.featured-carousel__dot{width:10px;height:10px;padding:0;border:1px solid rgba(233,245,242,.85);border-radius:50%;background:rgba(4,10,9,.6);cursor:pointer;transition:transform .2s,background .2s}
+.featured-carousel__dot[aria-current="true"]{background:var(--sky);transform:scale(1.35)}
+.featured-carousel__dot:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.why .sec-head.center>.kicker,#services>.sec-head>.kicker{display:block;width:100%;max-width:none;box-sizing:border-box;text-align:center;border-radius:16px;padding:13px 20px;font-size:clamp(18px,2.2vw,24px);letter-spacing:.12em}
+.about-tree{padding:clamp(34px,5vw,58px) clamp(20px,4vw,42px) clamp(38px,5vw,60px)}
+.about-tree h3{font-size:clamp(27px,3.5vw,42px);margin-bottom:28px}
+.about-tree__root{min-width:min(70%,420px);min-height:72px;padding:16px 32px;font-size:clamp(19px,2.5vw,28px)}
+.about-tree__branches{gap:18px;margin-top:34px;padding-top:22px}
+.about-tree__branches article{min-height:124px;padding:24px 16px;font-size:clamp(17px,2vw,24px)}
+.about-tree__branches article::before{height:22px}
 .about-tree{position:relative;margin-top:clamp(38px,6vw,72px);padding:30px 24px 34px;border:1px solid rgba(126,240,224,.2);border-radius:28px;background:linear-gradient(145deg,rgba(10,40,36,.82),rgba(4,10,9,.92));text-align:center;overflow:hidden}
 .about-tree h3{margin:0 0 22px;font-size:clamp(22px,3vw,34px);color:var(--ink)}
 .about-tree__root{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 28px;border:1px solid rgba(126,240,224,.5);border-radius:16px;background:linear-gradient(135deg,rgba(45,212,191,.18),rgba(255,255,255,.04));color:var(--sky-2);font-weight:800}
@@ -1032,12 +1048,17 @@ section.ig,section.bridge{display:none!important}
 .dock.hide{transform:translateY(-14px) scale(.96)}
 .dose-cinema{margin-top:148px}
 @media(max-width:700px){
-  .featured-strip{gap:8px;padding:12px 10px}
-  .featured-strip figure{border-radius:10px}
+  .featured-strip{margin-top:calc(154px + env(safe-area-inset-top))}
+  .featured-carousel__slides{aspect-ratio:16/10}
+  .featured-carousel__controls{bottom:10px;gap:8px}
+  .featured-carousel__dot{width:8px;height:8px}
+  .why .sec-head.center>.kicker,#services>.sec-head>.kicker{font-size:18px;padding:12px 14px}
   .about-tree{padding:24px 14px 22px;border-radius:22px}
+  .about-tree h3{font-size:28px;margin-bottom:24px}
+  .about-tree__root{min-width:78%;min-height:64px;font-size:20px}
   .about-tree__branches{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px;padding-top:0}
   .about-tree__branches::before{display:none}
-  .about-tree__branches article{min-height:76px;font-size:14px}
+  .about-tree__branches article{min-height:100px;font-size:16px;padding:18px 12px}
   .about-tree__branches article::before{display:none}
   .about-tree__root::after{height:15px}
   .partner-showcase__image{margin-top:26px}
@@ -1045,7 +1066,6 @@ section.ig,section.bridge{display:none!important}
   .dock{top:calc(76px + env(safe-area-inset-top));bottom:auto;inset-inline:8px;gap:6px;padding:7px;border-radius:18px}
   .dock-btn{height:48px;padding:0 8px;gap:5px;font-size:12px}
   .dock-btn svg{width:19px;height:19px}
-  .dose-cinema{margin-top:calc(140px + env(safe-area-inset-top))}
   body{padding-bottom:0}
 }
 @media(max-width:370px){.dock{inset-inline:5px;gap:4px;padding:5px}.dock-btn{font-size:11px}}
@@ -1053,8 +1073,7 @@ section.ig,section.bridge{display:none!important}
 <script>
   (() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    /* The cinematic hero is the intentional front door Strip stale/shared
-       section hashes on the first document load so every visit starts here */
+    /* Strip stale/shared section hashes on the first document load so every visit starts at the top. */
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     addEventListener('pageshow', () => {
       window.scrollTo(0, 0);
@@ -1111,28 +1130,24 @@ section.ig,section.bridge{display:none!important}
 
 <main id="top">
 
-<!-- ============ CINEMATIC HERO ============ -->
-<section class="dose-cinema" id="cinemaHero" aria-label="دوز إيجنسي — افتتاحية سينمائية">
-  <div class="dose-cinema__scene">
-    <picture>
-      <source media="(max-width: 700px)" srcset="images/dose-hero-doctor-mobile.png">
-      <img src="images/dose-hero-doctor.png" alt="دوز إيجنسي — شريكك في التسويق الطبي">
-    </picture>
+<!-- ============ FEATURED IMAGE CAROUSEL ============ -->
+<section class="featured-strip" aria-label="نماذج من دوز إيجنسي" data-featured-carousel>
+  <div class="featured-carousel__slides" aria-live="off">
+    <figure class="featured-carousel__slide is-active" role="group" aria-roledescription="شريحة" aria-label="١ من ٣">
+      <img src="images/dose-hero-doctor.png" alt="شريكك في التسويق الطبي" fetchpriority="high">
+    </figure>
+    <figure class="featured-carousel__slide" role="group" aria-roledescription="شريحة" aria-label="٢ من ٣" aria-hidden="true">
+      <img src="images/pro-campaign-team.jpg" alt="فريق طبي ضمن حملة تسويقية من إنتاج دوز إيجنسي" loading="lazy">
+    </figure>
+    <figure class="featured-carousel__slide" role="group" aria-roledescription="شريحة" aria-label="٣ من ٣" aria-hidden="true">
+      <img src="images/client-logos-collage.jpg" alt="مجموعة من شعارات الصيدليات والعيادات التي تعاملنا معها" loading="lazy">
+    </figure>
   </div>
-  <div class="dose-cinema__copy">
-    <span class="dose-cinema__eyebrow">التسويق الطبي لكل العراق — بغداد</span>
-    <h1 class="dose-cinema__title">DOSE<span>AGENCY</span></h1>
-    <p class="dose-cinema__lead">نبني حضورًا طبيًا يُرى، يُفهم، ويُتذكّر — من الهوية الأولى إلى آخر منشور</p>
-    <div class="dose-cinema__tags" aria-label="خدمات دوز"><span>هوية بصرية</span><span>محتوى طبي</span><span>نمو رقمي</span></div>
+  <div class="featured-carousel__controls" aria-label="اختيار الصورة">
+    <button class="featured-carousel__dot" type="button" aria-label="عرض الصورة الأولى" aria-current="true"></button>
+    <button class="featured-carousel__dot" type="button" aria-label="عرض الصورة الثانية" aria-current="false"></button>
+    <button class="featured-carousel__dot" type="button" aria-label="عرض الصورة الثالثة" aria-current="false"></button>
   </div>
-  <div class="dose-cinema__hint"><i></i><span>SCROLL TO EXPLORE</span></div>
-</section>
-
-<!-- ============ FEATURED BRAND STRIP ============ -->
-<section class="featured-strip" aria-label="نماذج من دوز إيجنسي">
-  <figure><img src="images/client-logos-collage.jpg" alt="مجموعة من شعارات الصيدليات والعيادات التي تعاملنا معها" loading="lazy"></figure>
-  <figure><img src="images/pro-campaign-team.jpg" alt="فريق طبي ضمن حملة تسويقية من إنتاج Video Pro" loading="lazy"></figure>
-  <figure><img src="images/dose-hero-doctor.png" alt="شريكك في التسويق الطبي" loading="lazy"></figure>
 </section>
 
 <!-- ============ HERO ============ -->
@@ -1221,9 +1236,7 @@ section.ig,section.bridge{display:none!important}
 
   <div class="about-body">
     <p class="big-read" data-words>
-      نصنع هويات بصرية ومحتوى احترافياً متخصصاً في بناء العلامات التجارية الطبية
-      نُدير منصّاتك، ونصمّم رسائلك، ونحوّل المعلومة العلمية إلى مادة يفهمها الناس ويثقون بها —
-      بخبرة تتجاوز خمس سنوات في قلب السوق الطبي العراقي
+      نصنع هويات ومحتوى طبياً موثوقاً، وندير منصّاتك لنحوّل خبرتنا في السوق العراقي إلى نموّ يراه جمهورك.
     </p>
 
     <div class="about-tree" aria-label="أقسام عملنا">
@@ -1341,7 +1354,7 @@ section.ig,section.bridge{display:none!important}
 <section class="video-library" id="videoPro">
   <div class="video-library-head">
     <span class="kicker">الإنتاج المرئي</span>
-    <h2>شاهد فرق <span class="grad">Pro</span></h2>
+    <h2>شاهد <span class="grad">فيديوهاتنا</span></h2>
     <p>اختر نوع الإنتاج لتظهر قائمة الفيديوهات والأمثلة الخاصة به</p>
   </div>
   <div class="video-suites">
@@ -2184,17 +2197,35 @@ section.ig,section.bridge{display:none!important}
 </script>
 <script>
   (() => {
-    const hero = document.getElementById('cinemaHero');
-    const scene = hero?.querySelector('.dose-cinema__scene');
-    const bridge = hero?.querySelector('.dose-cinema__bridge');
-    if (!hero || !scene || !bridge) return;
-    const move = () => {
-      const r = hero.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight + r.height)));
-      scene.style.transform = `scale(1.08) translate3d(0,${(-p * 24).toFixed(1)}px,0)`;
-      bridge.style.transform = `translate3d(-50%,${(-p * 90).toFixed(1)}px,0)`;
+    const carousel = document.querySelector('[data-featured-carousel]');
+    if (!carousel) return;
+    const slides = [...carousel.querySelectorAll('.featured-carousel__slide')];
+    const dots = [...carousel.querySelectorAll('.featured-carousel__dot')];
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let active = 0;
+    let timer;
+    const show = index => {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const selected = i === active;
+        slide.classList.toggle('is-active', selected);
+        slide.setAttribute('aria-hidden', String(!selected));
+      });
+      dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === active)));
     };
-    addEventListener('scroll', move, {passive:true}); move();
+    const stop = () => clearInterval(timer);
+    const start = () => {
+      stop();
+      if (!reduceMotion.matches && !document.hidden) timer = setInterval(() => show(active + 1), 5000);
+    };
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); start(); }));
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', event => { if (!carousel.contains(event.relatedTarget)) start(); });
+    document.addEventListener('visibilitychange', start);
+    reduceMotion.addEventListener?.('change', start);
+    start();
   })();
 </script>
 
