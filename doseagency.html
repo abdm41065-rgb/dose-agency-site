@@ -1069,6 +1069,38 @@ section.ig,section.bridge{display:none!important}
   body{padding-bottom:0}
 }
 @media(max-width:370px){.dock{inset-inline:5px;gap:4px;padding:5px}.dock-btn{font-size:11px}}
+
+/* Section ribbons, full-width labels, portfolio framing, and the original bottom contact dock */
+main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge):not(.ig){
+  border-top:6px solid transparent;
+  border-image:linear-gradient(90deg,rgba(45,212,191,.18),rgba(45,212,191,.68) 24%,#7ef0e0 50%,rgba(45,212,191,.68) 76%,rgba(45,212,191,.18)) 1;
+}
+.marquee-wrap{border-top:6px solid rgba(45,212,191,.68);border-bottom:1px solid rgba(126,240,224,.22)}
+.marquee-wrap--reverse{border-top:6px solid rgba(45,212,191,.68)}
+.about>.sec-head>.kicker,#clients>.sec-head>.kicker,#contact .cta-inner>.kicker{
+  display:block;width:100%;max-width:none;box-sizing:border-box;text-align:center;
+  border-radius:16px;padding:13px 20px;font-size:clamp(18px,2.2vw,24px);letter-spacing:.12em;
+}
+.dock{top:auto;bottom:calc(20px + env(safe-area-inset-bottom));inset-inline-start:auto;
+  inset-inline-end:max(16px,env(safe-area-inset-right));flex-direction:column;align-items:flex-end;justify-content:flex-end;
+  gap:10px;padding:0;border:0;border-radius:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
+.dock.hide{transform:translateY(24px) scale(.94)}
+.dock-btn{width:56px;height:56px;flex:0 0 56px;justify-content:center;gap:0;padding:0;border-radius:50%;font-size:0;}
+.dock-btn b{display:none}
+.dock-btn svg{width:24px;height:24px}
+.dock-btn.book{padding:0;color:#030908}
+.identity-post .post-media{aspect-ratio:1/1;border-radius:22px;border:1px solid rgba(126,240,224,.25);background:#061b19;}
+.identity-post .post-media img{object-fit:contain;object-position:center;transform:none;}
+.identity-post:hover .post-media img{transform:none}
+@media(max-width:900px){
+  .dock{inset-inline:0;bottom:0;top:auto;flex-direction:row;align-items:center;justify-content:center;gap:12px;
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom));border:0;border-top:1px solid rgba(126,240,224,.18);
+    border-radius:0;background:rgba(4,10,9,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+  .dock-btn{width:54px;height:54px;flex:0 0 54px;}
+  .about>.sec-head>.kicker,#clients>.sec-head>.kicker,#contact .cta-inner>.kicker{font-size:18px;padding:12px 14px}
+}
+@media(max-width:430px){.identity-post .post-media{border-radius:16px}.dock{gap:8px}.dock-btn{width:50px;height:50px;flex-basis:50px}}
+@media(prefers-reduced-motion:reduce){.dock,.dock-btn{transition:none}}
 </style>
 <script>
   (() => {
@@ -1805,7 +1837,10 @@ section.ig,section.bridge{display:none!important}
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16m0 2.16c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07m0 3.68a5.99 5.99 0 1 1 0 11.98 5.99 5.99 0 0 1 0-11.98m0 2.16a3.83 3.83 0 1 0 0 7.66 3.83 3.83 0 0 0 0-7.66m6.23-3.84a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8"/></svg>
     <b>إنستغرام</b>
   </a>
-  <a class="dock-btn book" href="#contact" aria-label="اذهب إلى نموذج الحجز" data-cursor="btn"><b>احجز الآن</b></a>
+  <a class="dock-btn book" href="#contact" aria-label="اذهب إلى نموذج الحجز" data-cursor="btn">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13H4V6a1 1 0 0 1 1-1Zm3 8h3m2 0h3m-8 4h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <b>احجز الآن</b>
+  </a>
 </div>
 <script>
 /* ===================== DOSE AGENCY — scroll & motion engine ===================== */
