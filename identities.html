@@ -909,6 +909,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
    Latin fragments inside them keep their own face through .en */
 .sh-block h4,.sh-cat,.appfig figcaption{font-family:var(--ar);letter-spacing:0;text-transform:none}
 </style>
+<style>
+/* colour-pair cards inside the identity sheet */
+.sh-colors{margin-top:18px}
+.sh-colors h4{margin-bottom:10px;font-size:15px;font-weight:800;color:var(--sky-3)}
+.cp-grid--sheet{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.cp-card{padding:10px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:#050908;color:#fff}
+.cp-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cp-sw{aspect-ratio:3/2;border-radius:9px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.cp-name{display:block;margin-top:7px;text-align:center;font-weight:700;font-size:13px;line-height:1.3}
+.cp-hex{display:block;text-align:center;font:500 11px var(--en);color:rgba(255,255,255,.75);direction:ltr}
+@media(max-width:520px){.cp-grid--sheet{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="trust-strip" role="note"><b>استشارة أولى مجانية</b><span>هويتك ليست شعاراً فقط؛ إنها نظام يشتغل كل يوم</span><a href="#contact">اطلب هويتك ←</a></div>
@@ -2122,12 +2134,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     body.replaceChildren(clone);
     const colorBlock = clone.querySelector('.sh-pal')?.closest('.sh-block');
     if (colorBlock) {
-      const launch = document.createElement('button');
-      launch.type = 'button';
-      launch.className = 'palette-launch';
-      launch.innerHTML = '<span><strong>استكشاف لوحة الألوان</strong><small>شرح مبسّط لوظيفة كل لون</small></span><b>↗</b>';
-      launch.addEventListener('click', () => openPalette(clone));
-      colorBlock.appendChild(launch);
+      /* show the palette right away as colour-pair cards */
+      const items = [...colorBlock.querySelectorAll('.sh-pal li')].map(li => ({
+        hex: li.querySelector('b')?.textContent.trim() || '',
+        label: li.querySelector('em')?.textContent.trim() || ''
+      }));
+      const sw = ({hex, label}) => '<div><div class="cp-sw" style="background:' + hex + '"></div><span class="cp-name">' + label + '</span><span class="cp-hex">' + hex + '</span></div>';
+      const pairs = document.createElement('div');
+      pairs.className = 'cp-grid cp-grid--sheet';
+      for (let i = 0; i < items.length; i += 2) pairs.insertAdjacentHTML('beforeend', '<div class="cp-card"><div class="cp-pair">' + items.slice(i, i + 2).map(sw).join('') + '</div></div>');
+      const colors = document.createElement('section');
+      colors.className = 'sh-colors';
+      colors.innerHTML = '<h4>ألوان الهوية</h4>';
+      colors.appendChild(pairs);
+      (clone.querySelector('.sh-brief') || clone.querySelector('.sh-top')).after(colors);
     }
     wrap.removeAttribute('hidden');
     wrap.classList.add('open');
