@@ -1130,6 +1130,12 @@ main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge)
 /* hero carousel fills its frame */
 .featured-carousel__slides{aspect-ratio:16/9!important}
 .featured-carousel__slide img{object-fit:cover!important}
+@media(max-width:760px){
+  .featured-carousel__slides{aspect-ratio:4/3!important}
+  .featured-carousel__slide{aspect-ratio:auto!important;inset:0;height:100%}
+  .featured-carousel__slide img{object-position:right center}
+  .featured-carousel__slide:last-child img{object-position:center}
+}
 
 /* glass pill section titles */
 .pill-title{display:block;width:min(760px,calc(100% - 32px));margin:0 auto clamp(26px,4vw,44px);padding:clamp(14px,2vw,22px) 28px;
