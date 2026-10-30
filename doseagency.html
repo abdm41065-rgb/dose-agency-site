@@ -1113,6 +1113,18 @@ main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge)
     }, { once: true });
   })();
 </script>
+
+<style>
+/* Pro / Pro Max logo posters */
+.video-suite-poster.logo-poster{background:#fff}
+.video-suite-poster.logo-poster img{object-fit:contain;padding:6%}
+/* Work rail: show full phone screenshots */
+.work .identity-post{width:clamp(200px,22vw,290px);border-radius:26px}
+.work .identity-post .post-media{aspect-ratio:1280/2772;border-radius:26px;background:#061b19}
+.work .identity-post .post-media img{object-fit:cover;object-position:top center;transform:none}
+.work .identity-post:hover .post-media img{transform:scale(1.03)}
+@media(max-width:760px){.work .identity-post{width:min(62vw,260px)}}
+</style>
 </head>
 <body>
 <div class="trust-strip" role="note"><b>استشارة أولى مجانية</b><span>نحوّل حضورك الطبي إلى علامة يثق بها الناس</span><a href="#contact">ابدأ محادثة قصيرة ←</a></div>
@@ -1392,8 +1404,8 @@ main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge)
   <div class="video-suites">
     <article class="video-suite reveal" data-video-suite>
       <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProList">
-        <span class="video-suite-poster"><img src="images/pro-campaign-team.jpg" alt="حملة تسويقية لفريق طبي من إنتاج Video Pro" loading="lazy"></span>
-        <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro <img class="pro-mark" src="images/pro-mark.jpg" alt="شعار برو"></strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها</span></span>
+        <span class="video-suite-poster logo-poster"><img src="images/pro-logo.jpg" alt="شعار Video Pro" loading="lazy"></span>
+        <span><span class="video-suite-kicker en">01 / VIDEO PRO</span><strong class="video-suite-title en">Video Pro <img class="pro-mark" src="images/pro-logo.jpg" alt="شعار برو"></strong><span class="video-suite-copy">فيديوهات احترافية لشرح المنتجات الطبية وإبراز مزاياها</span></span>
         <span class="video-suite-plus" aria-hidden="true">+</span>
       </button>
       <div class="video-suite-list" id="videoProList"><div class="video-suite-list-inner video-grid">
@@ -1406,7 +1418,7 @@ main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge)
     </article>
     <article class="video-suite reveal" data-video-suite data-delay="100">
       <button class="video-suite-toggle" type="button" aria-expanded="false" aria-controls="videoProMaxList">
-        <span class="video-suite-poster"><img src="images/work-01.jpg" alt="أمثلة Video Pro Max"></span>
+        <span class="video-suite-poster logo-poster"><img src="images/pro-max-logo.jpg" alt="شعار Video Pro Max"></span>
         <span><span class="video-suite-kicker en">02 / VIDEO PRO MAX</span><strong class="video-suite-title en">Video Pro Max</strong><span class="video-suite-copy">إنتاج مرئي متكامل للعيادات والصيدليات والحملات الطبية</span></span>
         <span class="video-suite-plus" aria-hidden="true">+</span>
       </button>
