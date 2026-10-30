@@ -109,7 +109,7 @@ a{color:inherit;text-decoration:none}
 .dose-cinema__title{margin:26px 0 18px;font-family:var(--en);font-size:clamp(64px,12vw,180px);line-height:.78;letter-spacing:-.06em;color:#f4fffc;text-shadow:0 12px 40px rgba(0,0,0,.35)}
 .dose-cinema__title span{display:block;background:linear-gradient(100deg,var(--sky),var(--sky-4));-webkit-background-clip:text;background-clip:text;color:transparent}
 .dose-cinema__lead{max-width:480px;color:#d0e5e0;font-size:clamp(16px,1.8vw,21px);line-height:1.45}
-.dose-cinema__tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.dose-cinema__tags span{padding:9px 16px;border-radius:999px;background:#f4fffc;color:#06302a;font-size:13px;font-weight:700}
+.dose-cinema__tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.dose-cinema__tags span{padding:9px 16px;border-radius:999px;background:#f4fffc;color:#154B6E;font-size:13px;font-weight:700}
 .dose-cinema__hint{display:none}
 @media(max-width:700px){.dose-cinema{height:auto;aspect-ratio:16/9}.dose-cinema__scene img{object-fit:contain}.dose-cinema__bridge{width:180vw;bottom:3%}}
 
@@ -1194,7 +1194,16 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
 .colors-media__head{text-align:center;color:#fff;line-height:1.1}
 .colors-media__head small{display:block;font:700 10px var(--en);letter-spacing:.3em;opacity:.8}
 .colors-media__head b{font-size:clamp(18px,2vw,24px);font-weight:800}
-.colors-media__grid{flex:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;min-height:0}
+.colors-media__head{position:relative}
+.colors-all{position:absolute;top:0;inset-inline-start:0;padding:5px 10px;border:1px solid rgba(126,240,224,.45);border-radius:999px;background:rgba(3,16,15,.7);color:var(--ink);font:700 11px var(--ar);cursor:pointer}
+.colors-all:hover{background:var(--sky-3);color:#030908}
+.colors-media__grid{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-height:0}
+.colors-media__grid button{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:5px;border:1px solid rgba(255,255,255,.16);border-radius:9px;background:#050908;cursor:pointer;transition:border-color .2s,transform .2s}
+.colors-media__grid button:hover{border-color:rgba(126,240,224,.6);transform:translateY(-2px)}
+.colors-media__grid button[aria-selected="true"]{border-color:var(--sky-3);box-shadow:0 0 0 2px rgba(45,212,191,.35)}
+.colors-media__grid button i{border-radius:4px;min-height:20px}
+.work .colors-post .post-body h3 .en{display:block;margin-top:4px;font-size:12px;color:var(--ink-soft);direction:ltr}
+.work .identity-post.is-picked .post-media{box-shadow:0 0 0 3px var(--pick,var(--sky-3)),0 18px 40px -20px var(--pick,#000)}
 .colors-media__grid span{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:4px;border:1px solid rgba(255,255,255,.14);border-radius:7px}
 .colors-media__grid i{border-radius:4px;min-height:18px}
 .work .colors-post:hover .colors-media{box-shadow:inset 0 0 0 1px var(--sky-3),0 18px 40px -28px #000}
@@ -1565,42 +1574,41 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
             </div>
           </article>
 
-          <article class="post identity-post" data-cursor="view" data-identity="noor">
-            <div class="post-media"><img src="images/work-01.jpg" alt="هوية صيدلية النور" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية النور</h3><p>هوية صيدلية حي تحوّلت إلى علامة تتذكّرها الناس</p><div class="post-meta"><span>هوية</span><span class="en">2023</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="shifa">
-            <div class="post-media"><img src="images/work-02.jpg" alt="هوية مركز الشفاء التخصصي" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>مركز الشفاء التخصصي</h3><p>هوية طبية هادئة تبني الثقة من أول نظرة</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="pharmaline">
-            <div class="post-media"><img src="images/work-03.jpg" alt="هوية فارما لاين" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>فارما لاين</h3><p>علامة منتجات طبية تظهر بثقة على الرف</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="rafidain">
-            <div class="post-media"><img src="images/work-04.jpg" alt="هوية عيادات الرافدين" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>عيادات الرافدين</h3><p>نظام بصري يصلح للعيادة والمنصّة والإعلان</p><div class="post-meta"><span>هوية</span><span class="en">2023</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="medico">
-            <div class="post-media"><img src="images/work-05.jpg" alt="هوية ميديكو آي كيو" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>ميديكو آي كيو</h3><p>تقنية طبية بلا برود، وهوية تميّزها في السوق</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="dawa">
-            <div class="post-media"><img src="images/work-06.jpg" alt="هوية صيدليات الدواء" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدليات الدواء</h3><p>هوية موحّدة تنفّذ بنفس الدقة في كل فرع</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="ammar">
-            <div class="post-media"><img src="images/work-07.jpg" alt="هوية د عمار كردي" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د عمار كردي</h3><p>علامة شخصية تسبق العيادة وتشرح التخصص</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="zainab">
-            <div class="post-media"><img src="images/work-08.jpg" alt="هوية د زينب شاكر" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د زينب شاكر محمود</h3><p>هوية دافئة تبني الثقة قبل أول موعد</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="eman">
-            <div class="post-media"><img src="images/work-09.jpg" alt="هوية د إيمان معروف" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د إيمان معروف محمد</h3><p>هوية طبيعية لعيادة تقوم على الوقاية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
-          </article>
-          <article class="post identity-post" data-cursor="view" data-identity="mustafa">
-            <div class="post-media"><img src="images/work-10.jpg" alt="هوية د مصطفى ماجد" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د مصطفى ماجد عبدالله</h3><p>هوية موثوقة للحملات والتوعية الطبية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
-          </article>
-          <article class="post colors-post" data-cursor="view" tabindex="0" role="button" aria-label="ألوان هوياتنا البصرية" data-colors-open>
+          <article class="post colors-post">
             <div class="post-media colors-media">
-              <div class="colors-media__head"><small class="en">THE BEST</small><b>ألوان هوياتنا</b></div>
-              <div class="colors-media__grid" data-colors-preview></div>
+              <div class="colors-media__head"><small class="en">THE BEST</small><b>اختر ألوانك</b><button type="button" class="colors-all" data-colors-open>كل الألوان ↗</button></div>
+              <div class="colors-media__grid" data-colors-preview role="listbox" aria-label="اختر تركيبة ألوان لعرض الهوية"></div>
             </div>
-            <div class="post-body"><h3>ألوان هوياتنا البصرية</h3></div>
+            <div class="post-body"><h3 data-colors-caption>اختر تركيبة لتظهر الهوية بجانبها</h3></div>
+          </article>
+          
+          <article class="post identity-post" data-cursor="view" data-identity="noor" data-name="د. سارة الجميلي" data-handle="dr.sara.aljumaili" data-palette="#0F3B3E,#2F7C78,#BFD5D8,#F5FAFB">
+            <div class="post-media"><img src="images/work-01.jpg" alt="هوية د. سارة الجميلي" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>د. سارة الجميلي</h3><p>هوية صيدلية حي تحوّلت إلى علامة تتذكّرها الناس</p><div class="post-meta"><span>هوية</span><span class="en">2023</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="shifa" data-name="صيدلية AZJ" data-handle="azj.pharmacy" data-palette="#154B6E,#3C93D6,#A2CEF0,#E0EAF1">
+            <div class="post-media"><img src="images/work-02.jpg" alt="هوية صيدلية AZJ" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية AZJ</h3><p>هوية طبية هادئة تبني الثقة من أول نظرة</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="pharmaline" data-name="صيدلية الحل الأجمل" data-handle="alhal.alajmal.pharmacy" data-palette="#061B17,#0F3A32,#6FA58C,#ECF0EB">
+            <div class="post-media"><img src="images/work-03.jpg" alt="هوية صيدلية الحل الأجمل" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية الحل الأجمل</h3><p>علامة منتجات طبية تظهر بثقة على الرف</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="rafidain" data-name="صيدلية مريم" data-handle="maryam_pharmacy1" data-palette="#124951,#156B76,#7FC4C6,#F0F9FB">
+            <div class="post-media"><img src="images/work-04.jpg" alt="هوية صيدلية مريم" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية مريم</h3><p>نظام بصري يصلح للعيادة والمنصّة والإعلان</p><div class="post-meta"><span>هوية</span><span class="en">2023</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="medico" data-name="صيدلية حياة المجد" data-handle="hayat_almajd.pharmacy" data-palette="#01132F,#062B63,#DEB998,#E7EBF4">
+            <div class="post-media"><img src="images/work-05.jpg" alt="هوية صيدلية حياة المجد" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية حياة المجد</h3><p>تقنية طبية بلا برود، وهوية تميّزها في السوق</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="dawa" data-name="صيدلية واقية" data-handle="waqia.ph" data-palette="#011224,#07294D,#476789,#E6E8EB">
+            <div class="post-media"><img src="images/work-06.jpg" alt="هوية صيدلية واقية" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية واقية</h3><p>هوية موحّدة تنفّذ بنفس الدقة في كل فرع</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
+          </article>
+          
+          <article class="post identity-post" data-cursor="view" data-identity="zainab" data-name="صيدلية رؤى عصام" data-handle="ph.ruaaisam" data-palette="#2B5F96,#72B8F8,#F2A7C3,#E1E8F4">
+            <div class="post-media"><img src="images/work-08.jpg" alt="هوية صيدلية رؤى عصام" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية رؤى عصام</h3><p>هوية دافئة تبني الثقة قبل أول موعد</p><div class="post-meta"><span>هوية</span><span class="en">2024</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="eman" data-name="صيدلية الفرقان" data-handle="alfurqan.pharmacy" data-palette="#031919,#0A3635,#AF7A43,#F8F7F7">
+            <div class="post-media"><img src="images/work-09.jpg" alt="هوية صيدلية الفرقان" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية الفرقان</h3><p>هوية طبيعية لعيادة تقوم على الوقاية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
+          </article>
+          <article class="post identity-post" data-cursor="view" data-identity="mustafa" data-name="صيدلية د. الغفران" data-handle="ph.dralghufran" data-palette="#0B194F,#0A2672,#A67B16,#E6EBF7">
+            <div class="post-media"><img src="images/work-10.jpg" alt="هوية صيدلية د. الغفران" loading="lazy"></div><span class="post-tag">هوية بصرية</span><div class="post-body"><h3>صيدلية د. الغفران</h3><p>هوية موثوقة للحملات والتوعية الطبية</p><div class="post-meta"><span>هوية</span><span class="en">2025</span></div></div>
           </article>
           <article class="post p-cta" data-cursor="btn">
             <div class="post-body center">
@@ -1765,10 +1773,10 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
       <a href="identities.html" class="btn magnetic" data-cursor="btn"><span>الهويات</span><svg viewBox="0 0 24 24"><path d="M14 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="bridge-strip" aria-hidden="true">
-      <span class="bridge-plate" style="--b1:#0E1B3A;--b2:#1E3A8A;--b3:#E8B84B;--b4:#F5F0E6" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="f2" cx="50" cy="50" r="17"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(0 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(45 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(90 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(135 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(180 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(225 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(270 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(315 50 50)"/></svg></span>
-      <span class="bridge-plate" style="--b1:#06302A;--b2:#0E7C66;--b3:#9FE0CF;--b4:#F2F5F3" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="s2" cx="50" cy="50" r="38"/><rect class="f2" x="43" y="24" width="14" height="52" rx="7"/><rect class="f2" x="24" y="43" width="52" height="14" rx="7"/></svg></span>
-      <span class="bridge-plate" style="--b1:#1A1036;--b2:#6D48D9;--b3:#4ADEC0;--b4:#EFEAFB" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><path class="s1" d="M50 14 82 32v36L50 86 18 68V32z"/><path class="s3" d="M28 50h10l6-13 9 26 6-13h13"/></svg></span>
-      <span class="bridge-plate" style="--b1:#0A1420;--b2:#1D4E6B;--b3:#35C6E8;--b4:#E4F2F7" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg></span>
+      <span class="bridge-plate" style="--b1:#0F3B3E;--b2:#2F7C78;--b3:#BFD5D8;--b4:#F5FAFB" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="f2" cx="50" cy="50" r="17"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(0 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(45 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(90 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(135 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(180 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(225 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(270 50 50)"/><line class="s1" x1="50" y1="26" x2="50" y2="12" transform="rotate(315 50 50)"/></svg></span>
+      <span class="bridge-plate" style="--b1:#154B6E;--b2:#3C93D6;--b3:#A2CEF0;--b4:#E0EAF1" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="s2" cx="50" cy="50" r="38"/><rect class="f2" x="43" y="24" width="14" height="52" rx="7"/><rect class="f2" x="24" y="43" width="52" height="14" rx="7"/></svg></span>
+      <span class="bridge-plate" style="--b1:#01132F;--b2:#062B63;--b3:#DEB998;--b4:#E7EBF4" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><path class="s1" d="M50 14 82 32v36L50 86 18 68V32z"/><path class="s3" d="M28 50h10l6-13 9 26 6-13h13"/></svg></span>
+      <span class="bridge-plate" style="--b1:#081A18;--b2:#143833;--b3:#5E9E86;--b4:#F2F6F2" aria-hidden="true"><svg class="mark" viewBox="0 0 100 100"><circle class="f2" cx="50" cy="50" r="13"/><path class="s1" d="M50 37V18M50 63v19M37 50H18M63 50h19M40 40 26 26M60 60l14 14"/><circle class="f3" cx="74" cy="74" r="6"/></svg></span>
     </div>
   </div>
 </section>
@@ -2346,7 +2354,6 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
 
 <script>
   const identityCards = [...document.querySelectorAll('.identity-post[data-identity]')];
-  identityCards.slice(7).forEach(card => card.remove());
   document.querySelectorAll('.identity-post[data-identity]').forEach(card => {
     card.addEventListener('click', () => {
       window.location.href = `identities.html#identity-${card.dataset.identity}`;
@@ -2412,21 +2419,40 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
 (() => {
   /* identity palettes: [id, name, [ground, primary, accent, paper]] */
   const IDS = [
-    ['noor','صيدلية النور',['#0E1B3A','#1E3A8A','#E8B84B','#F5F0E6']],
-    ['shifa','مركز الشفاء التخصصي',['#06302A','#0E7C66','#9FE0CF','#F2F5F3']],
-    ['pharmaline','فارما لاين',['#0B2540','#1E6FD9','#FF7A45','#EAF2FB']],
-    ['rafidain','عيادات الرافدين',['#06272E','#12707F','#C4744A','#EDE7DF']],
-    ['medico','ميديكو آي كيو',['#1A1036','#6D48D9','#4ADEC0','#EFEAFB']],
-    ['dawa','صيدليات الدواء',['#2A0A12','#C02E4C','#F7A8A0','#FBEFE9']],
-    ['ammar','د عمار كردي',['#0A1420','#1D4E6B','#35C6E8','#E4F2F7']],
-    ['zainab','د زينب شاكر محمود',['#240E24','#7A2B5E','#E39BB6','#FAEEF3']],
-    ['eman','د إيمان معروف محمد',['#17200F','#4E6B27','#B9CC7A','#F1F3E4']],
-    ['mustafa','د مصطفى ماجد عبدالله',['#16130E','#4A3A20','#D99A2B','#F5EDDF']]
+    ['noor','د. سارة الجميلي',["#0F3B3E", "#2F7C78", "#BFD5D8", "#F5FAFB"]],
+    ['shifa','صيدلية AZJ',["#154B6E", "#3C93D6", "#A2CEF0", "#E0EAF1"]],
+    ['pharmaline','صيدلية الحل الأجمل',["#061B17", "#0F3A32", "#6FA58C", "#ECF0EB"]],
+    ['rafidain','صيدلية مريم',["#124951", "#156B76", "#7FC4C6", "#F0F9FB"]],
+    ['medico','صيدلية حياة المجد',["#01132F", "#062B63", "#DEB998", "#E7EBF4"]],
+    ['dawa','صيدلية واقية',["#011224", "#07294D", "#476789", "#E6E8EB"]],
+    ['zainab','صيدلية رؤى عصام',["#2B5F96", "#72B8F8", "#F2A7C3", "#E1E8F4"]],
+    ['eman','صيدلية الفرقان',["#031919", "#0A3635", "#AF7A43", "#F8F7F7"]],
+    ['mustafa','صيدلية د. الغفران',["#0B194F", "#0A2672", "#A67B16", "#E6EBF7"]]
   ];
   const ROLE = ['أرضية','الرئيسي','المساعد','ورقي'];
 
+  /* colour picker: choosing a palette brings its identity right beside the card */
   const preview = document.querySelector('[data-colors-preview]');
-  if (preview) preview.innerHTML = IDS.map(([, , c]) => `<span><i style="background:${c[1]}"></i><i style="background:${c[2]}"></i></span>`).join('');
+  const caption = document.querySelector('[data-colors-caption]');
+  const colorsCard = document.querySelector('.colors-post');
+  const idCards = [...document.querySelectorAll('.identity-post[data-palette]')];
+  if (preview) {
+    preview.innerHTML = idCards.map((card, i) => `<button type="button" role="option" aria-selected="false" data-pick="${i}" aria-label="${card.dataset.name}">${card.dataset.palette.split(',').map(c => `<i style="background:${c}"></i>`).join('')}</button>`).join('');
+    preview.addEventListener('click', e => {
+      const btn = e.target.closest('[data-pick]');
+      if (!btn) return;
+      const card = idCards[+btn.dataset.pick];
+      preview.querySelectorAll('[data-pick]').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+      idCards.forEach(c => c.classList.toggle('is-picked', c === card));
+      colorsCard.after(card);
+      const pal = card.dataset.palette.split(',');
+      card.style.setProperty('--pick', pal[1]);
+      caption.innerHTML = `${card.dataset.name} <span class="en">${pal.join(' · ')}</span>`;
+      const rail = card.closest('.rail'), r = rail.getBoundingClientRect(), c = card.getBoundingClientRect();
+      if (c.left < r.left) rail.scrollBy({left: c.left - r.left - 16, behavior: 'smooth'});
+      else if (c.right > r.right) rail.scrollBy({left: c.right - r.right + 16, behavior: 'smooth'});
+    });
+  }
 
   const overlay = document.getElementById('cpOverlay');
   const grid = document.getElementById('cpGrid');
@@ -2441,7 +2467,6 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
   const close = () => { overlay.hidden = true; document.body.style.overflow = ''; opener?.focus(); };
   document.querySelectorAll('[data-colors-open]').forEach(el => {
     el.addEventListener('click', () => open(el));
-    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(el); } });
   });
   overlay?.querySelector('.cp-close').addEventListener('click', close);
   overlay?.addEventListener('click', e => { if (e.target === overlay) close(); });
