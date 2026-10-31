@@ -1130,6 +1130,9 @@ main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge)
 /* hero carousel fills its frame */
 .featured-carousel__slides{aspect-ratio:16/9!important}
 .featured-carousel__slide img{object-fit:cover!important}
+/* thinner glowing turquoise lines on every band */
+main#top>section:not(.featured-strip):not(.hero):not(.marquee-wrap):not(.bridge):not(.ig){border-top-width:2px!important}
+.marquee-wrap,.marquee-wrap--reverse{border-top-width:2px!important}
 #partners>.sec-head>.kicker{display:block;width:100%;max-width:none;box-sizing:border-box;text-align:center;border-radius:16px;padding:13px 20px;font-size:clamp(18px,2.2vw,24px);letter-spacing:.12em}
 .featured-strip{margin-top:84px!important}
 @media(max-width:700px){.featured-strip{margin-top:calc(70px + env(safe-area-inset-top))!important}}
@@ -1317,7 +1320,7 @@ main#top>section.why,main#top>section.about,main#top>section.work,main#top>secti
 <section class="featured-strip" aria-label="نماذج من دوز إيجنسي" data-featured-carousel>
   <div class="featured-carousel__slides" aria-live="off">
     <figure class="featured-carousel__slide is-active" role="group" aria-roledescription="شريحة" aria-label="١ من ٣">
-      <img src="images/dose-hero-doctor.png" alt="شريكك في التسويق الطبي" fetchpriority="high">
+      <img src="images/dose-hero-doctor-v2.jpg" alt="شريكك في التسويق الطبي" fetchpriority="high">
     </figure>
     <figure class="featured-carousel__slide" role="group" aria-roledescription="شريحة" aria-label="٢ من ٣" aria-hidden="true">
       <img src="images/pro-campaign-team.jpg" alt="فريق طبي ضمن حملة تسويقية من إنتاج دوز إيجنسي" loading="lazy">
