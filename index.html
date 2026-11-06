@@ -103,6 +103,10 @@ section{padding-block:clamp(48px,8vw,96px)}
 @keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .grid{transition:opacity .26s ease,transform .26s ease}
 .grid.out{opacity:0;transform:translateY(-8px)}
+.pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:clamp(22px,3vw,36px);font-family:var(--ui)}
+.pager button{min-width:40px;height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(110,27,38,.3);background:transparent;color:var(--wine);font:inherit;font-size:15px;cursor:pointer;transition:background .2s,color .2s}
+.pager button[aria-current="page"]{background:var(--wine);color:#fff;border-color:var(--wine)}
+.pager button:disabled{opacity:.35;cursor:default}
 .chip{transition:background .25s,color .25s,border-color .25s}
 .empty{grid-column:1/-1;text-align:center;padding:70px 16px;border:1px dashed #cfd2d6;color:var(--mute);animation:cardIn .5s both}
 .empty .latin{display:block;font-size:28px;font-style:italic;color:var(--ink);margin-bottom:4px}
@@ -391,6 +395,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         </div>
       </div>
       <div class="grid" id="grid"></div>
+      <nav class="pager" id="pager" aria-label="الصفحات" hidden></nav>
     </div>
   </section>
 
@@ -561,19 +566,28 @@ const wa=p=>`https://wa.me/${WA}?text=${encodeURIComponent(`هلا Silver Charm�
 
 // collection
 const KIND={bracelet:'سوار',ring:'خاتم',necklace:'قلادة'};
-function renderGrid(f){const list=P.filter(p=>f==='all'||p.type===f);
+// 8 pieces per page
+const PER=8;let gF='all',gPg=0;
+function renderGrid(f,pg=0){gF=f;const all=P.filter(p=>f==='all'||p.type===f),pages=Math.max(1,Math.ceil(all.length/PER));gPg=Math.min(Math.max(pg,0),pages-1);
+  const list=all.slice(gPg*PER,gPg*PER+PER);
   $('#grid').innerHTML=list.length?list.map((p,i)=>`
   <button class="card" style="--i:${i}" data-id="${p.id}" aria-label="${p.ar}">
     <div class="ph"><img src="${src(p.imgs[0])}" alt="${p.ar}" loading="lazy">${p.imgs[1]?`<img class="alt" src="${src(p.imgs[1])}" alt="" loading="lazy">`:''}</div>
     <div class="meta"><div><h3>${p.ar}</h3><div class="latin">${p.en}</div></div><span class="kind">${KIND[p.type]}</span></div>
   </button>`).join(''):`<div class="empty"><span class="latin">Coming soon</span>القلائد جاية قريباً</div>`;
-  document.querySelectorAll('.card').forEach(c=>c.onclick=()=>openSheet(c.dataset.id));}
+  document.querySelectorAll('.card').forEach(c=>c.onclick=()=>openSheet(c.dataset.id));
+  const pgr=$('#pager');pgr.hidden=pages<2;
+  pgr.innerHTML=pages<2?'':`<button type="button" data-pg="${gPg-1}" ${gPg?'':'disabled'} aria-label="السابقة">→</button>`+
+    Array.from({length:pages},(_,k)=>`<button type="button" data-pg="${k}" ${k===gPg?'aria-current="page"':''}>${k+1}</button>`).join('')+
+    `<button type="button" data-pg="${gPg+1}" ${gPg<pages-1?'':'disabled'} aria-label="التالية">←</button>`;
+  pgr.querySelectorAll('button').forEach(b=>b.onclick=()=>{const k=+b.dataset.pg;if(b.disabled||k===gPg)return;swapGrid(gF,k);$('#collection').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})}
 let swapT;
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(b.getAttribute('aria-pressed')==='true')return;
   document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  const g=$('#grid'),still=matchMedia('(prefers-reduced-motion: reduce)').matches;clearTimeout(swapT);
-  if(still){renderGrid(b.dataset.f);return}
-  g.classList.add('out');swapT=setTimeout(()=>{renderGrid(b.dataset.f);g.classList.remove('out')},260)});
+  swapGrid(b.dataset.f,0)});
+function swapGrid(f,pg){const g=$('#grid');clearTimeout(swapT);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderGrid(f,pg);return}
+  g.classList.add('out');swapT=setTimeout(()=>{renderGrid(f,pg);g.classList.remove('out')},260)}
 renderGrid('all');
 
 // offers banner — edit OFFERS to change the promos (tag, title, text, button, image, target piece id or section)
