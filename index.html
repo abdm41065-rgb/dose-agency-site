@@ -1,8 +1,9 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-g5jn72xcfzfciWHV2/0W4jpJ3Cw7KbtSmU1qtiwRM0E='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-sWXYsO2dkL2NTMHRAV00Cn9IaP7nvZH4b/F0Qaey6XM=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-Qu2ZPf+Ap19FcxAm5NLVglHvxCMAEdoKaqvuKqY5ABI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script>window.SC_API=''</script>
 <title>Silver Charm</title>
 <script>document.documentElement.lang='ar';document.documentElement.dir='rtl'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -490,8 +491,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <form id="orderForm" novalidate>
           <input type="hidden" name="piece" id="fPiece">
           <label for="fName">الاسم</label><input id="fName" name="name" autocomplete="name" maxlength="40">
-          <div class="two"><div><label for="fPhone">رقم الموبايل</label><input id="fPhone" name="phone" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="14" autocomplete="tel"></div>
-          <div><label for="fPhone2">أعد كتابة الرقم</label><input id="fPhone2" name="phone2" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="14" autocomplete="off"></div></div>
+          <div class="two"><div><label for="fPhone">رقم الموبايل</label><input id="fPhone" name="phone" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20" autocomplete="tel"></div>
+          <div><label for="fPhone2">أعد كتابة الرقم</label><input id="fPhone2" name="phone2" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20" autocomplete="off"></div></div>
           <div class="two"><div><label for="fGov">المحافظة</label><select id="fGov" name="gov"></select></div>
           <div><label for="fAddr">العنوان</label><input id="fAddr" name="addr" maxlength="80" placeholder="المنطقة، أقرب نقطة دالة"></div></div>
           <label for="fNote">ملاحظة (اختياري)</label><textarea id="fNote" name="note" rows="2" maxlength="200" placeholder="مثلاً: القياس، أو تغليف هدية"></textarea>
@@ -516,8 +517,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <div class="step on" data-s="1">
       <label for="oHim">اسمك</label><input id="oHim" autocomplete="off" maxlength="24">
       <label for="oHer">اسمها</label><input id="oHer" autocomplete="off" maxlength="24">
-      <label for="oPh">رقم موبايلك</label><input id="oPh" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="14">
+      <label for="oPh">رقم موبايلك</label><input id="oPh" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20">
       <label for="oMail">إيميلك</label><input id="oMail" type="email" dir="ltr" placeholder="name@email.com" autocomplete="email" maxlength="80">
+      <label for="oIdNo">رقم هويتك <span class="opt" id="oIdNoOpt"></span></label><input id="oIdNo" dir="ltr" autocomplete="off" maxlength="30" placeholder="رقم البطاقة الوطنية">
       <label for="oId">صورة هويتك <span class="opt" id="oIdOpt"></span></label>
       <label class="idbox" for="oId"><input id="oId" type="file" accept="image/*"><img id="oIdPrev" alt="" hidden><span id="oIdTxt">اضغط وصوّر الهوية أو اختار صورة</span></label>
       <p class="idnote">الهوية حتى نتأكد إن كل شخص يطلب مرة وحدة بس. ما تنعرض لأي أحد.</p>
@@ -637,8 +639,10 @@ const stage=$('#stage'),hero=$('#heroImg');
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();const dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;hero.style.transform=`translate(${-dx*18}px,${-dy*18}px)`});stage.addEventListener('pointerleave',()=>hero.style.transform='')}
 
 // in-site order form
-// ORDER_ENDPOINT: server URL that forwards orders to the Telegram bot. Never put the bot token in this page.
-const ORDER_ENDPOINT='';
+// API: set by the live build (window.SC_API='/api'). Empty = demo mode (this browser only). The bot token lives on the server only.
+const API=window.SC_API||'';
+async function apiPost(path,body){try{const r=await fetch(API+path,{method:'POST',body,headers:body instanceof FormData?{}:{'Content-Type':'application/json'}});
+  const j=await r.json().catch(()=>({}));return r.ok&&j.ok?j:{ok:false,message:j.message||'صار خلل بالإرسال، حاول مرة ثانية.'}}catch{return {ok:false,message:'ماكو اتصال، تأكد من الإنترنت وحاول مرة ثانية.'}}}
 const GOV=['بغداد','البصرة','نينوى','أربيل','النجف','كربلاء','بابل','ذي قار','الأنبار','ديالى','كركوك','صلاح الدين','واسط','ميسان','المثنى','القادسية','دهوك','السليمانية','حلبجة'];
 $('#fGov').innerHTML='<option value="">اختار المحافظة</option>'+GOV.map(g=>`<option>${g}</option>`).join('');
 function ordReset(){const f=$('#orderForm');f.reset();f.hidden=false;$('#ordDone').hidden=true;$('#fErr').textContent='';$('#sheetOrder').hidden=true;$('#pActs').hidden=false}
@@ -664,12 +668,12 @@ $('#orderForm').addEventListener('submit',async e=>{e.preventDefault();const f=e
   if(!o.gov)return err.textContent='اختار المحافظة.';if(!o.addr)return err.textContent='اكتب العنوان.';
   err.textContent='';const btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='جاري الإرسال…';
   const p=P.find(x=>x.id===o.piece);o.pieceName=p.ar;o.at=new Date().toISOString();
-  let ok=true;if(ORDER_ENDPOINT){try{const r=await fetch(ORDER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)});ok=r.ok}catch{ok=false}}
+  let no=String(Math.floor(1000+Math.random()*9000));
+  if(API){const r=await apiPost('/order',JSON.stringify({name:o.name,phone:o.phone,gov:o.gov,addr:o.addr,note:o.note,piece:o.piece}));
+    if(!r.ok){btn.disabled=false;btn.textContent='ثبّت الطلب';return err.textContent=r.message}no=String(r.order_no)}
   btn.disabled=false;btn.textContent='ثبّت الطلب';
-  if(!ok)return err.textContent='صار خلل بالإرسال، حاول مرة ثانية.';
-  const no=String(Math.floor(1000+Math.random()*9000));
   const done=$('#ordDone');
-  done.innerHTML=`<div class="done-ic">✓</div><b>تأكد طلبك</b><p>${p.ar} · ${esc(o.gov)}<br>رقم الطلب <span dir="ltr">#${no}</span> وصل للمحل. راح نتصل بيك على <span dir="ltr">${o.phone}</span> بخصوص السعر والتوصيل.</p>${ORDER_ENDPOINT?'':'<small>ديمو: بالنسخة الحقيقية هنا الطلب يوصل لبوت التليكرام مالتك.</small>'}<button class="btn" type="button" id="ordAgain">طلب ثاني</button>`;
+  done.innerHTML=`<div class="done-ic">✓</div><b>تأكد طلبك</b><p>${p.ar} · ${esc(o.gov)}<br>رقم الطلب <span dir="ltr">#${no}</span> وصل للمحل. راح نتصل بيك على <span dir="ltr">${o.phone}</span> بخصوص السعر والتوصيل.</p>${API?'':'<small>ديمو: بالنسخة الحقيقية هنا الطلب يوصل لبوت التليكرام مالتك.</small>'}<button class="btn" type="button" id="ordAgain">طلب ثاني</button>`;
   $('#ordAgain').onclick=()=>{const id=$('#fPiece').value;f.reset();$('#fPiece').value=id;f.hidden=false;done.hidden=true};
   f.hidden=true;done.hidden=false});
 $('#fPhone2').addEventListener('paste',e=>e.preventDefault());
@@ -685,7 +689,7 @@ let oState={},oLast=null,readyT;
 function oStep(n){oa.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',s.dataset.s==n));oa.querySelectorAll('.dots i').forEach((d,i)=>d.classList.toggle('on',i<Math.min(n,3)));oa.scrollTop=0}
 function oOpen(e){oLast=document.activeElement;const r=e.currentTarget.getBoundingClientRect();
   oa.style.setProperty('--ox',(r.left+r.width/2)+'px');oa.style.setProperty('--oy',(r.top+r.height/2)+'px');
-  oState={};['oHim','oHer','oPh','oMail','oId'].forEach(i=>$('#'+i).value='');idClear();$('#oErr1').textContent='';oStep(1);
+  oState={};['oHim','oHer','oPh','oMail','oIdNo','oId'].forEach(i=>$('#'+i).value='');idClear();$('#oErr1').textContent='';oStep(1);
   oa.classList.remove('ready');oa.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
   requestAnimationFrame(()=>oa.classList.add('open'));
   oa.classList.remove('skip');clearTimeout(readyT);readyT=setTimeout(oReady,still()?0:4700)}
@@ -698,9 +702,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&oa.classList.contai
 oa.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>oStep(b.dataset.back));
 let pkI=-1;
 const ROWS=[['bracelet','أساور','Bracelets'],['ring','خواتم','Rings'],['necklace','قلائد','Necklaces']];
-$('#oPicks').innerHTML=ROWS.map(([t,ar,en])=>{const items=P.map((p,i)=>[p,i]).filter(([p])=>p.type===t);
+let slides=[];
+function buildPicks(){$('#oPicks').innerHTML=ROWS.map(([t,ar,en])=>{const items=P.map((p,i)=>[p,i]).filter(([p])=>p.type===t);
   return `<div class="pk-row"><div class="pk-rh"><b>${ar}</b><span class="latin">${en} · ${items.length}</span></div><div class="car">${items.length?items.map(([p,i])=>`<button type="button" class="slide" data-i="${i}" aria-label="${p.ar}"><img src="${src(p.imgs[0])}" alt="${p.ar}" loading="lazy"><span class="nm">${p.ar}</span></button>`).join(''):`<div class="slide soon"><span class="latin">Coming soon</span>قريباً</div>`}</div></div>`}).join('');
-const slides=[...$('#oPicks').querySelectorAll('button.slide')];
+slides=[...$('#oPicks').querySelectorAll('button.slide')];slides.forEach(s=>s.onclick=()=>pkGo(+s.dataset.i))}
+buildPicks();
 function pkSet(i){if(i===pkI)return;pkI=i;const p=P[i];oState.piece=p.id;$('#oErr2').textContent='';
   slides.forEach(s=>{const on=+s.dataset.i===i;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)});
   $('#pkCount').innerHTML=`${String(i+1).padStart(2,'0')} <small>/ ${String(P.length).padStart(2,'0')}</small>`;
@@ -708,16 +714,16 @@ function pkSet(i){if(i===pkI)return;pkI=i;const p=P[i];oState.piece=p.id;$('#oEr
   info.innerHTML=`<h4>${p.ar}</h4><div class="latin">${p.en}</div><p>${p.desc}</p><div class="plate"><small>CERTIFICATE · على الشهادة</small><b>${esc(oState.him||'')} ♥ ${esc(oState.her||'')}</b></div>`;
   $('#oNext2').textContent=`اخترت هاي ♥`}
 function pkGo(i){const s=slides.find(x=>+x.dataset.i===i);s.scrollIntoView({behavior:still()?'auto':'smooth',inline:'center',block:'nearest'});pkSet(i)}
-slides.forEach(s=>s.onclick=()=>pkGo(+s.dataset.i));
 function pkStart(){pkI=-1;requestAnimationFrame(()=>pkGo(+slides[0].dataset.i))}
 $('#oNext1').onclick=()=>{const him=$('#oHim').value.trim(),her=$('#oHer').value.trim(),ph=normPh($('#oPh').value);
   if(!him||!her){$('#oErr1').textContent='اكتب الاسمين.';return}
   if(!/^07\d{9}$/.test(ph)){$('#oErr1').textContent='اكتب رقم عراقي صحيح يبدي بـ07 (11 رقم).';return}
-  const mail=$('#oMail').value.trim(),hasId=$('#oId').files.length>0;
-  if(!tMode()){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){$('#oErr1').textContent='اكتب إيميل صحيح.';return}
+  const mail=$('#oMail').value.trim(),hasId=$('#oId').files.length>0,idNo=$('#oIdNo').value.trim();
+  if(API||!tMode()){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){$('#oErr1').textContent='اكتب إيميل صحيح.';return}
+    if(API&&idNo.replace(/[^0-9A-Za-z]/g,'').length<6){$('#oErr1').textContent='اكتب رقم هويتك بشكل صحيح.';return}
     if(!hasId){$('#oErr1').textContent='ارفع صورة هويتك.';return}
-    const prev=loadO().find(x=>x.ph===ph);if(prev){$('#oErr1').innerHTML='';oDone(prev,true);return}}
-  $('#oErr1').textContent='';Object.assign(oState,{him,her,ph,mail});oStep(2);pkStart()};
+    const prev=!API&&loadO().find(x=>x.ph===ph);if(prev){$('#oErr1').innerHTML='';oDone(prev,true);return}}
+  $('#oErr1').textContent='';Object.assign(oState,{him,her,ph,mail,idNo});oStep(2);pkStart()};
 $('#oNext2').onclick=()=>{if(!oState.piece){$('#oErr2').textContent='اختار قطعة وحدة.';return}
   const p=P.find(x=>x.id===oState.piece);$('#oReview').innerHTML=`<b>${esc(oState.him)} ♥ ${esc(oState.her)}</b>${p.ar}<br><span dir="ltr">${oState.ph}</span>`;oStep(3)};
 // ID photo: preview only, never stored in the browser (real version uploads it to a secure server)
@@ -730,18 +736,29 @@ $('#oId').addEventListener('change',e=>{const f=e.target.files[0];idClear();if(!
 const TK='sc_test_mode';
 const tMode=()=>$('#oTest').checked;
 function tSync(){const on=tMode();$('#oReset').hidden=!on;$('#oIdOpt').textContent=on?'(اختياري بوضع التجربة)':'';try{localStorage.setItem(TK,on?'1':'')}catch{}}
-try{$('#oTest').checked=localStorage.getItem(TK)==='1'}catch{}tSync();
+try{$('#oTest').checked=!API&&localStorage.getItem(TK)==='1'}catch{}tSync();
+if(API){document.querySelector('.tmode').hidden=true;$('#oIdNoOpt').textContent=''}else $('#oIdNoOpt').textContent='(بالنسخة الحقيقية إجباري)';
 $('#oTest').addEventListener('change',()=>{tSync();$('#oTmsg').textContent=tMode()?'وضع التجربة شغّال.':'رجع الوضع الطبيعي.'});
 $('#oReset').onclick=()=>{saveO([]);$('#oTmsg').textContent='انمسحت كل طلبات الديمو. ✓'};
-$('#oLock').onclick=()=>{const a=loadO();if(!tMode()&&a.find(x=>x.ph===oState.ph)){oDone(a.find(x=>x.ph===oState.ph),true);return}
+$('#oLock').onclick=async()=>{
+  if(API){const b=$('#oLock');b.disabled=true;b.textContent='جاري القفل…';const fd=new FormData();
+    Object.entries({him:oState.him,her:oState.her,phone:oState.ph,email:oState.mail,id_number:oState.idNo,piece:oState.piece}).forEach(([k,v])=>fd.append(k,v||''));
+    fd.append('photo',$('#oId').files[0]);const r=await apiPost('/once',fd);b.disabled=false;b.textContent='اقفل الطلب للأبد';
+    if(!r.ok){$('#oReview').insertAdjacentHTML('beforeend',`<div class="err" style="margin-top:10px">${esc(r.message)}</div>`);return}
+    const rec={...oState,no:r.cert_no,at:new Date().toISOString().slice(0,10)};
+    if(r.status==='used')oDone({no:r.cert_no,piece:oState.piece,him:'',her:'',at:''},true);else oDone(rec,false);return}
+  const a=loadO();if(!tMode()&&a.find(x=>x.ph===oState.ph)){oDone(a.find(x=>x.ph===oState.ph),true);return}
   const rec={...oState,no:a.length+1,at:new Date().toISOString().slice(0,10)};a.push(rec);saveO(a);oDone(rec,false)};
 function oDone(r,again){const p=P.find(x=>x.id===r.piece)||P[0];const no=String(parseInt(r.no,10)||0).padStart(4,'0');
-  $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة. هذا طلبك القديم:</div>`:'')+
+  $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة لكل رقم ولكل هوية. هذي شهادة طلبك القديم:</div>`:'')+
   `<div class="cert seal"><span class="latin">Once in a lifetime · Silver Charm</span><div class="no">N° ${no}</div>
-   <div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${esc(r.at)}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}"></div>
+   ${r.him?`<div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${esc(r.at)}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}">`:''}</div>
    <div class="row" style="justify-content:center">${again?'':`<button class="btn w" type="button" id="oCont">كمّل الطلب</button>`}<button class="btn" type="button" id="oBack">رجوع للموقع</button></div>
-   <p class="sub" style="text-align:center;margin-top:18px;font-size:13px">ديمو: القفل محفوظ بهذا المتصفح بس. بالنسخة الحقيقية ينحفظ بقاعدة بيانات.</p>`;
+   ${API?'':'<p class="sub" style="text-align:center;margin-top:18px;font-size:13px">ديمو: القفل محفوظ بهذا المتصفح بس. بالنسخة الحقيقية ينحفظ بقاعدة بيانات.</p>'}`;
   if($('#oCont'))$('#oCont').onclick=()=>{oClose();setTimeout(()=>orderPiece(p.id),still()?0:500)};
   $('#oBack').onclick=oClose;
   oStep(4)}
+// live: catalogue comes from the database (embedded list above is the offline/demo fallback)
+if(API)fetch(API+'/products').then(r=>r.ok?r.json():null).then(list=>{if(!Array.isArray(list)||!list.length)return;
+  P.splice(0,P.length,...list.map(x=>({id:x.id,type:x.type,ar:x.ar,en:x.en,imgs:x.imgs,desc:x.desc,list:x.list})));renderGrid(gF,0);buildPicks()}).catch(()=>{});
 </script>
