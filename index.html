@@ -353,8 +353,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <a class="mono" href="#top" aria-label="Silver Charm">SC</a>
     <nav aria-label="الأقسام">
       <a href="#collection">المجموعة</a>
-      <a href="#loupe">التفاصيل</a>
       <a href="#once">مرة بالعمر</a>
+      <a href="#loupe">التفاصيل</a>
       <a href="#order">اطلب</a>
     </nav>
   </div>
@@ -394,6 +394,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     </div>
   </section>
 
+  <section class="once" id="once">
+    <div class="big" aria-hidden="true">Once</div>
+    <div class="wrap">
+      <div class="label" style="color:#e2c9cc;position:relative">Once in a lifetime</div>
+      <h2>مرة وحدة بالعمر</h2>
+      <p>هدية لحبيبتك تنطلب مرة وحدة بحياتك. بعدها هذا الطلب ما يتكرر، لا إلها ولا لغيرها.</p>
+      <div class="steps">
+        <div><b>01</b>تسجّل اسمك واسمها</div>
+        <div><b>02</b>تختار أي قطعة تحبها</div>
+        <div><b>03</b>ينقفل الطلب باسمك للأبد</div>
+      </div>
+      <button class="btn once-go" id="onceGo" type="button">جرّب الديمو</button>
+    </div>
+  </section>
+
   <section class="loupe-sec" id="loupe">
     <div class="wrap">
       <div>
@@ -403,22 +418,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <div class="hint">خاتم الكلستر العتيق · Argentum 925</div>
       </div>
       <div class="zoom"><img src="img/cluster.jpg" alt="خاتم الكلستر العتيق"></div>
-    </div>
-  </section>
-
-  <!-- placeholder: once-in-a-lifetime gift feature (to be wired later) -->
-  <section class="once" id="once">
-    <div class="big" aria-hidden="true">Once</div>
-    <div class="wrap">
-      <div class="label" style="color:#e2c9cc;position:relative">Once in a lifetime</div>
-      <h2>مرة وحدة بالعمر</h2>
-      <p>هدية لحبيبتك تنطلب مرة وحدة بحياتك. بعدها هذا الطلب ما يتكرر، لا إلها ولا لغيرها.</p>
-      <div class="steps">
-        <div><b>01</b>تسجّل اسمك واسمها</div>
-        <div><b>02</b>تختار القطعة وتنكتب باسمكم</div>
-        <div><b>03</b>ينقفل الطلب باسمك للأبد</div>
-      </div>
-      <button class="btn once-go" id="onceGo" type="button">جرّب الديمو</button>
     </div>
   </section>
 
@@ -547,6 +546,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <script>
 const WA='9647724447343';
 const P=[
+ {id:'crystal',type:'bracelet',ar:'سوار الكريستال الملوّن',en:'Crystal Charm Bracelet',imgs:['crystal_white','crystal_leaf'],desc:'حلقات فضة دائرية تتدلى منها كريستالات خضرة وعسلية، وبيناتها حلقة فضية ونجمة بنية.',list:['قفل كلّاب وسلسلة تطويل','الوزن 8.78 غرام','فضة عيار 925 مختومة']},
+ {id:'evileye',type:'bracelet',ar:'سوار العين',en:'Evil Eye Gemstone Bracelet',imgs:['evileye_white','evileye_hand'],desc:'سلسلة ناعمة بيها خمس أحجار: أصفر، عينين زرقاء مرصّعة، بنفسجي، وأخضر.',list:['قفل دائري وسلسلة تطويل بنجمة صغيرة','الوزن 3.50 غرام','فضة عيار 925 مختومة']},
+ {id:'crescent',type:'bracelet',ar:'سوار الأهلّة',en:'Crescent Wave Bracelet',imgs:['crescent_white','crescent_black'],desc:'حلقات فضة ملساء على شكل هلال، متداخلة ورا بعض مثل الموج.',list:['قفل كلّاب','الوزن 14.92 غرام','فضة عيار 925 مختومة']},
  {id:'pave',type:'bracelet',ar:'سوار الحبات المرصّعة',en:'Pavé Link Bracelet',imgs:['pave','hero_void'],desc:'حلقات بشكل حبة الرز مرصّعة بأحجار صغيرة لامعة، وبينها حلقات بيضاوية ملساء.',list:['قفل كلّاب وسلسلة تطويل','فضة عيار 925 مختومة']},
  {id:'cuff',type:'bracelet',ar:'إسوارة العقدة',en:'Infinity Knot Cuff',imgs:['cuff_white','cuff_navy'],desc:'سلكين فضة مجدولين بموجة متواصلة، وبالنص عقدة لا نهائية.',list:['مفتوحة من الطرفين','بدون أحجار، فضة لامعة','فضة عيار 925 مختومة']},
  {id:'emerald',type:'bracelet',ar:'سوار القصّة المستطيلة',en:'Emerald Cut Bracelet',imgs:['emerald_white','emerald_red'],desc:'سلسلة ناعمة يتوسطها حجر شفاف بقصّة مستطيلة.',list:['تصميم بسيط يناسب اللبس اليومي','فضة عيار 925 مختومة']},
@@ -578,7 +580,7 @@ renderGrid('all');
 const OFFERS=[
  {tag:'عرض الأسبوع',title:'سوار القصّة المستطيلة',text:'اكتب هنا تفاصيل العرض: خصم، هدية، أو سعر خاص.',cta:'اطلبها',img:'emerald_red',piece:'emerald'},
  {tag:'هدية',title:'تغليف هدية مجاني',text:'اكتب هنا شروط العرض ومدته.',cta:'شوف المجموعة',img:'cuff_navy',href:'#collection'},
- {tag:'مرة وحدة بالعمر',title:'قطعة باسمكم للأبد',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك وهويتك','تنحفر أسماءكم على القطعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
+ {tag:'مرة وحدة بالعمر',title:'هدية ما تتكرر',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك وهويتك','تختار أي قطعة من المجموعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
 ];
 const pT=$('#promoTrack'),pD=$('#promoDots');let pI=0,pTimer=null;
 pT.innerHTML=OFFERS.map((o,i)=>`<article class="promo-s" aria-roledescription="slide" aria-label="${i+1} من ${OFFERS.length}">
@@ -687,7 +689,7 @@ function pkSet(i){if(i===pkI)return;pkI=i;const p=P[i];oState.piece=p.id;$('#oEr
   slides.forEach(s=>{const on=+s.dataset.i===i;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)});
   $('#pkCount').innerHTML=`${String(i+1).padStart(2,'0')} <small>/ ${String(P.length).padStart(2,'0')}</small>`;
   const info=$('#pkInfo');info.classList.remove('swap');void info.offsetWidth;info.classList.add('swap');
-  info.innerHTML=`<h4>${p.ar}</h4><div class="latin">${p.en}</div><p>${p.desc}</p><div class="plate"><small>ENGRAVED · محفور</small><b>${esc(oState.him||'')} ♥ ${esc(oState.her||'')}</b></div>`;
+  info.innerHTML=`<h4>${p.ar}</h4><div class="latin">${p.en}</div><p>${p.desc}</p><div class="plate"><small>CERTIFICATE · على الشهادة</small><b>${esc(oState.him||'')} ♥ ${esc(oState.her||'')}</b></div>`;
   $('#oNext2').textContent=`اخترت هاي ♥`}
 function pkGo(i){const s=slides.find(x=>+x.dataset.i===i);s.scrollIntoView({behavior:still()?'auto':'smooth',inline:'center',block:'nearest'});pkSet(i)}
 slides.forEach(s=>s.onclick=()=>pkGo(+s.dataset.i));
