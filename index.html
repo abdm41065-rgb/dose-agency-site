@@ -1,6 +1,8 @@
 <!doctype html>
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-g5jn72xcfzfciWHV2/0W4jpJ3Cw7KbtSmU1qtiwRM0E='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Silver Charm</title>
 <script>document.documentElement.lang='ar';document.documentElement.dir='rtl'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -733,12 +735,13 @@ $('#oTest').addEventListener('change',()=>{tSync();$('#oTmsg').textContent=tMode
 $('#oReset').onclick=()=>{saveO([]);$('#oTmsg').textContent='انمسحت كل طلبات الديمو. ✓'};
 $('#oLock').onclick=()=>{const a=loadO();if(!tMode()&&a.find(x=>x.ph===oState.ph)){oDone(a.find(x=>x.ph===oState.ph),true);return}
   const rec={...oState,no:a.length+1,at:new Date().toISOString().slice(0,10)};a.push(rec);saveO(a);oDone(rec,false)};
-function oDone(r,again){const p=P.find(x=>x.id===r.piece)||P[0];const no=String(r.no).padStart(4,'0');
-  const msg=`هلا Silver Charm، طلب «مرة وحدة بالعمر» رقم ${no}: ${r.him} ♥ ${r.her}، القطعة: ${p.ar}`;
+function oDone(r,again){const p=P.find(x=>x.id===r.piece)||P[0];const no=String(parseInt(r.no,10)||0).padStart(4,'0');
   $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة. هذا طلبك القديم:</div>`:'')+
   `<div class="cert seal"><span class="latin">Once in a lifetime · Silver Charm</span><div class="no">N° ${no}</div>
-   <div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${r.at}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}"></div>
-   <div class="row" style="justify-content:center">${again?'':`<button class="btn w" type="button" onclick="oClose();setTimeout(()=>orderPiece('${p.id}'),still()?0:500)">كمّل الطلب</button>`}<button class="btn" type="button" onclick="oClose()">رجوع للموقع</button></div>
+   <div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${esc(r.at)}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}"></div>
+   <div class="row" style="justify-content:center">${again?'':`<button class="btn w" type="button" id="oCont">كمّل الطلب</button>`}<button class="btn" type="button" id="oBack">رجوع للموقع</button></div>
    <p class="sub" style="text-align:center;margin-top:18px;font-size:13px">ديمو: القفل محفوظ بهذا المتصفح بس. بالنسخة الحقيقية ينحفظ بقاعدة بيانات.</p>`;
+  if($('#oCont'))$('#oCont').onclick=()=>{oClose();setTimeout(()=>orderPiece(p.id),still()?0:500)};
+  $('#oBack').onclick=oClose;
   oStep(4)}
 </script>
