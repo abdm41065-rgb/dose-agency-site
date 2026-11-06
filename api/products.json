@@ -1,0 +1,141 @@
+[
+ {
+  "slug": "crystal",
+  "type": "bracelet",
+  "name_ar": "سوار الكريستال الملوّن",
+  "name_en": "Crystal Charm Bracelet",
+  "description": "حلقات فضة دائرية تتدلى منها كريستالات خضرة وعسلية، وبيناتها حلقة فضية ونجمة بنية.",
+  "specs": [
+   "قفل كلّاب وسلسلة تطويل",
+   "الوزن 8.78 غرام",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "crystal_white",
+   "crystal_leaf"
+  ],
+  "sort": 0,
+  "weight_g": "8.78"
+ },
+ {
+  "slug": "evileye",
+  "type": "bracelet",
+  "name_ar": "سوار العين",
+  "name_en": "Evil Eye Gemstone Bracelet",
+  "description": "سلسلة ناعمة بيها خمس أحجار: أصفر، عينين زرقاء مرصّعة، بنفسجي، وأخضر.",
+  "specs": [
+   "قفل دائري وسلسلة تطويل بنجمة صغيرة",
+   "الوزن 3.50 غرام",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "evileye_white",
+   "evileye_hand"
+  ],
+  "sort": 1,
+  "weight_g": "3.50"
+ },
+ {
+  "slug": "crescent",
+  "type": "bracelet",
+  "name_ar": "سوار الأهلّة",
+  "name_en": "Crescent Wave Bracelet",
+  "description": "حلقات فضة ملساء على شكل هلال، متداخلة ورا بعض مثل الموج.",
+  "specs": [
+   "قفل كلّاب",
+   "الوزن 14.92 غرام",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "crescent_white",
+   "crescent_black"
+  ],
+  "sort": 2,
+  "weight_g": "14.92"
+ },
+ {
+  "slug": "pave",
+  "type": "bracelet",
+  "name_ar": "سوار الحبات المرصّعة",
+  "name_en": "Pavé Link Bracelet",
+  "description": "حلقات بشكل حبة الرز مرصّعة بأحجار صغيرة لامعة، وبينها حلقات بيضاوية ملساء.",
+  "specs": [
+   "قفل كلّاب وسلسلة تطويل",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "pave",
+   "hero_void"
+  ],
+  "sort": 3,
+  "weight_g": null
+ },
+ {
+  "slug": "cuff",
+  "type": "bracelet",
+  "name_ar": "إسوارة العقدة",
+  "name_en": "Infinity Knot Cuff",
+  "description": "سلكين فضة مجدولين بموجة متواصلة، وبالنص عقدة لا نهائية.",
+  "specs": [
+   "مفتوحة من الطرفين",
+   "بدون أحجار، فضة لامعة",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "cuff_white",
+   "cuff_navy"
+  ],
+  "sort": 4,
+  "weight_g": null
+ },
+ {
+  "slug": "emerald",
+  "type": "bracelet",
+  "name_ar": "سوار القصّة المستطيلة",
+  "name_en": "Emerald Cut Bracelet",
+  "description": "سلسلة ناعمة يتوسطها حجر شفاف بقصّة مستطيلة.",
+  "specs": [
+   "تصميم بسيط يناسب اللبس اليومي",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "emerald_white",
+   "emerald_red"
+  ],
+  "sort": 5,
+  "weight_g": null
+ },
+ {
+  "slug": "aqua",
+  "type": "bracelet",
+  "name_ar": "سوار الأكوا",
+  "name_en": "Aqua Halo Bracelet",
+  "description": "ثلاث أحجار مربعة بلون الأكوا، كل واحد حواليه إطار من أحجار صغيرة.",
+  "specs": [
+   "سلسلة رفيعة وقفل",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "aqua_white",
+   "aqua_plate"
+  ],
+  "sort": 6,
+  "weight_g": null
+ },
+ {
+  "slug": "cluster",
+  "type": "ring",
+  "name_ar": "خاتم الكلستر العتيق",
+  "name_en": "Vintage Cluster Ring",
+  "description": "راس مثل وردة مطوّلة، حوافها منقطة، وبالنص عنقود أحجار حمرا بمخالب فضة. الجوانب مشبكة بشكل X.",
+  "specs": [
+   "فضة معتّقة",
+   "فضة عيار 925 مختومة"
+  ],
+  "images": [
+   "cluster"
+  ],
+  "sort": 7,
+  "weight_g": null
+ }
+]
