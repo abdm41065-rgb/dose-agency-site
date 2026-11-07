@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZgDmI16qgvdlMnPZkb97PFH4BxMUlHerqjfWEq56eOY=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-Qu2ZPf+Ap19FcxAm5NLVglHvxCMAEdoKaqvuKqY5ABI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZgDmI16qgvdlMnPZkb97PFH4BxMUlHerqjfWEq56eOY=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-4FmyXXsbqmW2s8DzYDduChR98u0Pwa9Vt7eMCUbSh7U='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>window.SC_API='/api'</script>
 <title>Silver Charm</title>
@@ -519,10 +519,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <label for="oHer">اسمها</label><input id="oHer" autocomplete="off" maxlength="24">
       <label for="oPh">رقم موبايلك</label><input id="oPh" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20">
       <label for="oMail">إيميلك</label><input id="oMail" type="email" dir="ltr" placeholder="name@email.com" autocomplete="email" maxlength="80">
-      <label for="oIdNo">رقم هويتك <span class="opt" id="oIdNoOpt"></span></label><input id="oIdNo" dir="ltr" autocomplete="off" maxlength="30" placeholder="رقم البطاقة الوطنية">
-      <label for="oId">صورة هويتك <span class="opt" id="oIdOpt"></span></label>
-      <label class="idbox" for="oId"><input id="oId" type="file" accept="image/*"><img id="oIdPrev" alt="" hidden><span id="oIdTxt">اضغط وصوّر الهوية أو اختار صورة</span></label>
-      <p class="idnote">الهوية حتى نتأكد إن كل شخص يطلب مرة وحدة بس. ما تنعرض لأي أحد.</p>
+      <label for="oId">صورة وجهك (سيلفي) <span class="opt" id="oIdOpt"></span></label>
+      <label class="idbox" for="oId"><input id="oId" type="file" accept="image/*" capture="user"><img id="oIdPrev" alt="" hidden><span id="oIdTxt">اضغط وصوّر وجهك أو اختار صورة</span></label>
+      <p class="idnote">الصورة حتى نتأكد إن كل شخص يطلب مرة وحدة بس. ما تنعرض لأي أحد، وتنمسح بعد 30 يوم.</p>
       <div class="err" id="oErr1" aria-live="polite"></div>
       <div class="row"><button class="btn w" id="oNext1" type="button">التالي</button></div>
     </div>
@@ -545,7 +544,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <div class="step" data-s="4" id="oDone"></div>
 
     <div class="tmode">
-      <label class="sw"><input type="checkbox" id="oTest"> <span>وضع التجربة (للمالك): الهوية والإيميل مو إجبارية، ونفس الرقم يكدر يطلب أكثر من مرة</span></label>
+      <label class="sw"><input type="checkbox" id="oTest"> <span>وضع التجربة (للمالك): الصورة والإيميل مو إجبارية، ونفس الرقم يكدر يطلب أكثر من مرة</span></label>
       <button type="button" class="btn" id="oReset" hidden>صفّر كل الطلبات</button>
       <div class="tmsg" id="oTmsg" aria-live="polite"></div>
     </div>
@@ -598,7 +597,7 @@ renderGrid('all');
 const OFFERS=[
  {tag:'عرض الأسبوع',title:'سوار القصّة المستطيلة',text:'اكتب هنا تفاصيل العرض: خصم، هدية، أو سعر خاص.',cta:'اطلبها',img:'emerald_red',piece:'emerald'},
  {tag:'هدية',title:'تغليف هدية مجاني',text:'اكتب هنا شروط العرض ومدته.',cta:'شوف المجموعة',img:'cuff_navy',href:'#collection'},
- {tag:'مرة وحدة بالعمر',title:'هدية ما تتكرر',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك وهويتك','تختار أي قطعة من المجموعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
+ {tag:'مرة وحدة بالعمر',title:'هدية ما تتكرر',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك ورقمك وصورتك','تختار أي قطعة من المجموعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
 ];
 const pT=$('#promoTrack'),pD=$('#promoDots');let pI=0,pTimer=null;
 pT.innerHTML=OFFERS.map((o,i)=>`<article class="promo-s" aria-roledescription="slide" aria-label="${i+1} من ${OFFERS.length}">
@@ -689,7 +688,7 @@ let oState={},oLast=null,readyT;
 function oStep(n){oa.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',s.dataset.s==n));oa.querySelectorAll('.dots i').forEach((d,i)=>d.classList.toggle('on',i<Math.min(n,3)));oa.scrollTop=0}
 function oOpen(e){oLast=document.activeElement;const r=e.currentTarget.getBoundingClientRect();
   oa.style.setProperty('--ox',(r.left+r.width/2)+'px');oa.style.setProperty('--oy',(r.top+r.height/2)+'px');
-  oState={};['oHim','oHer','oPh','oMail','oIdNo','oId'].forEach(i=>$('#'+i).value='');idClear();$('#oErr1').textContent='';oStep(1);
+  oState={};['oHim','oHer','oPh','oMail','oId'].forEach(i=>$('#'+i).value='');idClear();$('#oErr1').textContent='';oStep(1);
   oa.classList.remove('ready');oa.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
   requestAnimationFrame(()=>oa.classList.add('open'));
   oa.classList.remove('skip');clearTimeout(readyT);readyT=setTimeout(oReady,still()?0:4700)}
@@ -718,17 +717,16 @@ function pkStart(){pkI=-1;requestAnimationFrame(()=>pkGo(+slides[0].dataset.i))}
 $('#oNext1').onclick=()=>{const him=$('#oHim').value.trim(),her=$('#oHer').value.trim(),ph=normPh($('#oPh').value);
   if(!him||!her){$('#oErr1').textContent='اكتب الاسمين.';return}
   if(!/^07\d{9}$/.test(ph)){$('#oErr1').textContent='اكتب رقم عراقي صحيح يبدي بـ07 (11 رقم).';return}
-  const mail=$('#oMail').value.trim(),hasId=$('#oId').files.length>0,idNo=$('#oIdNo').value.trim();
+  const mail=$('#oMail').value.trim(),hasId=$('#oId').files.length>0;
   if(API||!tMode()){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){$('#oErr1').textContent='اكتب إيميل صحيح.';return}
-    if(API&&idNo.replace(/[^0-9A-Za-z]/g,'').length<6){$('#oErr1').textContent='اكتب رقم هويتك بشكل صحيح.';return}
-    if(!hasId){$('#oErr1').textContent='ارفع صورة هويتك.';return}
+    if(!hasId){$('#oErr1').textContent='صوّر وجهك أو ارفع صورة.';return}
     const prev=!API&&loadO().find(x=>x.ph===ph);if(prev){$('#oErr1').innerHTML='';oDone(prev,true);return}}
-  $('#oErr1').textContent='';Object.assign(oState,{him,her,ph,mail,idNo});oStep(2);pkStart()};
+  $('#oErr1').textContent='';Object.assign(oState,{him,her,ph,mail});oStep(2);pkStart()};
 $('#oNext2').onclick=()=>{if(!oState.piece){$('#oErr2').textContent='اختار قطعة وحدة.';return}
   const p=P.find(x=>x.id===oState.piece);$('#oReview').innerHTML=`<b>${esc(oState.him)} ♥ ${esc(oState.her)}</b>${p.ar}<br><span dir="ltr">${oState.ph}</span>`;oStep(3)};
 // ID photo: preview only, never stored in the browser (real version uploads it to a secure server)
 let idUrl=null;
-function idClear(){if(idUrl)URL.revokeObjectURL(idUrl);idUrl=null;$('#oIdPrev').hidden=true;$('#oIdPrev').removeAttribute('src');$('#oIdTxt').textContent='اضغط وصوّر الهوية أو اختار صورة'}
+function idClear(){if(idUrl)URL.revokeObjectURL(idUrl);idUrl=null;$('#oIdPrev').hidden=true;$('#oIdPrev').removeAttribute('src');$('#oIdTxt').textContent='اضغط وصوّر وجهك أو اختار صورة'}
 $('#oId').addEventListener('change',e=>{const f=e.target.files[0];idClear();if(!f)return;
   if(!f.type.startsWith('image/')){e.target.value='';$('#oErr1').textContent='لازم تكون صورة.';return}
   $('#oErr1').textContent='';idUrl=URL.createObjectURL(f);$('#oIdPrev').src=idUrl;$('#oIdPrev').hidden=false;$('#oIdTxt').textContent='✓ انرفعت · اضغط حتى تبدّلها'});
@@ -737,12 +735,12 @@ const TK='sc_test_mode';
 const tMode=()=>$('#oTest').checked;
 function tSync(){const on=tMode();$('#oReset').hidden=!on;$('#oIdOpt').textContent=on?'(اختياري بوضع التجربة)':'';try{localStorage.setItem(TK,on?'1':'')}catch{}}
 try{$('#oTest').checked=!API&&localStorage.getItem(TK)==='1'}catch{}tSync();
-if(API){document.querySelector('.tmode').hidden=true;$('#oIdNoOpt').textContent=''}else $('#oIdNoOpt').textContent='(بالنسخة الحقيقية إجباري)';
+if(API)document.querySelector('.tmode').hidden=true;
 $('#oTest').addEventListener('change',()=>{tSync();$('#oTmsg').textContent=tMode()?'وضع التجربة شغّال.':'رجع الوضع الطبيعي.'});
 $('#oReset').onclick=()=>{saveO([]);$('#oTmsg').textContent='انمسحت كل طلبات الديمو. ✓'};
 $('#oLock').onclick=async()=>{
   if(API){const b=$('#oLock');b.disabled=true;b.textContent='جاري القفل…';const fd=new FormData();
-    Object.entries({him:oState.him,her:oState.her,phone:oState.ph,email:oState.mail,id_number:oState.idNo,piece:oState.piece}).forEach(([k,v])=>fd.append(k,v||''));
+    Object.entries({him:oState.him,her:oState.her,phone:oState.ph,email:oState.mail,piece:oState.piece}).forEach(([k,v])=>fd.append(k,v||''));
     fd.append('photo',$('#oId').files[0]);const r=await apiPost('/once',fd);b.disabled=false;b.textContent='اقفل الطلب للأبد';
     if(!r.ok){$('#oReview').insertAdjacentHTML('beforeend',`<div class="err" style="margin-top:10px">${esc(r.message)}</div>`);return}
     const rec={...oState,no:r.cert_no,at:new Date().toISOString().slice(0,10)};
@@ -750,7 +748,7 @@ $('#oLock').onclick=async()=>{
   const a=loadO();if(!tMode()&&a.find(x=>x.ph===oState.ph)){oDone(a.find(x=>x.ph===oState.ph),true);return}
   const rec={...oState,no:a.length+1,at:new Date().toISOString().slice(0,10)};a.push(rec);saveO(a);oDone(rec,false)};
 function oDone(r,again){const p=P.find(x=>x.id===r.piece)||P[0];const no=String(parseInt(r.no,10)||0).padStart(4,'0');
-  $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة لكل رقم ولكل هوية. هذي شهادة طلبك القديم:</div>`:'')+
+  $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة لكل رقم. هذي شهادة طلبك القديم:</div>`:'')+
   `<div class="cert seal"><span class="latin">Once in a lifetime · Silver Charm</span><div class="no">N° ${no}</div>
    ${r.him?`<div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${esc(r.at)}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}">`:''}</div>
    <div class="row" style="justify-content:center">${again?'':`<button class="btn w" type="button" id="oCont">كمّل الطلب</button>`}<button class="btn" type="button" id="oBack">رجوع للموقع</button></div>

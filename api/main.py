@@ -20,7 +20,7 @@ pool = AsyncConnectionPool(DB, min_size=1, max_size=5, open=False, kwargs={'auto
 
 # user-facing messages for DB error codes (raised by api.* functions)
 ERR = {'BAD_PHONE': 'اكتب رقم عراقي صحيح يبدي بـ07.', 'BAD_GOV': 'اختار المحافظة.', 'BAD_PRODUCT': 'هاي القطعة مو متوفرة حالياً.',
-       'BAD_ID': 'اكتب رقم هويتك بشكل صحيح.', 'NO_PHOTO': 'ارفع صورة هويتك.', 'RATE_LIMIT': 'طلبات كثيرة، جرّب بعد شوية.'}
+       'NO_PHOTO': 'صوّر وجهك أو ارفع صورة.', 'RATE_LIMIT': 'طلبات كثيرة، جرّب بعد شوية.'}
 
 def client_ip(req: Request) -> str:
     for h in ('do-connecting-ip', 'cf-connecting-ip'):
@@ -66,7 +66,7 @@ def fmt(kind, p):
         return (f"🛍 طلب جديد #{p['order_no']}\nالقطعة: {p['product']}\nالاسم: {p['name']}\nالرقم: {p['phone']}\n"
                 f"المحافظة: {p['gov']}\nالعنوان: {p['address']}" + (f"\nملاحظة: {p['note']}" if p.get('note') else ''))
     return (f"♥ مرة وحدة بالعمر · شهادة N° {int(p['cert_no']):04d}\n{p['him']} ♥ {p['her']}\nالقطعة: {p['product']}\n"
-            f"الرقم: {p['phone']}\nصورة الهوية مرفقة للتحقق، وتنمسح تلقائياً بعد 30 يوم.")
+            f"الرقم: {p['phone']}\nصورة الوجه مرفقة للتحقق، وتنمسح تلقائياً بعد 30 يوم.")
 
 async def tg_worker():
     while True:
@@ -78,7 +78,7 @@ async def tg_worker():
                     if kind == 'once':
                         ph = await (await c.execute('SELECT mime, data FROM api.id_photo(%s)', (payload['cert_no'],))).fetchone()
                         ok = await asyncio.to_thread(tg_call, 'sendPhoto', {'chat_id': TG_CHAT, 'caption': text},
-                                                     {'photo': ('id.jpg', bytes(ph[1]), ph[0])}) if ph else await asyncio.to_thread(tg_call, 'sendMessage', {'chat_id': TG_CHAT, 'text': text})
+                                                     {'photo': ('face.jpg', bytes(ph[1]), ph[0])}) if ph else await asyncio.to_thread(tg_call, 'sendMessage', {'chat_id': TG_CHAT, 'text': text})
                     else:
                         ok = await asyncio.to_thread(tg_call, 'sendMessage', {'chat_id': TG_CHAT, 'text': text})
                     if ok: await c.execute('SELECT api.outbox_done(%s)', (mid,))
@@ -148,7 +148,7 @@ async def order(request: Request):
 
 @app.post('/api/once')
 async def once(request: Request, him: str = Form(..., max_length=24), her: str = Form(..., max_length=24), phone: str = Form(..., max_length=20),
-               email: str = Form('', max_length=80), id_number: str = Form(..., max_length=30), piece: str = Form(..., max_length=40),
+               email: str = Form('', max_length=80), piece: str = Form(..., max_length=40),
                photo: UploadFile = File(...)):
     data = await photo.read(MAX_PHOTO + 1)
     if len(data) > MAX_PHOTO: return JSONResponse({'ok': False, 'error': 'TOO_LARGE', 'message': 'الصورة كبيرة، اختار صورة أصغر.'}, 413)
@@ -156,8 +156,8 @@ async def once(request: Request, him: str = Form(..., max_length=24), her: str =
     if not mime: return JSONResponse({'ok': False, 'error': 'BAD_PHOTO', 'message': 'لازم تكون صورة (JPG أو PNG).'}, 400)
     try:
         async with pool.connection() as c:
-            r = (await (await c.execute('SELECT api.place_once(%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-                 (him, her, phone, email, id_number, data, mime, piece, client_ip(request)))).fetchone())[0]
+            r = (await (await c.execute('SELECT api.place_once(%s,%s,%s,%s,%s,%s,%s,%s)',
+                 (him, her, phone, email, data, mime, piece, client_ip(request)))).fetchone())[0]
         return {'ok': True, **r}
     except psycopg.Error as e:
         return db_error(e)

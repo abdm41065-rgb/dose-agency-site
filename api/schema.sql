@@ -85,16 +85,15 @@ CREATE TABLE app.orders (
 CREATE INDEX orders_status_idx ON app.orders(status, created_at DESC);
 
 -- ───────────────────────── once in a lifetime ─────────────────────────
--- The lifetime lock lives HERE, not in the browser: one row per phone and one per national ID, forever.
--- No engraving: names are printed on the certificate only. The ID photo itself sits in private object
--- storage (key only stored here) and is purged after verification; only HMACs of identifiers remain.
+-- The lifetime lock lives HERE, not in the browser: one row per phone number, forever (keyed hash).
+-- No engraving: names are printed on the certificate only. A face photo (selfie) is kept only for the
+-- owner's verification and purged after 30 days.
 CREATE SEQUENCE app.once_cert_seq START 1;
 CREATE TABLE app.once_orders (
   id             bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   cert_no        integer NOT NULL UNIQUE DEFAULT nextval('app.once_cert_seq'),
   customer_id    bigint  NOT NULL UNIQUE REFERENCES app.customers(id) ON DELETE RESTRICT,
   phone_hash     bytea   NOT NULL UNIQUE,
-  id_number_hash bytea   NOT NULL UNIQUE,
   him_name       text    NOT NULL CHECK (length(btrim(him_name)) BETWEEN 2 AND 24),
   her_name       text    NOT NULL CHECK (length(btrim(her_name)) BETWEEN 2 AND 24),
   product_id     bigint  NOT NULL REFERENCES app.products(id) ON DELETE RESTRICT,
@@ -104,7 +103,7 @@ CREATE TABLE app.once_orders (
   created_at     timestamptz NOT NULL DEFAULT now(),
   updated_at     timestamptz NOT NULL DEFAULT now()
 );
--- ID photo kept only until verification (purged after 30 days); separate table so it never appears in audit/outbox rows
+-- face photo kept only until verification (purged after 30 days); separate table so it never appears in audit/outbox rows
 CREATE TABLE app.id_photos (
   once_id    bigint PRIMARY KEY REFERENCES app.once_orders(id) ON DELETE CASCADE,
   mime       text   NOT NULL CHECK (mime IN ('image/jpeg','image/png','image/webp','image/heic')),
@@ -261,29 +260,27 @@ BEGIN
 END $$;
 
 -- returns {"status":"ok","cert_no":n} or {"status":"used","cert_no":old}. "used" is a normal return (not an error)
--- so the rate-limit hit is committed: nobody can probe phone/ID numbers without being throttled.
-CREATE FUNCTION api.place_once(p_him text,p_her text,p_phone text,p_email text,p_id_number text,p_photo bytea,p_photo_mime text,p_product text,p_ip inet)
+-- so the rate-limit hit is committed: nobody can probe phone numbers without being throttled.
+CREATE FUNCTION api.place_once(p_him text,p_her text,p_phone text,p_email text,p_photo bytea,p_photo_mime text,p_product text,p_ip inet)
 RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path = pg_catalog, pg_temp AS $$
-DECLARE ph text := api.norm_phone(p_phone); idn text := regexp_replace(upper(coalesce(p_id_number,'')),'[^0-9A-Z]','','g');
-        hp bytea; hi bytea; cid bigint; pr app.products; cert int; prev int; oid bigint;
+DECLARE ph text := api.norm_phone(p_phone); hp bytea; cid bigint; pr app.products; cert int; prev int; oid bigint;
 BEGIN
   IF ph IS NULL THEN RAISE EXCEPTION 'BAD_PHONE' USING ERRCODE='22023'; END IF;
-  IF length(idn) < 6 THEN RAISE EXCEPTION 'BAD_ID' USING ERRCODE='22023'; END IF;
   IF p_photo IS NULL THEN RAISE EXCEPTION 'NO_PHOTO' USING ERRCODE='22023'; END IF;
   IF NOT app.rate_ok('once:ip:'||host(p_ip),5,'1 hour') THEN RAISE EXCEPTION 'RATE_LIMIT' USING ERRCODE='P0429'; END IF;
-  hp := app.hmac_of('phone:'||ph); hi := app.hmac_of('id:'||idn);
-  SELECT cert_no INTO prev FROM app.once_orders WHERE phone_hash=hp OR id_number_hash=hi LIMIT 1;
+  hp := app.hmac_of('phone:'||ph);
+  SELECT cert_no INTO prev FROM app.once_orders WHERE phone_hash=hp;
   IF FOUND THEN RETURN jsonb_build_object('status','used','cert_no',prev); END IF;
   SELECT * INTO pr FROM app.products WHERE slug=p_product AND is_active;
   IF NOT FOUND THEN RAISE EXCEPTION 'BAD_PRODUCT' USING ERRCODE='22023'; END IF;
   INSERT INTO app.customers(name,phone,email) VALUES (btrim(p_him),ph,nullif(btrim(p_email),''))
     ON CONFLICT (phone) DO UPDATE SET email=coalesce(EXCLUDED.email,app.customers.email) RETURNING id INTO cid;
   BEGIN
-    INSERT INTO app.once_orders(customer_id,phone_hash,id_number_hash,him_name,her_name,product_id)
-      VALUES (cid,hp,hi,btrim(p_him),btrim(p_her),pr.id) RETURNING cert_no, id INTO cert, oid;
+    INSERT INTO app.once_orders(customer_id,phone_hash,him_name,her_name,product_id)
+      VALUES (cid,hp,btrim(p_him),btrim(p_her),pr.id) RETURNING cert_no, id INTO cert, oid;
     INSERT INTO app.id_photos(once_id,mime,data) VALUES (oid,p_photo_mime,p_photo);
   EXCEPTION WHEN unique_violation THEN            -- two requests at the same moment: the DB still allows only one
-    SELECT cert_no INTO prev FROM app.once_orders WHERE phone_hash=hp OR id_number_hash=hi LIMIT 1;
+    SELECT cert_no INTO prev FROM app.once_orders WHERE phone_hash=hp;
     RETURN jsonb_build_object('status','used','cert_no',prev);
   END;
   INSERT INTO app.telegram_outbox(kind,ref_no,payload) VALUES ('once',cert,
@@ -303,7 +300,7 @@ CREATE FUNCTION api.outbox_done(p_id bigint) RETURNS void LANGUAGE sql SECURITY 
   UPDATE app.telegram_outbox SET sent_at=now(), locked_at=NULL WHERE id=p_id
 $$;
 
--- ID photo for the owner's Telegram verification message (worker only), and purge after N days
+-- face photo for the owner's Telegram verification message (worker only), and purge after N days
 CREATE FUNCTION api.id_photo(p_cert int) RETURNS TABLE(mime text, data bytea) LANGUAGE sql STABLE SECURITY DEFINER SET search_path = pg_catalog, pg_temp AS $$
   SELECT ph.mime, ph.data FROM app.id_photos ph JOIN app.once_orders o ON o.id=ph.once_id WHERE o.cert_no=p_cert
 $$;
@@ -350,7 +347,7 @@ REVOKE ALL ON ALL FUNCTIONS IN SCHEMA app FROM PUBLIC;
 REVOKE ALL ON ALL FUNCTIONS IN SCHEMA audit FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION api.norm_phone(text), api.list_products(),
   api.place_order(text,text,text,text,text,text,inet),
-  api.place_once(text,text,text,text,text,bytea,text,text,inet),
+  api.place_once(text,text,text,text,bytea,text,text,inet),
   api.outbox_claim(int), api.outbox_done(bigint),
   api.id_photo(int), api.purge_id_photos(int) TO sc_api;
 GRANT EXECUTE ON FUNCTION api.list_products(), api.admin_orders(text,int),
