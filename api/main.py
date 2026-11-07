@@ -5,10 +5,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.responses import JSONResponse
 from psycopg_pool import AsyncConnectionPool
-import psycopg
+import psycopg, psycopg.conninfo
 
 log = logging.getLogger('sc')
-DB = os.environ['DATABASE_URL']
+# DATABASE_URL, or parts (DigitalOcean binds host/port/name; password is a secret env)
+DB = os.environ.get('DATABASE_URL') or psycopg.conninfo.make_conninfo(host=os.environ['DB_HOST'], port=os.environ['DB_PORT'], dbname=os.environ['DB_NAME'],
+                                                                     user=os.environ['DB_USER'], password=os.environ['DB_PASSWORD'], sslmode='require')
 TG_TOKEN = os.environ.get('TG_BOT_TOKEN', '')
 TG_CHAT = os.environ.get('TG_CHAT_ID', '')
 TG_DRY = os.environ.get('TG_DRY_RUN') == '1'

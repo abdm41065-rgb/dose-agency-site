@@ -1,0 +1,764 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-sWXYsO2dkL2NTMHRAV00Cn9IaP7nvZH4b/F0Qaey6XM=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-Qu2ZPf+Ap19FcxAm5NLVglHvxCMAEdoKaqvuKqY5ABI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>window.SC_API=''</script>
+<title>Silver Charm</title>
+<script>document.documentElement.lang='ar';document.documentElement.dir='rtl'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Noto+Naskh+Arabic:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: a jeweller's vitrine — a dark velvet opening, then a pale display hall where every piece sits alone under its own light, with a loupe to look closer. Single deliberate look (not theme-switching). */
+:root{
+  --velvet:#0E0E10;      /* hero / display case */
+  --pearl:#F2F2EF;       /* hall background */
+  --paper:#FAFAF8;       /* card surface */
+  --ink:#16161A;         /* text */
+  --mute:#6B6D73;        /* secondary text */
+  --silver:#A9AFB7;      /* metal tone, rules */
+  --wine:#6E1B26;        /* brand accent (from Silver Charm editorial type) */
+  --wine-soft:#8D2F3B;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --ar:"Noto Naskh Arabic","Geeza Pro","Al Nile",serif;
+  --ui:"IBM Plex Sans Arabic","Geeza Pro",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{direction:rtl;background:var(--pearl);color:var(--ink);font-family:var(--ar);font-size:17px;line-height:1.8;margin:0}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.label{font-family:var(--ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.latin{font-family:var(--display);direction:ltr;unicode-bidi:isolate}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--velvet) 88%,transparent);backdrop-filter:blur(10px);color:var(--pearl)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.mono{font-family:var(--display);font-style:italic;font-size:26px;letter-spacing:.02em;text-decoration:none}
+.bar nav{display:flex;gap:clamp(12px,3vw,28px);flex-wrap:wrap;font-family:var(--ui);font-size:14px}
+.bar nav a{text-decoration:none;opacity:.8}.bar nav a:hover{opacity:1}
+
+/* hero: velvet case */
+.hero{background:radial-gradient(120% 90% at 30% 40%,#1b1b1f 0%,var(--velvet) 60%);color:var(--pearl);overflow:hidden}
+.hero{position:relative;height:min(calc(100svh - 64px),940px);min-height:600px;background:#000;overflow:hidden}
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;scale:1.08;transition:transform .6s ease-out;animation:breathe 16s ease-in-out infinite alternate}
+@keyframes breathe{from{scale:1.06}to{scale:1.14}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 30%,transparent 55%,rgba(0,0,0,.85) 100%);pointer-events:none}
+.cover-word{position:absolute;inset-inline:0;z-index:2;margin:0;text-align:center;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(68px,min(18vw,22vh),250px);line-height:.8;letter-spacing:.06em;color:#f4f5f7;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.cover-word.top{top:clamp(28px,6vh,70px)}
+.cover-word.bot{bottom:clamp(170px,24vh,230px);font-style:italic;letter-spacing:.02em}
+.cover-side{position:absolute;z-index:2;top:38%;inset-inline-start:14px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#9ea3ab}
+.cover-foot{position:absolute;z-index:3;inset-inline:0;bottom:0;display:flex;flex-direction:column;align-items:center;gap:16px;padding:0 16px clamp(28px,5vh,48px);text-align:center}
+.cover-foot p{margin:0;font-size:clamp(20px,2.6vw,28px);color:#e3e5e9}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ui);font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;border:1px solid currentColor;text-decoration:none;cursor:pointer;background:transparent;color:inherit}
+.btn.solid{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.solid:hover{background:var(--wine-soft)}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;aspect-ratio:3/4;max-width:100%;perspective:900px}
+.stage img{width:100%;height:100%;object-fit:cover;border-radius:4px;transform-style:preserve-3d;transition:transform .25s ease-out;animation:float 7s ease-in-out infinite}
+.stage::after{content:"";position:absolute;inset:auto 10% -6% 10%;height:12%;background:radial-gradient(closest-side,rgba(169,175,183,.18),transparent);filter:blur(10px)}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.hall-tag{display:flex;gap:18px;align-items:center;margin-top:30px;font-family:var(--ui);font-size:13px;color:#9a9ea6}
+.hall-tag span{display:inline-flex;gap:8px;align-items:center}
+.hall-tag i{width:6px;height:6px;border-radius:50%;background:var(--silver);display:inline-block}
+
+/* collection */
+section{padding-block:clamp(48px,8vw,96px)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.head h2{font-size:clamp(30px,4.2vw,46px);line-height:1.2;margin:.15em 0 0;text-wrap:balance}
+/* offers banner */
+.promo{position:relative;margin-bottom:clamp(36px,6vw,64px)}
+.promo-track{position:relative;display:grid;border-radius:12px;overflow:hidden;background:var(--velvet);touch-action:pan-y}
+.promo-s{grid-area:1/1;display:grid;grid-template-columns:1.15fr 1fr;min-height:clamp(300px,34vw,420px);opacity:0;visibility:hidden;transition:opacity .8s ease,visibility 0s .8s}
+.promo-s.on{opacity:1;visibility:visible;transition:opacity .8s ease}
+.promo-img{position:relative;overflow:hidden}
+.promo-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;scale:1.08;transition:scale 6s ease-out}
+.promo-s.on .promo-img img{scale:1}
+.promo-txt{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;padding:clamp(24px,4vw,56px);color:var(--pearl)}
+.promo-txt>*{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.promo-s.on .promo-txt>*{opacity:1;transform:none}
+.promo-s.on .promo-txt>*:nth-child(2){transition-delay:.12s}.promo-s.on .promo-txt>*:nth-child(3){transition-delay:.22s}.promo-s.on .promo-txt>*:nth-child(4){transition-delay:.32s}
+.promo-tag{font-family:var(--ui);font-size:12px;letter-spacing:.08em;border:1px solid rgba(242,242,239,.35);border-radius:99px;padding:4px 12px;color:var(--silver)}
+.promo-txt h3{font-size:clamp(26px,3.4vw,42px);line-height:1.25;margin:0}
+.promo-txt p{color:#c9ccd2;margin:0 0 6px;max-width:38ch}
+.promo-pts{list-style:none;counter-reset:pp;margin:0 0 8px;padding:0;display:grid;gap:6px;font-size:15px;color:#e3e5e9}
+.promo-pts li{counter-increment:pp;display:flex;gap:10px;align-items:baseline}
+.promo-pts li::before{content:counter(pp,decimal-leading-zero);font-family:var(--display);font-style:italic;color:#c0485a;font-size:14px;min-width:20px}
+.promo-dots{position:absolute;bottom:16px;inset-inline-end:clamp(24px,4vw,56px);display:flex;gap:8px;z-index:2}
+.promo-dots button{width:34px;height:20px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;align-items:center}
+.promo-dots span{display:block;height:2px;background:rgba(242,242,239,.3);border-radius:2px;overflow:hidden;position:relative}
+.promo-dots span::after{content:"";position:absolute;inset:0;background:var(--pearl);transform:scaleX(0);transform-origin:right}
+.promo-dots button[aria-selected="true"] span::after{transform:scaleX(1)}
+.promo-dots button.run span::after{animation:pbar 5.5s linear both}
+.promo.paused .promo-dots button.run span::after{animation-play-state:paused}
+@keyframes pbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:700px){.promo-s{grid-template-columns:1fr;grid-template-rows:200px auto}.promo-txt{padding:22px 18px 52px}.promo-dots{bottom:18px;inset-inline-end:18px}}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--ui);font-size:14px;border:1px solid #cfd2d6;background:transparent;border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,28px)}
+.card{background:var(--paper);border:0;padding:0;text-align:start;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;animation:cardIn .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.grid{transition:opacity .26s ease,transform .26s ease}
+.grid.out{opacity:0;transform:translateY(-8px)}
+.pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:clamp(22px,3vw,36px);font-family:var(--ui)}
+.pager button{min-width:40px;height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(110,27,38,.3);background:transparent;color:var(--wine);font:inherit;font-size:15px;cursor:pointer;transition:background .2s,color .2s}
+.pager button[aria-current="page"]{background:var(--wine);color:#fff;border-color:var(--wine)}
+.pager button:disabled{opacity:.35;cursor:default}
+.chip{transition:background .25s,color .25s,border-color .25s}
+.empty{grid-column:1/-1;text-align:center;padding:70px 16px;border:1px dashed #cfd2d6;color:var(--mute);animation:cardIn .5s both}
+.empty .latin{display:block;font-size:28px;font-style:italic;color:var(--ink);margin-bottom:4px}
+/* once-in-a-lifetime placeholder */
+.once{background:var(--wine);color:#f6eeee;text-align:center;position:relative;overflow:hidden}
+.once .big{font-family:var(--display);font-style:italic;font-size:clamp(70px,16vw,190px);line-height:.9;color:rgba(255,255,255,.09);position:absolute;inset-inline:0;top:24px;pointer-events:none;direction:ltr}
+.once h2{position:relative;font-size:clamp(32px,5vw,54px);margin:.1em 0 .3em}
+.once p{position:relative;max-width:46ch;margin:0 auto;color:#eadada}
+.once .steps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:820px;margin:36px auto 30px}
+.once .steps div{border-top:1px solid rgba(255,255,255,.25);padding-top:12px;font-size:15px;color:#eadada}
+.once .steps b{display:block;font-family:var(--display);font-size:26px;color:#fff}
+.once-go{position:relative;background:#fff;color:var(--wine);border-color:#fff}
+/* once demo overlay */
+.oa{position:fixed;inset:0;z-index:60;background:#4E111A;color:#f6eeee;clip-path:circle(0px at var(--ox,50%) var(--oy,50%));transition:clip-path .9s cubic-bezier(.7,0,.2,1);overflow:auto;visibility:hidden}
+.oa.open{clip-path:circle(150vmax at var(--ox,50%) var(--oy,50%));visibility:visible}
+.oa .ring{position:fixed;left:50%;top:50%;width:min(70vw,420px);translate:-50% -50%;pointer-events:none;opacity:0}
+.oa.open .ring{animation:ringLife 5s ease both}
+.oa.skip .ring{display:none}
+.oa .ring circle{fill:none;stroke:#d9dde2;stroke-width:1.2;stroke-dasharray:1260;stroke-dashoffset:1260}
+.oa.open .ring circle{animation:draw 1.3s .5s cubic-bezier(.6,0,.2,1) forwards}
+.oa .ring text{font-family:"Pinyon Script",var(--display);fill:#fff;fill-opacity:0;stroke:#fff;stroke-width:.8;stroke-dasharray:900;stroke-dashoffset:900}
+.oa .ring .w1{font-size:66px}.oa .ring .w2{font-size:96px}
+.oa.open .ring .w1{animation:draw 1.3s .8s ease-in-out forwards,fillIn .5s 1.9s forwards,out .35s 2.7s forwards}
+.oa.open .ring .w2{animation:draw 1.2s 3s ease-in-out forwards,fillIn .5s 3.9s forwards}
+.oa .ring .tap{font-family:var(--ui);font-size:12px;fill:#e2c9cc;stroke:none;fill-opacity:.7;letter-spacing:.1em}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillIn{to{fill-opacity:1}}
+@keyframes out{to{opacity:0;transform:translateY(-14px)}}
+@keyframes ringLife{0%,86%{opacity:1;scale:1}100%{opacity:0;scale:1.4}}
+/* piece picker: showcase carousel */
+.pk-top{display:flex;justify-content:space-between;align-items:end;margin:4px 0 12px}
+.pk-count{font-family:var(--display);font-style:italic;font-size:22px;color:#fff;direction:ltr}
+.pk-count small{font-size:14px;color:#e2c9cc}
+.pk-row{margin-bottom:14px}
+.pk-rh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:6px;margin-bottom:4px}
+.pk-rh b{font-size:19px}.pk-rh .latin{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e2c9cc}
+.car{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:12px 16px 16px;margin:0 -16px;scrollbar-width:none;overscroll-behavior-x:contain}
+.car::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(42%,200px);scroll-snap-align:center;background:#fff;border-radius:12px;overflow:hidden;border:0;padding:0;cursor:pointer;transform:scale(.94);opacity:.6;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s,box-shadow .45s;position:relative;font:inherit;color:var(--ink)}
+.slide.on{transform:none;opacity:1;box-shadow:0 0 0 2px #4E111A,0 0 0 4px #fff,0 18px 40px rgba(0,0,0,.45)}
+.slide img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.slide .nm{display:block;font-size:13px;padding:7px 6px;line-height:1.4;text-align:center}
+.slide.soon{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/5.6;background:transparent;border:1px dashed rgba(255,255,255,.35);color:#e2c9cc;cursor:default;opacity:1;transform:none}
+.slide.soon .latin{font-family:"Pinyon Script",var(--display);font-size:26px;color:#fff}
+.slide .kd{position:absolute;top:10px;inset-inline-end:10px;font-family:var(--ui);font-size:11px;background:rgba(255,255,255,.9);color:var(--wine);border-radius:99px;padding:3px 10px}
+.pk-nav{display:flex;justify-content:center;gap:10px;margin-top:-8px}
+.pk-nav button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:18px;cursor:pointer}
+.pk-info{text-align:center;margin-top:14px;min-height:150px}
+.pk-info.swap{animation:infoIn .45s ease both}
+@keyframes infoIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pk-info h4{font-size:26px;margin:0;line-height:1.3}
+.pk-info .latin{color:#e2c9cc;letter-spacing:.12em;font-size:13px;text-transform:uppercase}
+.pk-info p{color:#eadada;font-size:15px;margin:8px auto 0;max-width:40ch}
+.plate{display:inline-flex;flex-direction:column;align-items:center;margin-top:16px;padding:10px 26px;border-radius:999px;background:linear-gradient(135deg,#f6f7f9 0%,#c3c8cf 35%,#eef0f2 55%,#a4aab2 100%);color:#3b3e44;box-shadow:inset 0 1px 0 #fff,0 6px 18px rgba(0,0,0,.3)}
+.plate small{font-family:var(--ui);font-size:10px;letter-spacing:.2em;color:#6a6e75}
+.plate b{font-size:19px;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.oa-in{max-width:620px;margin:0 auto;padding:72px 16px 48px;opacity:0;translate:0 24px;transition:opacity .6s,translate .6s}
+.oa.ready .oa-in{opacity:1;translate:0 0}
+.oa-x{position:fixed;top:14px;inset-inline-start:14px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:20px;cursor:pointer;z-index:2}
+.oa .demo{display:inline-block;font-family:var(--ui);font-size:11px;letter-spacing:.2em;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:3px 10px;color:#e2c9cc}
+.oa h3{font-size:clamp(28px,6vw,40px);margin:.3em 0 .2em}
+.oa .sub{color:#e2c9cc;margin:0 0 22px}
+.dots{display:flex;gap:8px;margin:18px 0 6px}.dots i{height:3px;flex:1;background:rgba(255,255,255,.2);border-radius:2px;transition:background .4s}.dots i.on{background:#fff}
+.step{display:none;animation:stepIn .5s ease both}.step.on{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.oa label{display:block;font-family:var(--ui);font-size:13px;color:#e2c9cc;margin:14px 0 6px}
+.oa input{width:100%;font:inherit;font-size:17px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.25);border-radius:8px;color:#fff;padding:12px 14px}
+.oa input:focus{outline:2px solid #fff;outline-offset:1px}
+.oa .err{min-height:22px;font-family:var(--ui);font-size:14px;color:#ffd2d2;margin-top:10px}
+.oa .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.oa .btn{color:#fff}.oa .btn.w{background:#fff;color:#4E111A;border-color:#fff}
+.picks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.picks button{padding:0;border:2px solid transparent;background:#fff;cursor:pointer;border-radius:6px;overflow:hidden;text-align:center;font:inherit;color:var(--ink)}
+.picks button[aria-pressed="true"]{border-color:#fff;box-shadow:0 0 0 3px #4E111A,0 0 0 5px #fff}
+.picks img{width:100%;aspect-ratio:1;object-fit:cover}
+.picks span{display:block;font-size:12px;padding:6px 4px;line-height:1.4}
+.cert{background:#f7f5f1;color:var(--ink);border-radius:6px;padding:28px 22px;text-align:center;position:relative;border:1px solid #d8d2c8;box-shadow:inset 0 0 0 6px #f7f5f1,inset 0 0 0 7px #cbbfae}
+.cert .latin{display:block;color:var(--wine);letter-spacing:.3em;font-size:12px;text-transform:uppercase}
+.cert .names{font-size:clamp(26px,6vw,36px);margin:12px 0 4px;font-weight:700}
+.cert .names em{font-style:normal;color:var(--wine)}
+.cert .no{font-family:var(--display);font-size:44px;font-style:italic;margin:6px 0}
+.cert p{color:var(--mute);margin:0;font-size:15px}
+.cert img{width:110px;height:110px;object-fit:cover;border-radius:50%;margin:14px auto 0;border:1px solid #ddd}
+.seal{animation:seal .7s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes seal{from{opacity:0;transform:scale(.85) rotate(-2deg)}to{opacity:1;transform:none}}
+.idbox{display:flex!important;align-items:center;justify-content:center;gap:12px;min-height:96px;border:1px dashed rgba(255,255,255,.45)!important;border-radius:8px;cursor:pointer;color:#fff!important;font-size:15px!important;padding:10px;margin:0!important;text-align:center}
+.idbox input{position:absolute;width:1px;height:1px;opacity:0}
+.idbox img{height:76px;border-radius:6px;object-fit:cover}
+.idbox:focus-within{outline:2px solid #fff}
+.idnote{font-family:var(--ui);font-size:12px;color:#d8b9bd;margin:6px 0 0}
+.opt{color:#d8b9bd;font-size:12px}
+.tmode{margin-top:40px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;font-family:var(--ui);font-size:13px;color:#d8b9bd}
+.tmode .sw{display:flex!important;gap:10px;align-items:flex-start;margin:0!important;cursor:pointer}
+.tmode .sw input{width:18px;height:18px;flex:0 0 18px;margin-top:2px;accent-color:#fff}
+.tmode .btn{margin-top:12px;font-size:13px;padding:8px 16px}
+.tmode .btn[hidden]{display:none}
+.tmsg{min-height:18px;margin-top:8px;color:#fff}
+.locked{border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:18px;text-align:center}
+.locked b{display:block;font-size:22px;margin-bottom:6px}
+@media (max-width:640px){.once .steps{grid-template-columns:1fr}}
+.card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#fff}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s ease}
+.card .ph img.alt{opacity:0}
+.card:hover .ph img.alt,.card:focus-visible .ph img.alt{opacity:1}
+.card:hover .ph img{transform:scale(1.03)}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 16px 18px}
+.card h3{font-size:19px;margin:0;line-height:1.4}
+.card .latin{font-size:13px;color:var(--mute);letter-spacing:.06em}
+.card .kind{font-family:var(--ui);font-size:12px;color:var(--wine)}
+
+/* loupe feature */
+.loupe-sec{background:var(--paper)}
+.loupe-sec .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.loupe-sec h2{font-size:clamp(28px,3.8vw,42px);margin:.2em 0 .4em;line-height:1.25}
+.loupe-sec p{color:var(--mute);max-width:40ch}
+.zoom{position:relative;aspect-ratio:3/4;max-width:100%;overflow:hidden;background:#fff}
+.zoom img{width:100%;height:100%;object-fit:cover}
+.lens{position:absolute;width:170px;height:170px;border-radius:50%;pointer-events:none;border:2px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 0 1px rgba(0,0,0,.08);background-repeat:no-repeat;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+.zoom.on .lens{opacity:1}
+.hint{font-family:var(--ui);font-size:13px;color:var(--mute);margin-top:10px}
+
+/* 925 */
+.hall{background:var(--velvet);color:var(--pearl)}
+.hall h2{font-size:clamp(28px,3.8vw,44px);margin:.2em 0 .5em;line-height:1.25}
+.alloy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+.meter{height:58px;border-radius:6px;overflow:hidden;display:flex;border:1px solid #2a2b30}
+.meter .ag{width:92.5%;background:linear-gradient(90deg,#c9ced6,#eef0f3 40%,#aeb4bc);display:flex;align-items:center;justify-content:flex-start;padding-inline:16px;color:#17181b;font-family:var(--ui);font-weight:600;font-variant-numeric:tabular-nums}
+.meter .cu{flex:1;background:#b36a3c}
+.legend{display:flex;justify-content:space-between;font-family:var(--ui);font-size:13px;color:#a7abb2;margin-top:10px;font-variant-numeric:tabular-nums}
+.stamp{display:inline-grid;place-items:center;width:150px;height:72px;border:2px solid var(--silver);border-radius:10px;font-family:var(--display);font-size:40px;letter-spacing:.08em;color:var(--silver);box-shadow:inset 0 2px 0 rgba(255,255,255,.08)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.fact{border-top:1px solid #2c2d33;padding-top:14px}
+.fact b{display:block;font-size:18px;margin-bottom:4px}
+.fact span{color:#a7abb2;font-size:15px}
+
+/* mood band */
+.mood{display:grid;grid-template-columns:1fr 1fr;min-height:0;background:var(--paper)}
+.mood img{width:100%;height:100%;object-fit:cover;max-height:620px}
+.mood .q{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,6vw,72px)}
+.mood blockquote{margin:0;font-size:clamp(24px,3vw,34px);line-height:1.5}
+.mood .latin{color:var(--wine);letter-spacing:.24em;font-size:14px;margin-top:18px;text-transform:uppercase}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(30px,4.4vw,50px);margin:.2em 0}
+.phone{font-family:var(--display);font-size:clamp(28px,5vw,46px);letter-spacing:.06em;direction:ltr;user-select:all;margin:10px 0 18px}
+.contact .actions{justify-content:center}
+/* order: logo stage + in-site form */
+.contact{text-align:start}
+.ord{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,4vw,48px);align-items:stretch}
+.ord-stage{background:var(--velvet);color:var(--pearl);border-radius:10px;padding:clamp(28px,5vw,48px) 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden}
+.ord-logo{width:min(46vw,170px)}
+.ord-logo circle{fill:none;stroke:var(--silver);stroke-width:1.4;stroke-dasharray:580;stroke-dashoffset:580}
+.ord-logo circle.in{stroke-width:.6;opacity:.6}
+.ord-logo text{font-family:var(--display);font-style:italic;font-size:62px;fill:#eceef1;opacity:0}
+.play .ord-logo circle{animation:draw 1.6s cubic-bezier(.6,0,.2,1) forwards}
+.play .ord-logo circle.in{animation-delay:.3s}
+.play .ord-logo text{animation:fillUp .8s 1.1s forwards}
+@keyframes fillUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ord-name{letter-spacing:.38em;text-transform:uppercase;font-size:13px;color:var(--silver);opacity:0}
+.play .ord-name{animation:fillUp .8s 1.5s forwards}
+.ord-logo{width:min(30vw,110px)}
+.jr{width:100%;max-width:440px;margin-top:18px;opacity:0}
+.play .jr{animation:fillUp .8s 1.8s forwards}
+.jr-scene{position:relative;aspect-ratio:3/2;border:1px solid #24252a;border-radius:10px;background:radial-gradient(90% 80% at 50% 40%,#17171b,#0e0e10)}
+.jr-scene svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .5s}
+.jr-scene svg.on{opacity:1}
+.jr .ln{fill:none;stroke:#cdd2d9;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:420;stroke-dashoffset:420}
+.jr .ac{stroke:#c0485a}
+.jr .fl{fill:#c0485a;stroke:none;opacity:0}
+.jr svg.on .ln{animation:draw 1.4s cubic-bezier(.6,0,.2,1) forwards}
+.jr svg.on .d2{animation-delay:.35s}.jr svg.on .d3{animation-delay:.7s}.jr svg.on .d4{animation-delay:1s}
+.jr svg.on .fl{animation:fadeIn .4s 1.3s forwards}
+@keyframes fadeIn{to{opacity:1}}
+.jr svg.on .tap{animation:draw .01s forwards,tapP 1.2s 1.4s infinite}
+@keyframes tapP{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.8);opacity:0}}
+.jr .tap{transform-box:fill-box;transform-origin:center}
+.jr svg.on .lid{animation:draw 1s forwards,lidDown .9s 1s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes lidDown{from{transform:translateY(-26px)}to{transform:none}}
+.jr svg.on .drop{animation:draw .8s forwards,dropIn 1s .4s ease-in both}
+@keyframes dropIn{from{transform:translateY(-30px)}to{transform:translateY(22px);opacity:0}}
+.jr svg.on .van{animation:vanGo 3.2s ease-in-out both}
+@keyframes vanGo{0%{transform:translateX(60px)}60%,100%{transform:translateX(-14px)}}
+.jr svg.on .road{stroke-dasharray:8 10;stroke-dashoffset:0;animation:road .6s linear infinite}
+@keyframes road{to{stroke-dashoffset:-18}}
+.jr svg.on .hand{animation:draw 1s forwards,handOff 1.2s 1.2s ease-in-out both}
+@keyframes handOff{from{transform:translateX(0)}to{transform:translateX(34px)}}
+.jr svg.on .open{transform-box:fill-box;transform-origin:0% 100%;animation:draw .9s forwards,lidOpen 1s 1s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes lidOpen{to{transform:rotate(-28deg) translate(-6px,-16px)}}
+.jr svg.on .rise{animation:draw 1s 1.2s forwards,riseUp 1s 1.4s ease-out both}
+@keyframes riseUp{from{transform:translateY(18px)}to{transform:none}}
+.jr svg.on .spark{animation:draw .5s 2s forwards}
+.jr-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:16px;text-align:center}
+.jr-track::before{content:"";position:absolute;top:13px;inset-inline:10%;height:1px;background:#2c2d33}
+.jr-track .bar{position:absolute;top:13px;inset-inline-start:10%;height:1px;background:#e9ebee;width:0;transition:width .6s ease}
+.jr-step{align-self:start;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;font-family:var(--ui);font-size:11.5px;line-height:1.4;color:#7f838b;background:none;border:0;padding:0;cursor:pointer;transition:color .3s}
+.jr-step i{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 6px;border-radius:50%;border:1px solid #3a3b41;background:var(--velvet);font-style:normal;font-family:var(--display);font-size:12px;transition:all .35s}
+.jr-step.done i{border-color:#9ea3ab;color:#cfd3d9}
+.jr-step.on{color:#f2f2ef}.jr-step.on i{background:#f2f2ef;color:#0e0e10;border-color:#f2f2ef;transform:scale(1.12)}
+.ord-sub{color:var(--mute);margin:0 0 10px}
+.ord-form h2{margin:.1em 0 .2em}
+.ord-form label{display:block;font-family:var(--ui);font-size:13px;color:var(--mute);margin:12px 0 5px}
+.ord-form input,.ord-form select,.ord-form textarea{width:100%;font:inherit;font-size:16px;background:var(--paper);border:1px solid #d3d5d9;border-radius:8px;padding:11px 12px;color:var(--ink)}
+.ord-form textarea{resize:vertical}
+.ord-form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ord-form .err{min-height:22px;font-family:var(--ui);font-size:14px;color:var(--wine);margin:10px 0 6px}
+.sheet-form{margin-top:4px;animation:infoIn .45s ease both}
+.sheet-form .two{gap:10px}
+.ord-how{display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.ord-done{background:var(--paper);border:1px solid #d3d5d9;border-radius:10px;padding:28px 20px;text-align:center;animation:seal .6s cubic-bezier(.2,1.4,.4,1) both}
+.ord-done b{display:block;font-size:24px}.ord-done p{color:var(--mute);margin:6px 0 12px}.ord-done small{display:block;font-family:var(--ui);color:var(--wine);margin-bottom:14px}
+.done-ic{width:54px;height:54px;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;font-size:26px;margin:0 auto 10px}
+@media (max-width:900px){.ord{grid-template-columns:1fr}}
+@media (max-width:520px){.ord-form .two{grid-template-columns:1fr;gap:0}}
+footer{background:var(--velvet);color:#8e929a;font-family:var(--ui);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px}
+
+/* product sheet */
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(14,14,16,.72);display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet.open{opacity:1;pointer-events:auto}
+.panel{background:var(--paper);width:min(980px,100%);max-height:calc(100% - 20px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;border-radius:6px;position:relative;transform:translateY(12px);transition:transform .3s}
+.sheet.open .panel{transform:none}
+.panel .zoom{border-radius:6px 0 0 6px}
+.panel .info{padding:clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel h3{font-size:clamp(26px,3vw,34px);margin:0;line-height:1.3}
+.panel .latin{color:var(--mute);letter-spacing:.08em}
+.panel .desc{color:#3d3f45;margin:6px 0}
+.panel ul{margin:0;padding-inline-start:20px;color:#3d3f45}
+.close{position:absolute;top:10px;inset-inline-start:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:20px;cursor:pointer;z-index:2}
+.thumbs{display:flex;gap:8px;margin-top:6px}
+.thumbs button{width:58px;height:76px;padding:0;border:1px solid #d5d7db;background:#fff;cursor:pointer;overflow:hidden}
+.thumbs button[aria-pressed="true"]{border-color:var(--wine);border-width:2px}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+
+@media (max-width:900px){
+  .hero .wrap,.loupe-sec .wrap,.alloy,.mood,.panel{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts{grid-template-columns:1fr}
+  .panel .zoom{border-radius:6px 6px 0 0;aspect-ratio:auto;height:46vh}
+  .panel .zoom img{object-fit:contain}
+}
+@media (max-width:520px){.cover-side{display:none}.grid{grid-template-columns:1fr}.bar nav{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mono" href="#top" aria-label="Silver Charm">SC</a>
+    <nav aria-label="الأقسام">
+      <a href="#collection">المجموعة</a>
+      <a href="#once">مرة بالعمر</a>
+      <a href="#loupe">التفاصيل</a>
+      <a href="#order">اطلب</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="stage" style="padding-block:0">
+    <img id="heroImg" class="cover-img" src="img/mood.jpg" alt="أساور وخواتم فضة ويا ورد أبيض">
+    <h1 class="cover-word top latin">Silver</h1>
+    <div class="cover-word bot latin" aria-hidden="true">Charm</div>
+    <div class="cover-side latin">N° 925 · Argentum · Iraq</div>
+    <div class="cover-foot">
+      <p>فضة 925… بكل تفاصيلها</p>
+      <div class="actions">
+        <a class="btn solid" href="#collection">شوف المجموعة</a>
+        <button class="btn" id="heroOnce" type="button">اطلب لمرة وحدة ♥</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection">
+    <div class="wrap">
+      <div class="promo" id="promo" aria-roledescription="carousel" aria-label="العروض">
+        <div class="promo-track" id="promoTrack"></div>
+        <div class="promo-dots" id="promoDots" role="tablist" aria-label="اختار العرض"></div>
+      </div>
+      <div class="head">
+        <div><div class="label">The Collection</div><h2>المجموعة</h2></div>
+        <div class="chips" role="group" aria-label="فلترة">
+          <button class="chip" id="f-all" aria-pressed="true" data-f="all">الكل</button>
+          <button class="chip" id="f-bracelet" aria-pressed="false" data-f="bracelet">أساور</button>
+          <button class="chip" id="f-ring" aria-pressed="false" data-f="ring">خواتم</button>
+          <button class="chip" id="f-necklace" aria-pressed="false" data-f="necklace">قلائد</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <nav class="pager" id="pager" aria-label="الصفحات" hidden></nav>
+    </div>
+  </section>
+
+  <section class="once" id="once">
+    <div class="big" aria-hidden="true">Once</div>
+    <div class="wrap">
+      <div class="label" style="color:#e2c9cc;position:relative">Once in a lifetime</div>
+      <h2>مرة وحدة بالعمر</h2>
+      <p>هدية لحبيبتك تنطلب مرة وحدة بحياتك. بعدها هذا الطلب ما يتكرر، لا إلها ولا لغيرها.</p>
+      <div class="steps">
+        <div><b>01</b>تسجّل اسمك واسمها</div>
+        <div><b>02</b>تختار أي قطعة تحبها</div>
+        <div><b>03</b>ينقفل الطلب باسمك للأبد</div>
+      </div>
+      <button class="btn once-go" id="onceGo" type="button">جرّب الديمو</button>
+    </div>
+  </section>
+
+  <section class="loupe-sec" id="loupe">
+    <div class="wrap">
+      <div>
+        <div class="label">The Detail</div>
+        <h2>الفضة تنعرف بتفاصيلها</h2>
+        <p>التنقيط على الحواف، والمخالب اللي تمسك الأحجار، والتشبيك على الجوانب. شغل يدوي ينشاف من قريب.</p>
+        <div class="hint">خاتم الكلستر العتيق · Argentum 925</div>
+      </div>
+      <div class="zoom"><img src="img/cluster.jpg" alt="خاتم الكلستر العتيق"></div>
+    </div>
+  </section>
+
+  <div class="mood">
+    <img src="img/hero_void.jpg" alt="سوار فضة مرصّع طايف بفراغ أسود">
+    <div class="q">
+      <blockquote>الفضة ما تحتاج مناسبة.<br>تحتاج بس إيد تلبسها.</blockquote>
+      <div class="latin">Silver in every detail</div>
+    </div>
+  </div>
+
+  <section class="contact" id="order">
+    <div class="wrap">
+      <div class="ord">
+        <div class="ord-stage" id="ordStage">
+          <svg class="ord-logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="92"/><circle class="in" cx="100" cy="100" r="82"/><text x="100" y="116" text-anchor="middle">SC</text></svg>
+          <div class="ord-name latin">Silver Charm</div>
+          <div class="jr" id="jr">
+            <div class="jr-scene">
+              <svg viewBox="0 0 240 160"><rect class="ln" x="88" y="16" width="64" height="124" rx="10"/><rect class="ln d2" x="98" y="32" width="44" height="54" rx="3"/><path class="ln d3" d="M104 58c8-14 24-14 32 0"/><circle class="ln d3" cx="120" cy="66" r="3"/><rect class="ln ac d4" x="102" y="96" width="36" height="12" rx="6"/><circle class="ln tap ac" cx="120" cy="102" r="8"/></svg>
+              <svg viewBox="0 0 240 160"><path class="ln drop" d="M110 46c4-8 16-8 20 0"/><rect class="ln" x="78" y="72" width="84" height="56" rx="2"/><path class="ln d2" d="M120 72v56"/><path class="ln lid ac" d="M72 60h96v12H72z"/><path class="ln ac d3" d="M120 60c-10-12-22-6-12 0M120 60c10-12 22-6 12 0"/></svg>
+              <svg viewBox="0 0 240 160"><path class="ln road" d="M10 136h220"/><g class="van"><path class="ln" d="M60 120V78h84v42z"/><path class="ln d2" d="M60 92H38l-12 14v14h34"/><circle class="ln d3" cx="48" cy="122" r="9"/><circle class="ln d3" cx="124" cy="122" r="9"/><text x="102" y="104" text-anchor="middle" class="fl" style="font-family:var(--display);font-style:italic;font-size:15px;fill:#cdd2d9">SC</text><path class="ln d4" d="M160 88h22M168 100h26M160 112h18"/></g></svg>
+              <svg viewBox="0 0 240 160"><rect class="ln" x="150" y="22" width="56" height="114" rx="2"/><circle class="ln d2" cx="160" cy="80" r="2.5"/><circle class="ln" cx="62" cy="46" r="11"/><path class="ln d2" d="M62 57v44M62 101l-12 34M62 101l12 34"/><g class="hand"><path class="ln d3" d="M62 68l26 10"/><rect class="ln ac d3" x="86" y="66" width="24" height="20" rx="1"/><path class="ln ac d4" d="M98 66v20"/></g><path class="fl" d="M176 48c-3-4-9-2-7 3l7 6 7-6c2-5-4-7-7-3z"/></svg>
+              <svg viewBox="0 0 240 160"><rect class="ln" x="80" y="88" width="80" height="44" rx="2"/><path class="ln open ac" d="M76 76h88v12H76z"/><path class="ln rise" d="M98 92c10-26 34-26 44 0"/><circle class="ln rise" cx="120" cy="74" r="5"/><path class="ln spark" d="M120 40v-12M96 50l-8-8M144 50l8-8M84 70h-12M156 70h12"/><path class="fl" d="M120 156c-3-4-9-2-7 3l7 6 7-6c2-5-4-7-7-3z" transform="translate(0 -12)"/></svg>
+            </div>
+            <div class="jr-track" id="jrTrack"><span class="bar" id="jrBar"></span>
+              <button type="button" class="jr-step"><i>01</i>تختار القطعة</button>
+              <button type="button" class="jr-step"><i>02</i>نحضّرها ونغلّفها</button>
+              <button type="button" class="jr-step"><i>03</i>تنطلق إلك</button>
+              <button type="button" class="jr-step"><i>04</i>توصل للمندوب</button>
+              <button type="button" class="jr-step"><i>05</i>تفتحها</button>
+            </div>
+          </div>
+        </div>
+        <div class="ord-form ord-how">
+          <div class="label">Order</div>
+          <h2>طريقة الطلب</h2>
+          <p class="ord-sub">الطلب من صفحة القطعة بس: افتح القطعة اللي تعجبك، اضغط «اطلبها»، واكتب معلوماتك. نتصل بيك نأكد السعر والتوصيل.</p>
+          <a class="btn solid" href="#collection">اختار قطعتك</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span class="latin">Silver Charm · Argentum 925</span><span>الطلب من الموقع مباشرة</span></div></footer>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="pName">
+    <button class="close" id="closeSheet" aria-label="إغلاق">×</button>
+    <div class="zoom" id="sheetZoom"><img id="pImg" src="img/pave.jpg" alt=""></div>
+    <div class="info">
+      <div class="kind label" id="pKind"></div>
+      <h3 id="pName"></h3>
+      <div class="latin" id="pLatin"></div>
+      <p class="desc" id="pDesc"></p>
+      <ul id="pList"></ul>
+      <div class="thumbs" id="pThumbs"></div>
+      <div class="actions" style="margin-top:8px" id="pActs">
+        <button class="btn solid" id="pWa" type="button">اطلبها</button>
+      </div>
+      <div class="ord-form sheet-form" id="sheetOrder" hidden>
+        <form id="orderForm" novalidate>
+          <input type="hidden" name="piece" id="fPiece">
+          <label for="fName">الاسم</label><input id="fName" name="name" autocomplete="name" maxlength="40">
+          <div class="two"><div><label for="fPhone">رقم الموبايل</label><input id="fPhone" name="phone" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20" autocomplete="tel"></div>
+          <div><label for="fPhone2">أعد كتابة الرقم</label><input id="fPhone2" name="phone2" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20" autocomplete="off"></div></div>
+          <div class="two"><div><label for="fGov">المحافظة</label><select id="fGov" name="gov"></select></div>
+          <div><label for="fAddr">العنوان</label><input id="fAddr" name="addr" maxlength="80" placeholder="المنطقة، أقرب نقطة دالة"></div></div>
+          <label for="fNote">ملاحظة (اختياري)</label><textarea id="fNote" name="note" rows="2" maxlength="200" placeholder="مثلاً: القياس، أو تغليف هدية"></textarea>
+          <div class="err" id="fErr" aria-live="polite"></div>
+          <button class="btn solid" type="submit">ثبّت الطلب</button>
+        </form>
+        <div class="ord-done" id="ordDone" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="oa" id="oa" role="dialog" aria-modal="true" aria-labelledby="oaT" aria-hidden="true">
+  <svg class="ring" viewBox="0 0 420 420" aria-hidden="true"><circle cx="210" cy="210" r="200"/><text class="w1" x="210" y="230" text-anchor="middle">The One</text><text class="w2" x="210" y="240" text-anchor="middle">Once</text><text class="tap" x="210" y="395" text-anchor="middle">اضغط للتخطي</text></svg>
+  <button class="oa-x" id="oaX" aria-label="إغلاق">×</button>
+  <div class="oa-in">
+    <span class="demo">DEMO · ديمو</span>
+    <h3 id="oaT">مرة وحدة بالعمر</h3>
+    <p class="sub">طلب واحد باسمك واسمها. بعد ما ينقفل ما ينعاد.</p>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+
+    <div class="step on" data-s="1">
+      <label for="oHim">اسمك</label><input id="oHim" autocomplete="off" maxlength="24">
+      <label for="oHer">اسمها</label><input id="oHer" autocomplete="off" maxlength="24">
+      <label for="oPh">رقم موبايلك</label><input id="oPh" inputmode="numeric" dir="ltr" placeholder="07xx xxx xxxx" maxlength="20">
+      <label for="oMail">إيميلك</label><input id="oMail" type="email" dir="ltr" placeholder="name@email.com" autocomplete="email" maxlength="80">
+      <label for="oIdNo">رقم هويتك <span class="opt" id="oIdNoOpt"></span></label><input id="oIdNo" dir="ltr" autocomplete="off" maxlength="30" placeholder="رقم البطاقة الوطنية">
+      <label for="oId">صورة هويتك <span class="opt" id="oIdOpt"></span></label>
+      <label class="idbox" for="oId"><input id="oId" type="file" accept="image/*"><img id="oIdPrev" alt="" hidden><span id="oIdTxt">اضغط وصوّر الهوية أو اختار صورة</span></label>
+      <p class="idnote">الهوية حتى نتأكد إن كل شخص يطلب مرة وحدة بس. ما تنعرض لأي أحد.</p>
+      <div class="err" id="oErr1" aria-live="polite"></div>
+      <div class="row"><button class="btn w" id="oNext1" type="button">التالي</button></div>
+    </div>
+
+    <div class="step" data-s="2">
+      <div class="pk-top"><label style="margin:0">اختار هديتها</label><div class="pk-count" id="pkCount"></div></div>
+      <div id="oPicks"></div>
+      <div class="pk-info" id="pkInfo" aria-live="polite"></div>
+      <div class="err" id="oErr2" aria-live="polite"></div>
+      <div class="row"><button class="btn w" id="oNext2" type="button">التالي</button><button class="btn" data-back="1" type="button">رجوع</button></div>
+    </div>
+
+    <div class="step" data-s="3">
+      <label>راجع قبل القفل</label>
+      <div class="locked" id="oReview"></div>
+      <p class="sub" style="margin-top:14px">انتبه: بعد ما تقفل الطلب، هذا الرقم ما يكدر يطلب «مرة بالعمر» مرة ثانية.</p>
+      <div class="row"><button class="btn w" id="oLock" type="button">اقفل الطلب للأبد</button><button class="btn" data-back="2" type="button">رجوع</button></div>
+    </div>
+
+    <div class="step" data-s="4" id="oDone"></div>
+
+    <div class="tmode">
+      <label class="sw"><input type="checkbox" id="oTest"> <span>وضع التجربة (للمالك): الهوية والإيميل مو إجبارية، ونفس الرقم يكدر يطلب أكثر من مرة</span></label>
+      <button type="button" class="btn" id="oReset" hidden>صفّر كل الطلبات</button>
+      <div class="tmsg" id="oTmsg" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA='9647724447343';
+const P=[
+ {id:'crystal',type:'bracelet',ar:'سوار الكريستال الملوّن',en:'Crystal Charm Bracelet',imgs:['crystal_white','crystal_leaf'],desc:'حلقات فضة دائرية تتدلى منها كريستالات خضرة وعسلية، وبيناتها حلقة فضية ونجمة بنية.',list:['قفل كلّاب وسلسلة تطويل','الوزن 8.78 غرام','فضة عيار 925 مختومة']},
+ {id:'evileye',type:'bracelet',ar:'سوار العين',en:'Evil Eye Gemstone Bracelet',imgs:['evileye_white','evileye_hand'],desc:'سلسلة ناعمة بيها خمس أحجار: أصفر، عينين زرقاء مرصّعة، بنفسجي، وأخضر.',list:['قفل دائري وسلسلة تطويل بنجمة صغيرة','الوزن 3.50 غرام','فضة عيار 925 مختومة']},
+ {id:'crescent',type:'bracelet',ar:'سوار الأهلّة',en:'Crescent Wave Bracelet',imgs:['crescent_white','crescent_black'],desc:'حلقات فضة ملساء على شكل هلال، متداخلة ورا بعض مثل الموج.',list:['قفل كلّاب','الوزن 14.92 غرام','فضة عيار 925 مختومة']},
+ {id:'pave',type:'bracelet',ar:'سوار الحبات المرصّعة',en:'Pavé Link Bracelet',imgs:['pave','hero_void'],desc:'حلقات بشكل حبة الرز مرصّعة بأحجار صغيرة لامعة، وبينها حلقات بيضاوية ملساء.',list:['قفل كلّاب وسلسلة تطويل','فضة عيار 925 مختومة']},
+ {id:'cuff',type:'bracelet',ar:'إسوارة العقدة',en:'Infinity Knot Cuff',imgs:['cuff_white','cuff_navy'],desc:'سلكين فضة مجدولين بموجة متواصلة، وبالنص عقدة لا نهائية.',list:['مفتوحة من الطرفين','بدون أحجار، فضة لامعة','فضة عيار 925 مختومة']},
+ {id:'emerald',type:'bracelet',ar:'سوار القصّة المستطيلة',en:'Emerald Cut Bracelet',imgs:['emerald_white','emerald_red'],desc:'سلسلة ناعمة يتوسطها حجر شفاف بقصّة مستطيلة.',list:['تصميم بسيط يناسب اللبس اليومي','فضة عيار 925 مختومة']},
+ {id:'aqua',type:'bracelet',ar:'سوار الأكوا',en:'Aqua Halo Bracelet',imgs:['aqua_white','aqua_plate'],desc:'ثلاث أحجار مربعة بلون الأكوا، كل واحد حواليه إطار من أحجار صغيرة.',list:['سلسلة رفيعة وقفل','فضة عيار 925 مختومة']},
+ {id:'cluster',type:'ring',ar:'خاتم الكلستر العتيق',en:'Vintage Cluster Ring',imgs:['cluster'],desc:'راس مثل وردة مطوّلة، حوافها منقطة، وبالنص عنقود أحجار حمرا بمخالب فضة. الجوانب مشبكة بشكل X.',list:['فضة معتّقة','فضة عيار 925 مختومة']}
+];
+const $=s=>document.querySelector(s);
+const src=k=>`img/${k}.jpg`;
+const wa=p=>`https://wa.me/${WA}?text=${encodeURIComponent(`هلا Silver Charm، أريد أسأل عن ${p.ar} (${p.en})`)}`;
+
+// collection
+const KIND={bracelet:'سوار',ring:'خاتم',necklace:'قلادة'};
+// 8 pieces per page
+const PER=8;let gF='all',gPg=0;
+function renderGrid(f,pg=0){gF=f;const all=P.filter(p=>f==='all'||p.type===f),pages=Math.max(1,Math.ceil(all.length/PER));gPg=Math.min(Math.max(pg,0),pages-1);
+  const list=all.slice(gPg*PER,gPg*PER+PER);
+  $('#grid').innerHTML=list.length?list.map((p,i)=>`
+  <button class="card" style="--i:${i}" data-id="${p.id}" aria-label="${p.ar}">
+    <div class="ph"><img src="${src(p.imgs[0])}" alt="${p.ar}" loading="lazy">${p.imgs[1]?`<img class="alt" src="${src(p.imgs[1])}" alt="" loading="lazy">`:''}</div>
+    <div class="meta"><div><h3>${p.ar}</h3><div class="latin">${p.en}</div></div><span class="kind">${KIND[p.type]}</span></div>
+  </button>`).join(''):`<div class="empty"><span class="latin">Coming soon</span>القلائد جاية قريباً</div>`;
+  document.querySelectorAll('.card').forEach(c=>c.onclick=()=>openSheet(c.dataset.id));
+  const pgr=$('#pager');pgr.hidden=pages<2;
+  pgr.innerHTML=pages<2?'':`<button type="button" data-pg="${gPg-1}" ${gPg?'':'disabled'} aria-label="السابقة">→</button>`+
+    Array.from({length:pages},(_,k)=>`<button type="button" data-pg="${k}" ${k===gPg?'aria-current="page"':''}>${k+1}</button>`).join('')+
+    `<button type="button" data-pg="${gPg+1}" ${gPg<pages-1?'':'disabled'} aria-label="التالية">←</button>`;
+  pgr.querySelectorAll('button').forEach(b=>b.onclick=()=>{const k=+b.dataset.pg;if(b.disabled||k===gPg)return;swapGrid(gF,k);$('#collection').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})}
+let swapT;
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(b.getAttribute('aria-pressed')==='true')return;
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  swapGrid(b.dataset.f,0)});
+function swapGrid(f,pg){const g=$('#grid');clearTimeout(swapT);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderGrid(f,pg);return}
+  g.classList.add('out');swapT=setTimeout(()=>{renderGrid(f,pg);g.classList.remove('out')},260)}
+renderGrid('all');
+
+// offers banner — edit OFFERS to change the promos (tag, title, text, button, image, target piece id or section)
+const OFFERS=[
+ {tag:'عرض الأسبوع',title:'سوار القصّة المستطيلة',text:'اكتب هنا تفاصيل العرض: خصم، هدية، أو سعر خاص.',cta:'اطلبها',img:'emerald_red',piece:'emerald'},
+ {tag:'هدية',title:'تغليف هدية مجاني',text:'اكتب هنا شروط العرض ومدته.',cta:'شوف المجموعة',img:'cuff_navy',href:'#collection'},
+ {tag:'مرة وحدة بالعمر',title:'هدية ما تتكرر',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك وهويتك','تختار أي قطعة من المجموعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
+];
+const pT=$('#promoTrack'),pD=$('#promoDots');let pI=0,pTimer=null;
+pT.innerHTML=OFFERS.map((o,i)=>`<article class="promo-s" aria-roledescription="slide" aria-label="${i+1} من ${OFFERS.length}">
+  <div class="promo-img"><img src="${src(o.img)}" alt="" loading="lazy"></div>
+  <div class="promo-txt"><span class="promo-tag">${o.tag}</span><h3>${o.title}</h3><p>${o.text}</p>${o.points?`<ol class="promo-pts">${o.points.map(t=>`<li>${t}</li>`).join('')}</ol>`:''}<button class="btn solid" type="button" data-i="${i}">${o.cta}</button></div></article>`).join('');
+pD.innerHTML=OFFERS.map((o,i)=>`<button type="button" role="tab" aria-label="${o.title}"><span></span></button>`).join('');
+const pS=[...pT.children],pB=[...pD.children];
+function pGo(i){pI=(i+OFFERS.length)%OFFERS.length;pS.forEach((s,j)=>{s.classList.toggle('on',j===pI);s.inert=j!==pI});pB.forEach((b,j)=>{b.setAttribute('aria-selected',j===pI);b.classList.remove('run');if(j===pI){void b.offsetWidth;b.classList.add('run')}});pPlay()}
+function pPlay(){clearTimeout(pTimer);if(!still())pTimer=setTimeout(()=>pGo(pI+1),5500)}
+pB.forEach((b,j)=>b.onclick=()=>pGo(j));
+pT.querySelectorAll('.promo-txt .btn').forEach(b=>b.onclick=e=>{const o=OFFERS[b.dataset.i];if(o.once)return oOpen(e);if(o.piece)return openSheet(o.piece);if(o.href)$(o.href).scrollIntoView({behavior:still()?'auto':'smooth'})});
+const promo=$('#promo');promo.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){clearTimeout(pTimer);promo.classList.add('paused')}});promo.addEventListener('pointerleave',()=>{promo.classList.remove('paused');pPlay()});
+let px0=null;pT.addEventListener('pointerdown',e=>px0=e.clientX);pT.addEventListener('pointerup',e=>{if(px0==null)return;const dx=e.clientX-px0;px0=null;if(Math.abs(dx)>40)pGo(pI+(dx>0?1:-1))});
+setTimeout(()=>pGo(0),0);
+
+// loupe
+function loupe(box){const lens=box.querySelector('.lens'),img=box.querySelector('img');const Z=2.6;
+  const move=e=>{const r=box.getBoundingClientRect();const x=(e.clientX??0)-r.left,y=(e.clientY??0)-r.top;if(x<0||y<0||x>r.width||y>r.height){box.classList.remove('on');return}
+    box.classList.add('on');lens.style.left=x+'px';lens.style.top=y+'px';lens.style.backgroundImage=`url("${img.currentSrc||img.src}")`;
+    lens.style.backgroundSize=`${r.width*Z}px ${r.height*Z}px`;lens.style.backgroundPosition=`${-(x*Z-85)}px ${-(y*Z-85)}px`};
+  box.addEventListener('pointermove',move);box.addEventListener('pointerdown',move);box.addEventListener('pointerleave',()=>box.classList.remove('on'));box.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')box.classList.remove('on')});}
+
+// product sheet
+let lastFocus=null;
+function setImg(k,p){$('#pImg').src=src(k);$('#pImg').alt=p.ar;document.querySelectorAll('#pThumbs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k))}
+function openSheet(id){const p=P.find(x=>x.id===id);lastFocus=document.activeElement;
+  $('#pKind').textContent=p.type==='ring'?'خاتم · Argentum 925':'سوار · Argentum 925';$('#pName').textContent=p.ar;$('#pLatin').textContent=p.en;$('#pDesc').textContent=p.desc;
+  $('#pList').innerHTML=p.list.map(l=>`<li>${l}</li>`).join('');$('#fPiece').value=p.id;ordReset();
+  $('#pThumbs').innerHTML=p.imgs.length>1?p.imgs.map(k=>`<button data-k="${k}" aria-label="صورة"><img src="${src(k)}" alt=""></button>`).join(''):'';
+  document.querySelectorAll('#pThumbs button').forEach(b=>b.onclick=()=>setImg(b.dataset.k,p));setImg(p.imgs[0],p);
+  $('#sheet').classList.add('open');$('#sheet').setAttribute('aria-hidden','false');$('#closeSheet').focus();}
+function closeSheet(){$('#sheet').classList.remove('open');$('#sheet').setAttribute('aria-hidden','true');lastFocus&&lastFocus.focus()}
+$('#closeSheet').onclick=closeSheet;$('#sheet').addEventListener('click',e=>{if(e.target.id==='sheet')closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+
+// hero tilt
+const stage=$('#stage'),hero=$('#heroImg');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();const dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;hero.style.transform=`translate(${-dx*18}px,${-dy*18}px)`});stage.addEventListener('pointerleave',()=>hero.style.transform='')}
+
+// in-site order form
+// API: set by the live build (window.SC_API='/api'). Empty = demo mode (this browser only). The bot token lives on the server only.
+const API=window.SC_API||'';
+async function apiPost(path,body){try{const r=await fetch(API+path,{method:'POST',body,headers:body instanceof FormData?{}:{'Content-Type':'application/json'}});
+  const j=await r.json().catch(()=>({}));return r.ok&&j.ok?j:{ok:false,message:j.message||'صار خلل بالإرسال، حاول مرة ثانية.'}}catch{return {ok:false,message:'ماكو اتصال، تأكد من الإنترنت وحاول مرة ثانية.'}}}
+const GOV=['بغداد','البصرة','نينوى','أربيل','النجف','كربلاء','بابل','ذي قار','الأنبار','ديالى','كركوك','صلاح الدين','واسط','ميسان','المثنى','القادسية','دهوك','السليمانية','حلبجة'];
+$('#fGov').innerHTML='<option value="">اختار المحافظة</option>'+GOV.map(g=>`<option>${g}</option>`).join('');
+function ordReset(){const f=$('#orderForm');f.reset();f.hidden=false;$('#ordDone').hidden=true;$('#fErr').textContent='';$('#sheetOrder').hidden=true;$('#pActs').hidden=false}
+function ordShow(){$('#pActs').hidden=true;$('#sheetOrder').hidden=false;setTimeout(()=>{$('#sheetOrder').scrollIntoView({behavior:still()?'auto':'smooth',block:'start'});$('#fName').focus({preventScroll:true})},50)}
+$('#pWa').onclick=ordShow;
+function orderPiece(id){openSheet(id);ordShow()}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target)}}),{threshold:.35});io.observe($('#ordStage'));
+// order journey animation
+const jrStill=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const jrS=[...document.querySelectorAll('.jr-scene svg')],jrB=[...document.querySelectorAll('.jr-step')];let jrI=-1,jrT=null;
+jrS.forEach(s=>s.setAttribute('aria-hidden','true'));
+function jrGo(i){jrI=i%jrS.length;jrS.forEach((s,j)=>s.classList.toggle('on',j===jrI));
+  jrB.forEach((b,j)=>{b.classList.toggle('on',j===jrI);b.classList.toggle('done',j<jrI);b.setAttribute('aria-current',j===jrI?'step':'false')});
+  $('#jrBar').style.width=(80*jrI/(jrS.length-1))+'%';clearTimeout(jrT);if(!jrStill())jrT=setTimeout(()=>jrGo(jrI+1),3400)}
+jrB.forEach((b,j)=>b.onclick=()=>jrGo(j));
+const jrIO=new IntersectionObserver(es=>{if(es[0].isIntersecting){if(jrI<0)setTimeout(()=>jrGo(0),jrStill()?0:1900);jrIO.disconnect()}},{threshold:.35});jrIO.observe($('#ordStage'));
+if(jrStill())jrGo(0);
+$('#orderForm').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,err=$('#fErr');
+  const o={piece:f.piece.value,name:f.name.value.trim(),phone:normPh(f.phone.value),gov:f.gov.value,addr:f.addr.value.trim(),note:f.note.value.trim()};
+  if(!o.name)return err.textContent='اكتب اسمك.';
+  if(!/^07\d{9}$/.test(o.phone))return err.textContent='اكتب رقم عراقي صحيح يبدي بـ07 (11 رقم).';
+  if(normPh(f.phone2.value)!==o.phone)return err.textContent='الرقمين مو نفس الشي، تأكد من رقمك.';
+  if(!o.gov)return err.textContent='اختار المحافظة.';if(!o.addr)return err.textContent='اكتب العنوان.';
+  err.textContent='';const btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='جاري الإرسال…';
+  const p=P.find(x=>x.id===o.piece);o.pieceName=p.ar;o.at=new Date().toISOString();
+  let no=String(Math.floor(1000+Math.random()*9000));
+  if(API){const r=await apiPost('/order',JSON.stringify({name:o.name,phone:o.phone,gov:o.gov,addr:o.addr,note:o.note,piece:o.piece}));
+    if(!r.ok){btn.disabled=false;btn.textContent='ثبّت الطلب';return err.textContent=r.message}no=String(r.order_no)}
+  btn.disabled=false;btn.textContent='ثبّت الطلب';
+  const done=$('#ordDone');
+  done.innerHTML=`<div class="done-ic">✓</div><b>تأكد طلبك</b><p>${p.ar} · ${esc(o.gov)}<br>رقم الطلب <span dir="ltr">#${no}</span> وصل للمحل. راح نتصل بيك على <span dir="ltr">${o.phone}</span> بخصوص السعر والتوصيل.</p>${API?'':'<small>ديمو: بالنسخة الحقيقية هنا الطلب يوصل لبوت التليكرام مالتك.</small>'}<button class="btn" type="button" id="ordAgain">طلب ثاني</button>`;
+  $('#ordAgain').onclick=()=>{const id=$('#fPiece').value;f.reset();$('#fPiece').value=id;f.hidden=false;done.hidden=true};
+  f.hidden=true;done.hidden=false});
+$('#fPhone2').addEventListener('paste',e=>e.preventDefault());
+
+// once-in-a-lifetime demo (local per-browser store; real version needs a server DB)
+const OK='sc_once_demo';let mem=[];
+const loadO=()=>{try{return JSON.parse(localStorage.getItem(OK))||[]}catch{return mem}};
+const saveO=a=>{mem=a;try{localStorage.setItem(OK,JSON.stringify(a))}catch{}};
+const normPh=s=>{const d=s.replace(/[٠-٩]/g,c=>'٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/\D/g,'').replace(/^964/,'0');return d};
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const oa=$('#oa'),still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+let oState={},oLast=null,readyT;
+function oStep(n){oa.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',s.dataset.s==n));oa.querySelectorAll('.dots i').forEach((d,i)=>d.classList.toggle('on',i<Math.min(n,3)));oa.scrollTop=0}
+function oOpen(e){oLast=document.activeElement;const r=e.currentTarget.getBoundingClientRect();
+  oa.style.setProperty('--ox',(r.left+r.width/2)+'px');oa.style.setProperty('--oy',(r.top+r.height/2)+'px');
+  oState={};['oHim','oHer','oPh','oMail','oIdNo','oId'].forEach(i=>$('#'+i).value='');idClear();$('#oErr1').textContent='';oStep(1);
+  oa.classList.remove('ready');oa.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  requestAnimationFrame(()=>oa.classList.add('open'));
+  oa.classList.remove('skip');clearTimeout(readyT);readyT=setTimeout(oReady,still()?0:4700)}
+function oReady(){clearTimeout(readyT);if(oa.classList.contains('ready'))return;oa.classList.add('ready');$('#oHim').focus()}
+oa.addEventListener('click',e=>{if(oa.classList.contains('open')&&!oa.classList.contains('ready')&&e.target.id!=='oaX'){oa.classList.add('skip');oReady()}});
+document.fonts&&document.fonts.load('60px "Pinyon Script"').catch(()=>{});
+function oClose(){oa.classList.remove('ready','open','skip');oa.setAttribute('aria-hidden','true');document.body.style.overflow='';oLast&&oLast.focus()}
+$('#onceGo').onclick=oOpen;$('#heroOnce').onclick=oOpen;$('#oaX').onclick=oClose;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&oa.classList.contains('open'))oClose()});
+oa.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>oStep(b.dataset.back));
+let pkI=-1;
+const ROWS=[['bracelet','أساور','Bracelets'],['ring','خواتم','Rings'],['necklace','قلائد','Necklaces']];
+let slides=[];
+function buildPicks(){$('#oPicks').innerHTML=ROWS.map(([t,ar,en])=>{const items=P.map((p,i)=>[p,i]).filter(([p])=>p.type===t);
+  return `<div class="pk-row"><div class="pk-rh"><b>${ar}</b><span class="latin">${en} · ${items.length}</span></div><div class="car">${items.length?items.map(([p,i])=>`<button type="button" class="slide" data-i="${i}" aria-label="${p.ar}"><img src="${src(p.imgs[0])}" alt="${p.ar}" loading="lazy"><span class="nm">${p.ar}</span></button>`).join(''):`<div class="slide soon"><span class="latin">Coming soon</span>قريباً</div>`}</div></div>`}).join('');
+slides=[...$('#oPicks').querySelectorAll('button.slide')];slides.forEach(s=>s.onclick=()=>pkGo(+s.dataset.i))}
+buildPicks();
+function pkSet(i){if(i===pkI)return;pkI=i;const p=P[i];oState.piece=p.id;$('#oErr2').textContent='';
+  slides.forEach(s=>{const on=+s.dataset.i===i;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)});
+  $('#pkCount').innerHTML=`${String(i+1).padStart(2,'0')} <small>/ ${String(P.length).padStart(2,'0')}</small>`;
+  const info=$('#pkInfo');info.classList.remove('swap');void info.offsetWidth;info.classList.add('swap');
+  info.innerHTML=`<h4>${p.ar}</h4><div class="latin">${p.en}</div><p>${p.desc}</p><div class="plate"><small>CERTIFICATE · على الشهادة</small><b>${esc(oState.him||'')} ♥ ${esc(oState.her||'')}</b></div>`;
+  $('#oNext2').textContent=`اخترت هاي ♥`}
+function pkGo(i){const s=slides.find(x=>+x.dataset.i===i);s.scrollIntoView({behavior:still()?'auto':'smooth',inline:'center',block:'nearest'});pkSet(i)}
+function pkStart(){pkI=-1;requestAnimationFrame(()=>pkGo(+slides[0].dataset.i))}
+$('#oNext1').onclick=()=>{const him=$('#oHim').value.trim(),her=$('#oHer').value.trim(),ph=normPh($('#oPh').value);
+  if(!him||!her){$('#oErr1').textContent='اكتب الاسمين.';return}
+  if(!/^07\d{9}$/.test(ph)){$('#oErr1').textContent='اكتب رقم عراقي صحيح يبدي بـ07 (11 رقم).';return}
+  const mail=$('#oMail').value.trim(),hasId=$('#oId').files.length>0,idNo=$('#oIdNo').value.trim();
+  if(API||!tMode()){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){$('#oErr1').textContent='اكتب إيميل صحيح.';return}
+    if(API&&idNo.replace(/[^0-9A-Za-z]/g,'').length<6){$('#oErr1').textContent='اكتب رقم هويتك بشكل صحيح.';return}
+    if(!hasId){$('#oErr1').textContent='ارفع صورة هويتك.';return}
+    const prev=!API&&loadO().find(x=>x.ph===ph);if(prev){$('#oErr1').innerHTML='';oDone(prev,true);return}}
+  $('#oErr1').textContent='';Object.assign(oState,{him,her,ph,mail,idNo});oStep(2);pkStart()};
+$('#oNext2').onclick=()=>{if(!oState.piece){$('#oErr2').textContent='اختار قطعة وحدة.';return}
+  const p=P.find(x=>x.id===oState.piece);$('#oReview').innerHTML=`<b>${esc(oState.him)} ♥ ${esc(oState.her)}</b>${p.ar}<br><span dir="ltr">${oState.ph}</span>`;oStep(3)};
+// ID photo: preview only, never stored in the browser (real version uploads it to a secure server)
+let idUrl=null;
+function idClear(){if(idUrl)URL.revokeObjectURL(idUrl);idUrl=null;$('#oIdPrev').hidden=true;$('#oIdPrev').removeAttribute('src');$('#oIdTxt').textContent='اضغط وصوّر الهوية أو اختار صورة'}
+$('#oId').addEventListener('change',e=>{const f=e.target.files[0];idClear();if(!f)return;
+  if(!f.type.startsWith('image/')){e.target.value='';$('#oErr1').textContent='لازم تكون صورة.';return}
+  $('#oErr1').textContent='';idUrl=URL.createObjectURL(f);$('#oIdPrev').src=idUrl;$('#oIdPrev').hidden=false;$('#oIdTxt').textContent='✓ انرفعت · اضغط حتى تبدّلها'});
+// owner test mode (per browser)
+const TK='sc_test_mode';
+const tMode=()=>$('#oTest').checked;
+function tSync(){const on=tMode();$('#oReset').hidden=!on;$('#oIdOpt').textContent=on?'(اختياري بوضع التجربة)':'';try{localStorage.setItem(TK,on?'1':'')}catch{}}
+try{$('#oTest').checked=!API&&localStorage.getItem(TK)==='1'}catch{}tSync();
+if(API){document.querySelector('.tmode').hidden=true;$('#oIdNoOpt').textContent=''}else $('#oIdNoOpt').textContent='(بالنسخة الحقيقية إجباري)';
+$('#oTest').addEventListener('change',()=>{tSync();$('#oTmsg').textContent=tMode()?'وضع التجربة شغّال.':'رجع الوضع الطبيعي.'});
+$('#oReset').onclick=()=>{saveO([]);$('#oTmsg').textContent='انمسحت كل طلبات الديمو. ✓'};
+$('#oLock').onclick=async()=>{
+  if(API){const b=$('#oLock');b.disabled=true;b.textContent='جاري القفل…';const fd=new FormData();
+    Object.entries({him:oState.him,her:oState.her,phone:oState.ph,email:oState.mail,id_number:oState.idNo,piece:oState.piece}).forEach(([k,v])=>fd.append(k,v||''));
+    fd.append('photo',$('#oId').files[0]);const r=await apiPost('/once',fd);b.disabled=false;b.textContent='اقفل الطلب للأبد';
+    if(!r.ok){$('#oReview').insertAdjacentHTML('beforeend',`<div class="err" style="margin-top:10px">${esc(r.message)}</div>`);return}
+    const rec={...oState,no:r.cert_no,at:new Date().toISOString().slice(0,10)};
+    if(r.status==='used')oDone({no:r.cert_no,piece:oState.piece,him:'',her:'',at:''},true);else oDone(rec,false);return}
+  const a=loadO();if(!tMode()&&a.find(x=>x.ph===oState.ph)){oDone(a.find(x=>x.ph===oState.ph),true);return}
+  const rec={...oState,no:a.length+1,at:new Date().toISOString().slice(0,10)};a.push(rec);saveO(a);oDone(rec,false)};
+function oDone(r,again){const p=P.find(x=>x.id===r.piece)||P[0];const no=String(parseInt(r.no,10)||0).padStart(4,'0');
+  $('#oDone').innerHTML=(again?`<div class="locked" style="margin-bottom:18px"><b>هذا الرقم استعمل فرصته</b>«مرة وحدة بالعمر» ما تنطلب غير مرة لكل رقم ولكل هوية. هذي شهادة طلبك القديم:</div>`:'')+
+  `<div class="cert seal"><span class="latin">Once in a lifetime · Silver Charm</span><div class="no">N° ${no}</div>
+   ${r.him?`<div class="names">${esc(r.him)} <em>♥</em> ${esc(r.her)}</div><p>${p.ar} · فضة 925 · <span dir="ltr">${esc(r.at)}</span></p><img src="${src(p.imgs[0])}" alt="${p.ar}">`:''}</div>
+   <div class="row" style="justify-content:center">${again?'':`<button class="btn w" type="button" id="oCont">كمّل الطلب</button>`}<button class="btn" type="button" id="oBack">رجوع للموقع</button></div>
+   ${API?'':'<p class="sub" style="text-align:center;margin-top:18px;font-size:13px">ديمو: القفل محفوظ بهذا المتصفح بس. بالنسخة الحقيقية ينحفظ بقاعدة بيانات.</p>'}`;
+  if($('#oCont'))$('#oCont').onclick=()=>{oClose();setTimeout(()=>orderPiece(p.id),still()?0:500)};
+  $('#oBack').onclick=oClose;
+  oStep(4)}
+// live: catalogue comes from the database (embedded list above is the offline/demo fallback)
+if(API)fetch(API+'/products').then(r=>r.ok?r.json():null).then(list=>{if(!Array.isArray(list)||!list.length)return;
+  P.splice(0,P.length,...list.map(x=>({id:x.id,type:x.type,ar:x.ar,en:x.en,imgs:x.imgs,desc:x.desc,list:x.list})));renderGrid(gF,0);buildPicks()}).catch(()=>{});
+</script>
