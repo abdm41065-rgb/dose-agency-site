@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZgDmI16qgvdlMnPZkb97PFH4BxMUlHerqjfWEq56eOY=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-4FmyXXsbqmW2s8DzYDduChR98u0Pwa9Vt7eMCUbSh7U='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZgDmI16qgvdlMnPZkb97PFH4BxMUlHerqjfWEq56eOY=' 'sha256-VdIn8uihVfdmWg92l5ensvuwVZFeDNtaP3eiyVn+I5w=' 'sha256-ZTtD9XMRjCcFzahRwsVjbK/Gn3FFYP4gbUfyp68mQXI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script>window.SC_API='/api'</script>
 <title>Silver Charm</title>
@@ -214,7 +214,8 @@ section{padding-block:clamp(48px,8vw,96px)}
 /* height fallback for in-app browsers (Instagram/old iOS) where aspect-ratio collapses boxes holding only absolute children */
 .card .ph::before{content:"";display:block;padding-top:133.333%}
 .jr-scene::before{content:"";display:block;padding-top:66.667%}
-.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s ease}
+.jr-scene::before{content:"";display:block;padding-top:66.667%}
+.card .ph img{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s ease}
 .card .ph img.alt{opacity:0}
 .card:hover .ph img.alt,.card:focus-visible .ph img.alt{opacity:1}
 .card:hover .ph img{transform:scale(1.03)}
@@ -600,8 +601,8 @@ renderGrid('all');
 
 // offers banner — edit OFFERS to change the promos (tag, title, text, button, image, target piece id or section)
 const OFFERS=[
- {tag:'عرض الأسبوع',title:'سوار القصّة المستطيلة',text:'اكتب هنا تفاصيل العرض: خصم، هدية، أو سعر خاص.',cta:'اطلبها',img:'emerald_red',piece:'emerald'},
- {tag:'هدية',title:'تغليف هدية مجاني',text:'اكتب هنا شروط العرض ومدته.',cta:'شوف المجموعة',img:'cuff_navy',href:'#collection'},
+ {tag:'عرض الأسبوع',title:'سوار القصّة المستطيلة',text:'قطعة الأسبوع المختارة: فضة 925 بقصّة مستطيلة تلمع بكل حركة.',cta:'اطلبها',img:'emerald_red',piece:'emerald'},
+ {tag:'هدية',title:'تغليف هدية مجاني',text:'كل طلب يوصلك مغلّف وجاهز للإهداء، بدون أي كلفة إضافية.',cta:'شوف المجموعة',img:'cuff_navy',href:'#collection'},
  {tag:'مرة وحدة بالعمر',title:'هدية ما تتكرر',text:'هدية وحدة بحياتك للي تحبها. لأن الحب الحقيقي ما يتكرر، هالطلب ما يتكرر هم.',points:['تسجّل باسمك ورقمك وصورتك','تختار أي قطعة من المجموعة','بعدها ما تكدر تطلبها لأي شخص ثاني، للأبد'],cta:'اطلب لمرة وحدة ♥',img:'aqua_plate',once:true}
 ];
 const pT=$('#promoTrack'),pD=$('#promoDots');let pI=0,pTimer=null;
