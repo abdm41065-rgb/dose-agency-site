@@ -102,7 +102,7 @@ section{padding-block:clamp(48px,8vw,96px)}
 .chip{font-family:var(--ui);font-size:14px;border:1px solid #cfd2d6;background:transparent;border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,28px)}
-.card{background:var(--paper);border:0;padding:0;text-align:start;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;animation:cardIn .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+.card{width:100%;background:var(--paper);border:0;padding:0;text-align:start;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;animation:cardIn .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
 @keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .grid{transition:opacity .26s ease,transform .26s ease}
 .grid.out{opacity:0;transform:translateY(-8px)}
@@ -210,12 +210,14 @@ section{padding-block:clamp(48px,8vw,96px)}
 .locked{border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:18px;text-align:center}
 .locked b{display:block;font-size:22px;margin-bottom:6px}
 @media (max-width:640px){.once .steps{grid-template-columns:1fr}}
-.card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#fff}
+.card .ph{position:relative;display:block;width:100%;overflow:hidden;background:#fff}
+.card .meta{width:100%;box-sizing:border-box}
 /* height fallback for in-app browsers (Instagram/old iOS) where aspect-ratio collapses boxes holding only absolute children */
-.card .ph::before{content:"";display:block;padding-top:133.333%}
 .jr-scene::before{content:"";display:block;padding-top:66.667%}
 .jr-scene::before{content:"";display:block;padding-top:66.667%}
 .card .ph img{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s ease}
+/* first image sizes the box itself (iOS WebKit does not stretch children of <button>) */
+.card .ph img:first-child{position:relative;display:block;height:auto;aspect-ratio:3/4}
 .card .ph img.alt{opacity:0}
 .card:hover .ph img.alt,.card:focus-visible .ph img.alt{opacity:1}
 .card:hover .ph img{transform:scale(1.03)}
