@@ -211,6 +211,9 @@ section{padding-block:clamp(48px,8vw,96px)}
 .locked b{display:block;font-size:22px;margin-bottom:6px}
 @media (max-width:640px){.once .steps{grid-template-columns:1fr}}
 .card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#fff}
+/* height fallback for in-app browsers (Instagram/old iOS) where aspect-ratio collapses boxes holding only absolute children */
+.card .ph::before{content:"";display:block;padding-top:133.333%}
+.jr-scene::before{content:"";display:block;padding-top:66.667%}
 .card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s ease}
 .card .ph img.alt{opacity:0}
 .card:hover .ph img.alt,.card:focus-visible .ph img.alt{opacity:1}
